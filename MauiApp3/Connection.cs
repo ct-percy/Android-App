@@ -23,7 +23,7 @@ namespace MauiApp3
             }
 
 
-            var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Database.db");
+            var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "data.db");
 
             _db = new SQLiteAsyncConnection(databasePath);
             _dbconnection = new SQLiteConnection(databasePath);

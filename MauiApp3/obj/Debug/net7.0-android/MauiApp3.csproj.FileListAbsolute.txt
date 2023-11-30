@@ -977,3 +977,9 @@ C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\stamp\_ConvertResourcesCases.stam
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\stamp\_GenerateJavaStubs.stamp
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\stamp\_GeneratePackageManagerJava.stamp
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\stamp\_ResolveLibraryProjectImports.stamp
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\assets\SQLitePCLRaw.provider.dynamic_cdecl.dll
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\resizetizer\r\drawable\cancel.png
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\resizetizer\r\drawable\collapse.png
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\resizetizer\r\drawable\delete.png
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\resizetizer\r\drawable\edit_icon.png
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\resizetizer\r\drawable\save.png
