@@ -6,7 +6,7 @@
     <!--this grid creates header, body, and footer -->
 
     <Grid RowDefinitions="200,* ,auto"
-            ColumnDefinitions="*">
+             ColumnDefinitions="*">
 
         <!--#region Header-->
 
@@ -24,23 +24,23 @@
 
                 <!--#region Term1-->
                 <Grid RowDefinitions="*,*,*"
-                      ColumnDefinitions="*,*">
+                       ColumnDefinitions="*,*">
 
                     <ImageButton x:Name="collapse1" ZIndex="2" Clicked="collapse_Clicked" Source="collapse.png" VerticalOptions="Start" Grid.Row="1"
-                               Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
+                                Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
 
                     <ImageButton x:Name="editTerm1" IsVisible="false" Clicked="editTermButton_Clicked" ZIndex="1" Source="edit_icon.png" Grid.Row="1" Grid.Column="2"
-                               VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
+                                VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
 
 
                     <Entry x:Name="editTerm1Entry" Grid.Row="1" Grid.RowSpan="2" IsVisible="false" />
 
 
                     <CollectionView x:Name="Term1"
-                      ItemsSource="{Binding terms}"
-                            Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" 
-                                      EmptyView="Click 'Add Term' to get started!" 
-                                     >
+                       ItemsSource="{Binding terms}"
+                             Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" 
+                                       EmptyView="Click 'Add Term' to get started!" 
+                                      >
 
 
                         <CollectionView.ItemTemplate>
@@ -68,15 +68,15 @@
 
 
                     <ImageButton x:Name="cancelEdit1" Clicked="cancel_Clicked" IsVisible="false" ZIndex="1" 
-                                   Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
+                                    Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
 
                     <ImageButton x:Name="delete1"   ZIndex="1" Source="delete.png" Grid.Row="1" Grid.Column="3"
-                                   VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" 
-                                   WidthRequest="30" Clicked="deleteTerm_Clicked"
-                                   IsVisible="false" />
+                                    VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" 
+                                    WidthRequest="30" Clicked="deleteTerm_Clicked"
+                                    IsVisible="false" />
 
                     <ImageButton x:Name="save1" Clicked="saveTerm_Clicked"  ZIndex="1" Source="save.png" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
-                                   VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
+                                    VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
 
 
                 </Grid>
@@ -85,26 +85,64 @@
 
 
 
-           
+                <!--#region term1Courses-->
+
+                <Label x:Name="noCourses1" Text="No Courses Yet!" HorizontalOptions="Center" IsVisible="false" />
+
+                <ListView Margin="5" x:Name="Term1Courses"
+                         ItemsSource="{Binding courses}"
+                            ItemTapped="term1CourseTapped"
+                             IsVisible="false"
+                             VerticalOptions="Start"
+                         
+                            
+                        
+                             >
+
+
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate >
+                            <ViewCell >
+                                <Grid RowDefinitions="auto" ColumnDefinitions="*,*,*"  >
+                                    <Label Text="{Binding courseName}" Padding="0" />
+                                    <Label Text="{Binding startDate}" Grid.Column="1" HorizontalTextAlignment="End"  />
+                                    <Label Text="                 - " Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"  />
+                                    <Label Text="{Binding endDate}" Grid.Column="2" HorizontalTextAlignment="End" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Grid >
+
+                    <Button   x:Name="addCourse1" Clicked="addCourse_Clicked" Text="Add" HorizontalOptions="End" IsVisible="false"  />
+
+                    <Button x:Name="deleteCourse1" Clicked="deleteCourse_Clicked"  Text="Delete" HorizontalOptions="End" IsVisible="false"  />
+                </Grid>
+
+                <!--#endregion-->
+
 
                 <!--#region Term2-->
 
                 <Grid RowSpacing="10" RowDefinitions="*,*,*"
-   ColumnDefinitions="*,*">
+    ColumnDefinitions="*,*">
 
                     <ImageButton x:Name="collapse2" ZIndex="2" Clicked="collapse_Clicked" Source="collapse.png" VerticalOptions="Start" Grid.Row="1"
-            Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
+             Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
 
                     <ImageButton x:Name="editTerm2" IsVisible="false" Clicked="editTermButton_Clicked" ZIndex="1" Source="edit_icon.png" Grid.Row="1" Grid.Column="2"
-            VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
+             VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
 
 
                     <Entry x:Name="editTerm2Entry" Grid.Row="1" Grid.RowSpan="2" IsVisible="false" />
 
 
                     <CollectionView x:Name="Term2"
-   ItemsSource="{Binding terms}"
-         Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" >
+    ItemsSource="{Binding terms}"
+          Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" >
 
 
                         <CollectionView.ItemTemplate>
@@ -132,13 +170,13 @@
 
 
                     <ImageButton x:Name="cancelEdit2" Clicked="cancel_Clicked" IsVisible="false" ZIndex="1" 
-                Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
+                 Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
 
                     <ImageButton x:Name="delete2"  Clicked="deleteTerm_Clicked" ZIndex="1" Source="delete.png" Grid.Row="1" Grid.Column="3"
-                VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
+                 VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
 
                     <ImageButton x:Name="save2"  Clicked="saveTerm_Clicked" ZIndex="1" Source="save.png" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
-                VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
+                 VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
 
 
                 </Grid>
@@ -146,26 +184,62 @@
                 <!--#endregion-->
 
 
+                <!--#region term2Courses-->
+
+                <Label x:Name="noCourses2" Text="No Courses Yet!" HorizontalOptions="Center" IsVisible="false" />
+
+
+                <ListView Margin="5" x:Name="Term2Courses"
+     ItemsSource="{Binding courses}"
+        ItemTapped="term2CourseTapped"
+                              IsVisible="false"
+                         VerticalOptions="Start"
+                         >
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnDefinitions="*,*,*" >
+                                    <Label Text="{Binding courseName}" />
+                                    <Label Text="{Binding startDate}" Grid.Column="1" HorizontalTextAlignment="End" />
+                                    <Label Text="                 - " Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding endDate}" Grid.Column="2" HorizontalTextAlignment="End" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+                <Grid>
+
+                    <Button x:Name="addCourse2" Clicked="addCourse_Clicked" Text="Add" HorizontalOptions="End" IsVisible="false"  />
+
+                    <Button x:Name="deleteCourse2" Clicked="deleteCourse_Clicked"  Text="Delete" HorizontalOptions="End" IsVisible="false"  />
+                </Grid>
+
+                <!--#endregion-->
+
 
 
                 <!--#region Term3-->
 
                 <Grid RowSpacing="10" RowDefinitions="*,*,*"
-   ColumnDefinitions="*,*">
+    ColumnDefinitions="*,*">
 
                     <ImageButton x:Name="collapse3" ZIndex="2" Clicked="collapse_Clicked" Source="collapse.png" VerticalOptions="Start" Grid.Row="1"
-            Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
+             Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
 
                     <ImageButton x:Name="editTerm3" IsVisible="false" Clicked="editTermButton_Clicked" ZIndex="1" Source="edit_icon.png" Grid.Row="1" Grid.Column="2"
-            VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
+             VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
 
 
                     <Entry x:Name="editTerm3Entry" Grid.Row="1" Grid.RowSpan="2" IsVisible="false" />
 
 
                     <CollectionView x:Name="Term3"
-   ItemsSource="{Binding terms}"
-         Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" >
+    ItemsSource="{Binding terms}"
+          Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" >
 
 
                         <CollectionView.ItemTemplate>
@@ -193,40 +267,73 @@
 
 
                     <ImageButton x:Name="cancelEdit3" Clicked="cancel_Clicked" IsVisible="false" ZIndex="1" 
-                Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
+                 Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
 
                     <ImageButton x:Name="delete3" Clicked="deleteTerm_Clicked"  ZIndex="1" Source="delete.png" Grid.Row="1" Grid.Column="3"
-                VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
+                 VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
 
                     <ImageButton x:Name="save3" Clicked="saveTerm_Clicked"  ZIndex="1" Source="save.png" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
-                VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
+                 VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
 
 
                 </Grid>
                 <!--#endregion-->
 
 
-             
+                <!--#region term3Courses-->
+
+                <Label x:Name="noCourses3" Text="No Courses Yet!" HorizontalOptions="Center" IsVisible="false" />
+
+
+                <ListView Margin="5" x:Name="Term3Courses"
+     ItemsSource="{Binding courses}"
+        ItemTapped="term3CourseTapped"
+                              IsVisible="false"
+                              VerticalOptions="Start">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnDefinitions="*,*,*" >
+                                    <Label Text="{Binding courseName}" />
+                                    <Label Text="{Binding startDate}" Grid.Column="1" HorizontalTextAlignment="End" />
+                                    <Label Text="                 - " Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding endDate}" Grid.Column="2" HorizontalTextAlignment="End" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+                <Grid>
+
+                    <Button x:Name="addCourse3" Clicked="addCourse_Clicked" Text="Add" HorizontalOptions="End" IsVisible="false"  />
+
+                    <Button x:Name="deleteCourse3" Clicked="deleteCourse_Clicked"  Text="Delete" HorizontalOptions="End" IsVisible="false"  />
+                </Grid>
+
+                <!--#endregion-->
+
 
                 <!--#region Term4-->
 
                 <Grid RowSpacing="10" RowDefinitions="*,*,*"
-   ColumnDefinitions="*,*">
+    ColumnDefinitions="*,*">
 
 
                     <ImageButton x:Name="collapse4" ZIndex="2" Clicked="collapse_Clicked" Source="collapse.png" VerticalOptions="Start" Grid.Row="1"
-            Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
+             Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
 
                     <ImageButton x:Name="editTerm4" IsVisible="false" Clicked="editTermButton_Clicked" ZIndex="1" Source="edit_icon.png" Grid.Row="1" Grid.Column="2"
-            VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
+             VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
 
 
                     <Entry x:Name="editTerm4Entry" Grid.Row="1" Grid.RowSpan="2" IsVisible="false" />
 
 
                     <CollectionView x:Name="Term4"
-   ItemsSource="{Binding terms}"
-         Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" >
+    ItemsSource="{Binding terms}"
+          Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" >
 
 
                         <CollectionView.ItemTemplate>
@@ -254,13 +361,13 @@
 
 
                     <ImageButton x:Name="cancelEdit4" Clicked="cancel_Clicked" IsVisible="false" ZIndex="1" 
-                Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
+                 Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
 
                     <ImageButton x:Name="delete4"  Clicked="deleteTerm_Clicked" ZIndex="1" Source="delete.png" Grid.Row="1" Grid.Column="3"
-                VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
+                 VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
 
                     <ImageButton x:Name="save4" Clicked="saveTerm_Clicked"  ZIndex="1" Source="save.png" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
-                VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
+                 VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
 
 
                 </Grid>
@@ -268,26 +375,57 @@
                 <!--#endregion-->
 
 
+                <!--#region term4Courses-->
+
+                <Label x:Name="noCourses4" Text="No Courses Yet!" HorizontalOptions="Center" IsVisible="false" />
+
+
+                <ListView Margin="5" x:Name="Term4Courses"
+     ItemsSource="{Binding courses}"
+        ItemTapped="term4CourseTapped"
+                              IsVisible="false"
+                              VerticalOptions="Start">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnDefinitions="*,*,*" >
+                                    <Label Text="{Binding courseName}" />
+                                    <Label Text="{Binding startDate}" Grid.Column="1" HorizontalTextAlignment="End" />
+                                    <Label Text="                 - " Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding endDate}" Grid.Column="2" HorizontalTextAlignment="End" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Grid>
+
+                    <Button x:Name="addCourse4" Clicked="addCourse_Clicked" Text="Add" HorizontalOptions="End" IsVisible="false"  />
+
+                    <Button x:Name="deleteCourse4" Clicked="deleteCourse_Clicked"  Text="Delete" HorizontalOptions="End" IsVisible="false"  />
+                </Grid>
+                <!--#endregion-->
 
 
                 <!--#region Term5-->
 
                 <Grid RowSpacing="10" RowDefinitions="*,*,*"
-   ColumnDefinitions="*,*">
+    ColumnDefinitions="*,*">
 
                     <ImageButton x:Name="collapse5" ZIndex="2" Clicked="collapse_Clicked" Source="collapse.png" VerticalOptions="Start" Grid.Row="1"
-            Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
+             Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
 
                     <ImageButton x:Name="editTerm5" IsVisible="false" Clicked="editTermButton_Clicked" ZIndex="1" Source="edit_icon.png" Grid.Row="1" Grid.Column="2"
-            VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
+             VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
 
 
                     <Entry x:Name="editTerm5Entry" Grid.Row="1" Grid.RowSpan="2" IsVisible="false" />
 
 
                     <CollectionView x:Name="Term5"
-   ItemsSource="{Binding terms}"
-         Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" >
+    ItemsSource="{Binding terms}"
+          Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" >
 
 
                         <CollectionView.ItemTemplate>
@@ -315,13 +453,13 @@
 
 
                     <ImageButton x:Name="cancelEdit5" Clicked="cancel_Clicked" IsVisible="false" ZIndex="1" 
-                Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
+                 Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
 
                     <ImageButton x:Name="delete5" Clicked="deleteTerm_Clicked"  ZIndex="1" Source="delete.png" Grid.Row="1" Grid.Column="3"
-                VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
+                 VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
 
                     <ImageButton x:Name="save5" Clicked="saveTerm_Clicked"  ZIndex="1" Source="save.png" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
-                VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
+                 VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
 
 
                 </Grid>
@@ -329,26 +467,57 @@
                 <!--#endregion-->
 
 
-              
+                <!--#region term5Courses-->
+
+                <Label x:Name="noCourses5" Text="No Courses Yet!" HorizontalOptions="Center" IsVisible="false" />
+
+
+                <ListView Margin="5" x:Name="Term5Courses"
+     ItemsSource="{Binding courses}"
+        ItemTapped="term5CourseTapped"
+                              IsVisible="false"
+                              VerticalOptions="Start">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnDefinitions="*,*,*" >
+                                    <Label Text="{Binding courseName}" />
+                                    <Label Text="{Binding startDate}" Grid.Column="1" HorizontalTextAlignment="End" />
+                                    <Label Text="                 - " Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding endDate}" Grid.Column="2" HorizontalTextAlignment="End" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Grid>
+
+                    <Button x:Name="addCourse5" Clicked="addCourse_Clicked" Text="Add" HorizontalOptions="End" IsVisible="false"  />
+
+                    <Button x:Name="deleteCourse5" Clicked="deleteCourse_Clicked"  Text="Delete" HorizontalOptions="End" IsVisible="false"  />
+                </Grid>
+
+                <!--#endregion-->
 
 
                 <!--#region Term6-->
                 <Grid RowSpacing="10" RowDefinitions="*,*,*"
-   ColumnDefinitions="*,*">
+    ColumnDefinitions="*,*">
 
                     <ImageButton x:Name="collapse6" ZIndex="2" Clicked="collapse_Clicked" Source="collapse.png" VerticalOptions="Start" Grid.Row="1"
-            Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
+             Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
 
                     <ImageButton x:Name="editTerm6" IsVisible="false" Clicked="editTermButton_Clicked" ZIndex="1" Source="edit_icon.png" Grid.Row="1" Grid.Column="2"
-            VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
+             VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
 
 
                     <Entry x:Name="editTerm6Entry" Grid.Row="1" Grid.RowSpan="2" IsVisible="false" />
 
 
                     <CollectionView x:Name="Term6"
-   ItemsSource="{Binding terms}"
-         Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" >
+    ItemsSource="{Binding terms}"
+          Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" >
 
 
                         <CollectionView.ItemTemplate>
@@ -376,13 +545,13 @@
 
 
                     <ImageButton x:Name="cancelEdit6" Clicked="cancel_Clicked" IsVisible="false" ZIndex="1" 
-                Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
+                 Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
 
                     <ImageButton x:Name="delete6" Clicked="deleteTerm_Clicked"  ZIndex="1" Source="delete.png" Grid.Row="1" Grid.Column="3"
-                VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
+                 VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
 
                     <ImageButton x:Name="save6"  Clicked="saveTerm_Clicked" ZIndex="1" Source="save.png" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
-                VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
+                 VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
 
 
                 </Grid>
@@ -390,7 +559,38 @@
                 <!--#endregion-->
 
 
-          
+                <!--#region term6Courses-->
+
+                <Label x:Name="noCourses6" Text="No Courses Yet!" HorizontalOptions="Center" IsVisible="false" />
+
+
+                <ListView Margin="5" x:Name="Term6Courses"
+     ItemsSource="{Binding courses}"
+        ItemTapped="term6CourseTapped"
+                              IsVisible="false"
+                              VerticalOptions="Start">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnDefinitions="*,*,*" >
+                                    <Label Text="{Binding courseName}" />
+                                    <Label Text="{Binding startDate}" Grid.Column="1" HorizontalTextAlignment="End" />
+                                    <Label Text="                 - " Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding endDate}" Grid.Column="2" HorizontalTextAlignment="End" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Grid>
+
+                    <Button x:Name="addCourse6" Clicked="addCourse_Clicked" Text="Add" HorizontalOptions="End" IsVisible="false"  />
+
+                    <Button x:Name="deleteCourse6" Clicked="deleteCourse_Clicked"  Text="Delete" HorizontalOptions="End" IsVisible="false"  />
+                </Grid>
+                <!--#endregion-->
+
             </StackLayout>
 
         </ScrollView>
@@ -408,7 +608,7 @@
 
 
             <Entry  x:Name="addTermName" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Placeholder="New Term"
-                  BackgroundColor="Blue"  IsVisible="false" HorizontalTextAlignment="Center"  />
+                   BackgroundColor="Blue"  IsVisible="false" HorizontalTextAlignment="Center"  />
 
             <Label BackgroundColor="Yellow" x:Name="startLabel" Text="Start Date" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" IsVisible="false"/>
             <DatePicker  x:Name="addTermStart" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" HorizontalOptions="Start" IsVisible="false" />
@@ -431,5 +631,8 @@
     </Grid>
 
     <!--#endregion-->
+
+
+
 
 </ContentPage>
