@@ -3,10 +3,100 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp3.AddCourse"
              Title="AddCourse">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <StackLayout>
+        <Grid  RowDefinitions="*,*,AUTO" >
+
+            <Button ZIndex="1" Text="Back" Clicked="Back_Clicked" Grid.Row="0" VerticalOptions="Start" HorizontalOptions="Start"   HeightRequest="50" Grid.Column="0" Grid.ColumnSpan="3" />
+
+
+            <Label ZIndex="0" HeightRequest="50" Text="Add Course" TextColor="Yellow" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" VerticalTextAlignment="Center" FontSize="Large"
+HorizontalTextAlignment="Center"  BackgroundColor="Blue" />
+
+
+            <CollectionView x:Name="termNameCV"
+                          ZIndex="2"
+                            ItemsSource="{Binding terms}"
+                            Grid.Row="2"
+                             Grid.Column="0" Grid.ColumnSpan="10"
+                        
+                           
+                           
+              
+                >
+
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+
+                        <Label FontSize="Large" HeightRequest="50"  HorizontalTextAlignment="Center" BackgroundColor="Yellow" Text="{Binding termName}" />
+
+                    </DataTemplate>
+
+
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+
+        </Grid>
+
+
+
+        <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto"
+         ColumnDefinitions="*,*,*,*,*,*,*,*,*,*"
+             RowSpacing="3" >
+
+
+
+
+            <Label HeightRequest="60" Grid.Row="1"  Text="Course Title" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
+            <Entry ZIndex="1" x:Name="courseNameEntry" Grid.Row="1"  BackgroundColor="Aqua" Grid.Column="4" Grid.ColumnSpan="6" />
+
+            <Label HeightRequest="80" Grid.Row="2" Text="Instructor" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
+            <Entry HeightRequest="80" ZIndex="1" x:Name="profEntry" Grid.Row="2"  BackgroundColor="Aqua" Grid.Column="4" Grid.ColumnSpan="6" />
+
+            <Label HeightRequest="80" Grid.Row="3" Text="Instructor Email" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
+            <Entry HeightRequest="80" ZIndex="1" x:Name="emailEntry" Grid.Row="3" BackgroundColor="Aqua" Grid.Column="4" Grid.ColumnSpan="6" />
+
+            <Label HeightRequest="80" Grid.Row="4" Text="Instructor Phone" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
+            <Entry HeightRequest="80" ZIndex="1" x:Name="phoneEntry" Grid.Row="4"  BackgroundColor="Aqua" Grid.Column="4" Grid.ColumnSpan="6" />
+
+            <Label HeightRequest="80" Grid.Row="5" Text="Expected Start Date" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
+            <DatePicker HeightRequest="80" ZIndex="1" x:Name="startEntry" BackgroundColor="BlueViolet" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="6" />
+
+            <Label HeightRequest="80" Grid.Row="6" Text="Expected End Date" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
+            <DatePicker HeightRequest="80" ZIndex="1" x:Name="endEntry" BackgroundColor="BlueViolet" Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="6" />
+
+            <Label HeightRequest="80" Grid.Row="7" Text="Due Date" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
+            <DatePicker HeightRequest="80" ZIndex="1" x:Name="dueEntry" BackgroundColor="BlueViolet" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="6" />
+
+            <Picker HeightRequest="80" x:Name="statusEntry" ZIndex="1" Grid.Row="8" BackgroundColor="blue"  Grid.ColumnSpan="3" Title="Status" IsEnabled="True" >
+                <Picker.Items>
+
+                    <x:String>Active</x:String>
+                    <x:String>In Progress</x:String>
+                    <x:String>Completed</x:String>
+
+                </Picker.Items>
+            </Picker>
+
+            <CheckBox x:Name="notifyCheckbox" CheckedChanged="notifyCheckbox_CheckedChanged"  ZIndex="1" Grid.Row="8" Grid.Column="5" IsChecked="True" ></CheckBox>
+
+            <Label Text="Notify?" VerticalOptions="Center" Grid.Row="8" Grid.Column="6" Grid.ColumnSpan="2"></Label>
+
+            <Button ZIndex="1"  Text="Save" x:Name="saveButton" Clicked="saveButton_Clicked" Grid.Row="09" Grid.Column="3" Grid.ColumnSpan="4"  ></Button>
+
+
+
+
+
+
+
+
+
+        </Grid>
+
+    </StackLayout>
 </ContentPage>

@@ -433,11 +433,11 @@ public partial class TermsPage : ContentPage
 
     private async void collapse_Clicked(object sender, EventArgs e)
     {
-        await Connection._db.DropTableAsync<OAs>();
+        /*await Connection._db.DropTableAsync<OAs>();
         await Connection._db.DropTableAsync<PAs>();
         await Connection._db.DropTableAsync<instructors>();
         await Connection._db.DropTableAsync<courses>();
-        await Connection._db.DropTableAsync<terms>();
+        await Connection._db.DropTableAsync<terms>();*/
 
         #region Term1 
         if (sender == collapse1)
