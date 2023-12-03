@@ -254,7 +254,7 @@ namespace MauiApp3.Database
         {
             await Connection.Init();
 
-            await Connection._db.QueryAsync<PAs>("UPDATE PAs SET paName = '" + paName + "', startDate = '" + start + "', endDate='" + end + "', dueDate ='" + due + "' notify = " + notify + ", WHERE paId = " + paId);
+            await Connection._db.QueryAsync<PAs>("UPDATE PAs SET paName = '" + paName + "', startDate = '" + start + "', endDate='" + end + "', dueDate ='" + due + "', notify = " + notify + " WHERE paId = " + paId);
 
             return paId;
         }
@@ -460,6 +460,145 @@ namespace MauiApp3.Database
         }
 
         #endregion
+
+
+        #region Notify PA
+
+
+        public static async Task AddNotifyPA(int id, string paName, string start, string end, string due)
+        {
+            await Connection.Init();
+
+            var notify = new notifyPA()
+            {
+
+                Id = id,
+                paName = paName,
+                start = start,
+                end = end,
+                dueDate = due,
+
+
+            };
+
+            await Connection._db.InsertAsync(notify);
+
+        }
+
+
+        public async static Task<IEnumerable<notifyPA>> getNotifyPAs()
+        {
+
+            await Connection.Init();
+
+
+            var notify = await Connection._db.QueryAsync<notifyPA>("SELECT * FROM notifyPA");
+
+
+            return notify;
+        }
+
+
+        public async static Task<IEnumerable<notifyPA>> getPaNotify(int paId)
+        {
+
+            await Connection.Init();
+
+
+            var notify = await Connection._db.QueryAsync<notifyPA>("SELECT * FROM notifyPA WHERE Id =" + paId);
+
+
+            return notify;
+        }
+
+        public static async Task updatePaNotify(int paId, string paName, string startDate, string endDate, string dueDate)
+        {
+            await Connection.Init();
+
+
+            await Connection._db.ExecuteAsync("UPDATE notifyPA SET paName = '" + paName + "', start ='" + startDate + "', endDate = '" + endDate + "', dueDate ='" + dueDate + "' WHERE Id = " + paId);
+
+        }
+
+        public static async Task deletePaNotify(int paId)
+        {
+            await Connection.Init();
+
+            await Connection._db.QueryAsync<notifyPA>("DELETE FROM notifyPA WHERE Id =" + paId);
+
+        }
+
+        #endregion
+
+
+        #region Notify OA
+
+
+        public static async Task AddNotifyOA(int id, string oaName, string start, string end, string due)
+        {
+            await Connection.Init();
+
+            var notify = new notifyOA()
+            {
+
+                Id = id,
+                oaName = oaName,
+                start = start,
+                end = end,
+                dueDate = due,
+
+
+            };
+
+            await Connection._db.InsertAsync(notify);
+
+        }
+
+        public async static Task<IEnumerable<notifyOA>> getNotifyOAs()
+        {
+
+            await Connection.Init();
+
+
+            var notify = await Connection._db.QueryAsync<notifyOA>("SELECT * FROM notifyOA");
+
+
+            return notify;
+        }
+
+
+        public async static Task<IEnumerable<notifyOA>> getOaNotify(int oaId)
+        {
+
+            await Connection.Init();
+
+
+            var notify = await Connection._db.QueryAsync<notifyOA>("SELECT * FROM notifyOA WHERE Id =" + oaId);
+
+
+            return notify;
+        }
+
+        public static async Task updateOaNotify(int oaId, string oaName, string startDate, string endDate, string dueDate)
+        {
+            await Connection.Init();
+
+
+            await Connection._db.ExecuteAsync("UPDATE notifyOA SET oaName ='" + oaName + "', start'" + startDate + "', endDate = '" + endDate + "', dueDate ='" + dueDate + "' WHERE Id = " + oaId);
+
+        }
+
+        public static async Task deleteOaNotify(int oaId)
+        {
+            await Connection.Init();
+
+            await Connection._db.QueryAsync<notifyPA>("DELETE FROM notifyOA WHERE Id =" + oaId);
+
+        }
+
+        #endregion
+
+
     }
 }
 

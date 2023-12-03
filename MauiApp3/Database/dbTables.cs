@@ -95,4 +95,22 @@ namespace MauiApp3.Database
         public string end { get; set; }
         public string dueDate { get; set; }
     }
+
+    public class notifyOA
+    {
+        public int Id { get; set; }
+        public string oaName { get; set; }
+        public string start { get; set; }
+        public string end { get; set; }
+        public string dueDate { get; set; }
+    }
+
+    public class notifyPA
+    {
+        public int Id { get; set; }
+        public string paName { get; set; }
+        public string start { get; set; }
+        public string end { get; set; }
+        public string dueDate { get; set; }
+    }
 }

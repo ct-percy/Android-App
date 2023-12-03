@@ -441,12 +441,14 @@ public partial class TermsPage : ContentPage
 
     private async void collapse_Clicked(object sender, EventArgs e)
     {
-       /* await Connection._db.DropTableAsync<OAs>();
+        /*await Connection._db.DropTableAsync<OAs>();
         await Connection._db.DropTableAsync<PAs>();
         await Connection._db.DropTableAsync<instructors>();
         await Connection._db.DropTableAsync<courses>();
         await Connection._db.DropTableAsync<terms>();
-        await Connection._db.DropTableAsync<notifyCourse>();*/
+        await Connection._db.DropTableAsync<notifyCourse>();
+        await Connection._db.DropTableAsync<notifyPA>();
+        await Connection._db.DropTableAsync<notifyOA>();*/
 
         #region Term1 
         if (sender == collapse1)
@@ -1181,6 +1183,142 @@ public partial class TermsPage : ContentPage
                 else if (DateTime.Parse(notifyCourse.ElementAt(i).dueDate) == DateTime.Today)
                 {
                     await DisplayAlert("Course Due", notifyCourse.ElementAt(i).courseName + " is due today!", "Ok");
+
+                }
+            }
+        }
+        catch { }
+        #endregion
+
+
+        #region Notify PA
+
+        // Notify Start Dates
+        IEnumerable<notifyPA> notifyPA = await dbQuery.getNotifyPAs();
+
+        try
+        {
+            for (int i = 0; i < notifyPA.Count(); i++)
+            {
+
+
+                if (DateTime.Parse(notifyPA.ElementAt(i).start).AddDays(-1) == DateTime.Today ||
+                    DateTime.Parse(notifyPA.ElementAt(i).start).AddDays(-3) == DateTime.Today ||
+                    DateTime.Parse(notifyPA.ElementAt(i).start).AddDays(-7) == DateTime.Today)
+                {
+                    await DisplayAlert("Upcoming Assessment", notifyPA.ElementAt(i).paName + " is expected to start on " + notifyPA.ElementAt(i).start, "Ok");
+
+                }
+            }
+        }
+        catch { }
+
+        //Notify End Date
+
+        try
+        {
+            for (int i = 0; i < notifyPA.Count(); i++)
+            {
+
+
+                if (DateTime.Parse(notifyPA.ElementAt(i).end).AddDays(-1) == DateTime.Today ||
+                    DateTime.Parse(notifyPA.ElementAt(i).end).AddDays(-3) == DateTime.Today ||
+                    DateTime.Parse(notifyPA.ElementAt(i).end).AddDays(-7) == DateTime.Today)
+                {
+                    await DisplayAlert("Upcoming Assessment", notifyPA.ElementAt(i).paName + " is expected to end on " + notifyPA.ElementAt(i).end, "Ok");
+
+                }
+            }
+        }
+        catch { }
+
+        //Notify Due Dates
+
+        try
+        {
+            for (int i = 0; i < notifyPA.Count(); i++)
+            {
+
+
+                if (
+                    DateTime.Parse(notifyPA.ElementAt(i).dueDate).AddDays(-1) == DateTime.Today ||
+                    DateTime.Parse(notifyPA.ElementAt(i).dueDate).AddDays(-3) == DateTime.Today ||
+                    DateTime.Parse(notifyPA.ElementAt(i).dueDate).AddDays(-7) == DateTime.Today)
+                {
+                    await DisplayAlert("Assessment Due", notifyPA.ElementAt(i).paName + " is due on " + notifyPA.ElementAt(i).dueDate, "Ok");
+
+                }
+                else if (DateTime.Parse(notifyPA.ElementAt(i).dueDate) == DateTime.Today)
+                {
+                    await DisplayAlert("Assessment Due", notifyPA.ElementAt(i).paName + " is due today!", "Ok");
+
+                }
+            }
+        }
+        catch { }
+        #endregion
+
+
+        #region Notify OA
+
+        // Notify Start Dates
+        IEnumerable<notifyOA> notifyOA = await dbQuery.getNotifyOAs();
+
+        try
+        {
+            for (int i = 0; i < notifyOA.Count(); i++)
+            {
+
+
+                if (DateTime.Parse(notifyOA.ElementAt(i).start).AddDays(-1) == DateTime.Today ||
+                    DateTime.Parse(notifyOA.ElementAt(i).start).AddDays(-3) == DateTime.Today ||
+                    DateTime.Parse(notifyOA.ElementAt(i).start).AddDays(-7) == DateTime.Today)
+                {
+                    await DisplayAlert("Upcoming Assessment", notifyOA.ElementAt(i).oaName + " is expected to start on " + notifyOA.ElementAt(i).start, "Ok");
+
+                }
+            }
+        }
+        catch { }
+
+        //Notify End Date
+
+        try
+        {
+            for (int i = 0; i < notifyOA.Count(); i++)
+            {
+
+
+                if (DateTime.Parse(notifyOA.ElementAt(i).end).AddDays(-1) == DateTime.Today ||
+                    DateTime.Parse(notifyOA.ElementAt(i).end).AddDays(-3) == DateTime.Today ||
+                    DateTime.Parse(notifyOA.ElementAt(i).end).AddDays(-7) == DateTime.Today)
+                {
+                    await DisplayAlert("Upcoming Assessment", notifyOA.ElementAt(i).oaName + " is expected to end on " + notifyOA.ElementAt(i).end, "Ok");
+
+                }
+            }
+        }
+        catch { }
+
+        //Notify Due Dates
+
+        try
+        {
+            for (int i = 0; i < notifyOA.Count(); i++)
+            {
+
+
+                if (
+                    DateTime.Parse(notifyOA.ElementAt(i).dueDate).AddDays(-1) == DateTime.Today ||
+                    DateTime.Parse(notifyOA.ElementAt(i).dueDate).AddDays(-3) == DateTime.Today ||
+                    DateTime.Parse(notifyOA.ElementAt(i).dueDate).AddDays(-7) == DateTime.Today)
+                {
+                    await DisplayAlert("Assessment Due", notifyOA.ElementAt(i).oaName + " is due on " + notifyOA.ElementAt(i).dueDate, "Ok");
+
+                }
+                else if (DateTime.Parse(notifyOA.ElementAt(i).dueDate) == DateTime.Today)
+                {
+                    await DisplayAlert("Assessment Due", notifyOA.ElementAt(i).oaName + " is due today!", "Ok");
 
                 }
             }

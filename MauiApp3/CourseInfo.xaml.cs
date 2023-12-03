@@ -91,15 +91,22 @@ public partial class CourseInfo : ContentPage
             OAs oa = oaCV.SelectedItem as OAs;
 
             await dbQuery.deleteOA(oa.oaId);
+            await dbQuery.deleteOaNotify(oa.oaId);
             oaCV.ItemsSource = await dbQuery.GetOas(selectedCourse.coursesId);
         }
         else if (paCV.SelectedItem != null)
         {
             PAs pa = paCV.SelectedItem as PAs;
             await dbQuery.deletePA(pa.paId);
+            await dbQuery.deletePaNotify(pa.paId);
             paCV.ItemsSource = await dbQuery.GetPas(selectedCourse.coursesId);
         }
-        else return;
+        else if (oaCV.SelectedItem == null && paCV.SelectedItem == null)
+        {
+            await DisplayAlert("Error", "Select an Assessment to edit", "Ok");
+        }
+
+
 
 
     }
@@ -116,6 +123,10 @@ public partial class CourseInfo : ContentPage
             PAs pa = paCV.SelectedItem as PAs;
             await Navigation.PushModalAsync(new Assessment(selectedCourse, pa));
 
+        }
+        if (oaCV.SelectedItem == null && paCV.SelectedItem == null)
+        {
+            await DisplayAlert("Error", "Select an Assessment to edit", "Ok");
         }
 
 

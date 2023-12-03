@@ -300,7 +300,7 @@
                     <CollectionView HeightRequest="40" SelectionMode="Single" SelectionChanged="pa_SelectionChanged" VerticalScrollBarVisibility="Always" x:Name="paCV" ItemsSource="{Binding PAs}"  >
                         <CollectionView.EmptyView>
                             <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
-                                <Label TextColor="Grey" Text="No Objective Assessments yet!"></Label>
+                                <Label TextColor="Grey" Text="No Performance Assessments yet!"></Label>
                             </StackLayout>
                         </CollectionView.EmptyView>
 

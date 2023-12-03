@@ -37,6 +37,8 @@ namespace MauiApp3.Database
             await _db.CreateTableAsync<OAs>();
             await _db.CreateTableAsync<instructors>();
             await _db.CreateTableAsync<notifyCourse>();
+            await _db.CreateTableAsync<notifyPA>();
+            await _db.CreateTableAsync<notifyOA>();
 
         }
 
