@@ -1,3 +1,7 @@
+using MauiApp3.Database;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+
 namespace MauiApp3;
 
 public partial class TermsPage : ContentPage
@@ -33,7 +37,7 @@ public partial class TermsPage : ContentPage
 
        
 
-        await dbQuery.AddTerm("1st term", DateTime.Today.ToShortDateString(), DateTime.Today.ToShortDateString()) ;
+      /*  await dbQuery.AddTerm("1st term", DateTime.Today.ToShortDateString(), DateTime.Today.ToShortDateString()) ;
            await dbQuery.AddTerm("2nd term", DateTime.Today.ToShortDateString(), DateTime.Today.ToShortDateString());
               await dbQuery.AddTerm("3rd term", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString());
              await dbQuery.AddTerm("4nd term", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString());
@@ -48,7 +52,7 @@ public partial class TermsPage : ContentPage
                await dbQuery.AddCourse(1, "oasdaa class", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString(), 1, "test", "test", "test", true);
                await dbQuery.AddCourse(1, "odadada class", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString() , 1, "test", "test", "test", true);
     
-
+*/
 
 
 
@@ -134,7 +138,7 @@ public partial class TermsPage : ContentPage
         }
         catch
         {
-
+            
 
         }
 
@@ -142,14 +146,18 @@ public partial class TermsPage : ContentPage
 
 
         //  hides if less than 6 terms
-
-        collapseCount();
+       
+            collapseCount();
 
 
 
         #endregion
 
+        notify();
+       
+           
 
+      
     }
 
     public async void collapseCount()
@@ -433,11 +441,12 @@ public partial class TermsPage : ContentPage
 
     private async void collapse_Clicked(object sender, EventArgs e)
     {
-        /*await Connection._db.DropTableAsync<OAs>();
+       /* await Connection._db.DropTableAsync<OAs>();
         await Connection._db.DropTableAsync<PAs>();
         await Connection._db.DropTableAsync<instructors>();
-        await Connection._db.DropTableAsync<courses>();
-        await Connection._db.DropTableAsync<terms>();*/
+        await Connection._db.DropTableAsync<courses>();*/
+       // await Connection._db.DropTableAsync<terms>();
+       // await Connection._db.DropTableAsync<notifyCourse>();
 
         #region Term1 
         if (sender == collapse1)
@@ -918,47 +927,48 @@ public partial class TermsPage : ContentPage
 
 
         //For Saving Edits
-
-        if (sender == save1)
+        try
         {
+            if (sender == save1)
+            {
 
-            await dbQuery.updateTerm(term1Id, editTerm1Entry.Text, editStart1.Date.ToShortDateString(), editEnd1.Date.ToShortDateString());
+                await dbQuery.updateTerm(term1Id, editTerm1Entry.Text, editStart1.Date.ToShortDateString(), editEnd1.Date.ToShortDateString());
+            }
+            else if (sender == save2)
+            {
+
+                await dbQuery.updateTerm(term2Id, editTerm2Entry.Text, editStart2.Date.ToShortDateString(), editEnd2.Date.ToShortDateString());
+            }
+            else if (sender == save3)
+            {
+
+                await dbQuery.updateTerm(term3Id, editTerm3Entry.Text, editStart3.Date.ToShortDateString(), editEnd3.Date.ToShortDateString());
+            }
+            else if (sender == save4)
+            {
+
+                await dbQuery.updateTerm(term4Id, editTerm4Entry.Text, editStart4.Date.ToShortDateString(), editEnd4.Date.ToShortDateString());
+            }
+            else if (sender == save5)
+            {
+
+                await dbQuery.updateTerm(term5Id, editTerm5Entry.Text, editStart5.Date.ToShortDateString(), editEnd5.Date.ToShortDateString());
+            }
+            else if (sender == save6)
+            {
+
+                await dbQuery.updateTerm(term6Id, editTerm6Entry.Text, editStart6.Date.ToShortDateString(), editEnd6.Date.ToShortDateString());
+            }
+            else
+            {
+                //For Saving New Term
+
+                await dbQuery.AddTerm(addTermName.Text, addTermStart.Date.ToShortDateString(), addTermEnd.Date.ToShortDateString());
+
+
+            };
         }
-        else if (sender == save2)
-        {
-
-            await dbQuery.updateTerm(term2Id, editTerm2Entry.Text, editStart2.Date.ToShortDateString(), editEnd2.Date.ToShortDateString());
-        }
-        else if (sender == save3)
-        {
-
-            await dbQuery.updateTerm(term3Id, editTerm3Entry.Text, editStart3.Date.ToShortDateString(), editEnd3.Date.ToShortDateString());
-        }
-        else if (sender == save4)
-        {
-
-            await dbQuery.updateTerm(term4Id, editTerm4Entry.Text, editStart4.Date.ToShortDateString(), editEnd4.Date.ToShortDateString());
-        }
-        else if (sender == save5)
-        {
-
-            await dbQuery.updateTerm(term5Id, editTerm5Entry.Text, editStart5.Date.ToShortDateString(), editEnd5.Date.ToShortDateString());
-        }
-        else if (sender == save6)
-        {
-
-            await dbQuery.updateTerm(term6Id, editTerm6Entry.Text, editStart6.Date.ToShortDateString(), editEnd6.Date.ToShortDateString());
-        }
-        else
-        {
-            //For Saving New Term
-
-            await dbQuery.AddTerm(addTermName.Text, addTermStart.Date.ToShortDateString(), addTermEnd.Date.ToShortDateString());
-
-
-        };
-
-
+        catch { }
 
         await Navigation.PushModalAsync(new TermsPage());
 
@@ -1104,6 +1114,79 @@ public partial class TermsPage : ContentPage
         await dbQuery.DeleteCourse(course.coursesId);
 
         onStart();
+
+    }
+
+    private async void notify()
+    {
+        #region Notify Courses
+
+        // Notify Start Dates
+        IEnumerable<notifyCourse> notifyCourse = await dbQuery.getNotifyCourses();
+
+        try
+        {
+            for (int i = 0; i < notifyCourse.Count(); i++)
+            {
+
+
+                if (DateTime.Parse(notifyCourse.ElementAt(i).start).AddDays(-1) ==  DateTime.Today ||
+                    DateTime.Parse(notifyCourse.ElementAt(i).start).AddDays(-3) == DateTime.Today ||
+                    DateTime.Parse(notifyCourse.ElementAt(i).start).AddDays(-7) == DateTime.Today )
+                {
+                    await DisplayAlert("Upcoming Start Date", notifyCourse.ElementAt(i).courseName + " is expected to start on " + notifyCourse.ElementAt(i).start, "Ok");
+
+                }
+            }
+        }
+        catch { }
+
+        //Notify End Date
+
+        try
+        {
+            for (int i = 0; i < notifyCourse.Count(); i++)
+            {
+
+
+                if (DateTime.Parse(notifyCourse.ElementAt(i).end).AddDays(-1) == DateTime.Today ||
+                    DateTime.Parse(notifyCourse.ElementAt(i).end).AddDays(-3) == DateTime.Today ||
+                    DateTime.Parse(notifyCourse.ElementAt(i).end).AddDays(-7) == DateTime.Today)
+                {
+                    await DisplayAlert("Upcoming End Date", notifyCourse.ElementAt(i).courseName + " is expected to end on " + notifyCourse.ElementAt(i).end, "Ok");
+
+                }
+            }
+        }
+        catch { }
+
+        //Notify Due Dates
+
+        try
+        {
+            for (int i = 0; i < notifyCourse.Count(); i++)
+            {
+
+
+                if (
+                    DateTime.Parse(notifyCourse.ElementAt(i).dueDate).AddDays(-1) == DateTime.Today ||
+                    DateTime.Parse(notifyCourse.ElementAt(i).dueDate).AddDays(-3) == DateTime.Today ||
+                    DateTime.Parse(notifyCourse.ElementAt(i).dueDate).AddDays(-7) == DateTime.Today)
+                {
+                    await DisplayAlert("Upcoming Due Date", notifyCourse.ElementAt(i).courseName + " is due on " + notifyCourse.ElementAt(i).dueDate, "Ok");
+
+                }
+                else if (DateTime.Parse(notifyCourse.ElementAt(i).dueDate) == DateTime.Today)
+                {
+                    await DisplayAlert("Course Due", notifyCourse.ElementAt(i).courseName + " is due today!", "Ok");
+
+                }
+            }
+        }
+        catch { }
+        #endregion
+
+
 
     }
 }

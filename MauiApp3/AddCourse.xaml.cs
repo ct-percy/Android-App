@@ -1,5 +1,8 @@
 
 
+using MauiApp3.Database;
+using Plugin.LocalNotification;
+
 namespace MauiApp3;
 
 public partial class AddCourse : ContentPage
@@ -68,6 +71,7 @@ public partial class AddCourse : ContentPage
 
         int courseId = await dbQuery.AddCourse(termId, courseNameEntry.Text, startEntry.Date.ToShortDateString(), endEntry.Date.ToShortDateString(), dueEntry.Date.ToShortDateString(), instructorId, status, "Click to add new notes to this course.", "Click Edit to add a course description!", notifyBool);
 
+        notify(courseId);
         
         await Navigation.PushModalAsync(new TermsPage());
     }
@@ -90,6 +94,14 @@ public partial class AddCourse : ContentPage
         {
 
             DisplayAlert("Notify", "You will NOT be notified of upcoming start, end, and due dates", "Ok");
+        }
+    }
+
+    private async void notify(int iD)   
+    {
+        if (notifyCheckbox.IsChecked == true)
+        {
+            await dbQuery.AddNotifyCourse(iD, courseNameEntry.Text, startEntry.Date.ToShortDateString(), endEntry.Date.ToShortDateString(), dueEntry.Date.ToShortDateString());
         }
     }
 }
