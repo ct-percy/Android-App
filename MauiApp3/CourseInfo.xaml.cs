@@ -1,3 +1,4 @@
+using CommunityToolkit.Maui.Behaviors;
 using CommunityToolkit.Maui.Converters;
 using MauiApp3.Database;
 using Plugin.LocalNotification;
@@ -24,9 +25,13 @@ public partial class CourseInfo : ContentPage
 
         courseCV2.ItemsSource = await dbQuery.GetInstructor(selectedCourse.instructorId);
 
-       
+        notesCV.ItemsSource = await dbQuery.GetNotes(selectedCourse.coursesId);
+        paCV.ItemsSource = await dbQuery.GetPas(selectedCourse.coursesId);
+        oaCV.ItemsSource = await dbQuery.GetOas(selectedCourse.coursesId);
 
         notifyBool = selectedCourse.notify;
+
+        notifyCheckbox.IsEnabled = false;
 
         if (notifyBool == true)
         {
@@ -62,14 +67,64 @@ public partial class CourseInfo : ContentPage
 
     }
 
-   
-
-  
-
-
-    private async void backButton_Clicked(object sender, EventArgs e)
+    private void pa_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        await Navigation.PushModalAsync(new TermsPage());
+        if (oaCV.SelectedItem != null)
+        {
+            oaCV.SelectedItem = null;
+        }
+
+    }
+
+    private void oaCV_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (paCV.SelectedItem != null)
+        {
+            paCV.SelectedItem = null;
+        }
+    }
+
+    private async void deleteAssessment_Clicked(object sender, EventArgs e)
+    {
+        if (oaCV.SelectedItem != null)
+        {
+            OAs oa = oaCV.SelectedItem as OAs;
+
+            await dbQuery.deleteOA(oa.oaId);
+            oaCV.ItemsSource = await dbQuery.GetOas(selectedCourse.coursesId);
+        }
+        else if (paCV.SelectedItem != null)
+        {
+            PAs pa = paCV.SelectedItem as PAs;
+            await dbQuery.deletePA(pa.paId);
+            paCV.ItemsSource = await dbQuery.GetPas(selectedCourse.coursesId);
+        }
+        else return;
+
+
+    }
+
+    private async void editAssessment_Clicked(object sender, EventArgs e)
+    {
+        if (oaCV.SelectedItem != null)
+        {
+            OAs oa = oaCV.SelectedItem as OAs;
+            await Navigation.PushModalAsync(new Assessment(selectedCourse, oa));
+        }
+        if (paCV.SelectedItem != null)
+        {
+            PAs pa = paCV.SelectedItem as PAs;
+            await Navigation.PushModalAsync(new Assessment(selectedCourse, pa));
+
+        }
+
+
+    }
+
+
+    private  void backButton_Clicked(object sender, EventArgs e)
+    {
+         Navigation.PushModalAsync(new TermsPage());
     }
 
     private async void editButton_Clicked(object sender, EventArgs e)
@@ -77,13 +132,15 @@ public partial class CourseInfo : ContentPage
         courseCV.IsVisible = false;
         courseCV2.IsVisible = false;
         dueDateCV.IsVisible = false;
-       
+        notesCV.IsVisible = false;
+        shareButton.IsVisible = false;
 
         editCourseGrid.IsVisible = true;
         editInstructorGrid.IsVisible = true;
         editDueDateGrid.IsVisible = true;
         statusPicker.IsVisible = true;
-       
+        notesEditor.IsVisible = true;
+        notifyCheckbox.IsEnabled = true;
 
         if (selectedCourse.status == "Active")
         {
@@ -103,7 +160,7 @@ public partial class CourseInfo : ContentPage
         startEntry.Date = DateTime.Parse(selectedCourse.startDate);
         endEntry.Date = DateTime.Parse(selectedCourse.endDate);
         dueDateEntry.Date = DateTime.Parse(selectedCourse.dueDate);
-       
+        notesEditor.Text = selectedCourse.notes;
 
         IEnumerable<instructors> instructor;
 
@@ -125,19 +182,21 @@ public partial class CourseInfo : ContentPage
         courseCV.IsVisible = true;
         courseCV2.IsVisible = true;
         dueDateCV.IsVisible = true;
-       
+        notesCV.IsVisible = true;
+        shareButton.IsVisible = true;
 
         editCourseGrid.IsVisible = false;
         editInstructorGrid.IsVisible = false;
         editDueDateGrid.IsVisible = false;
         statusPicker.IsVisible = false;
-        
+        notesEditor.IsVisible = false;
+        notifyCheckbox.IsEnabled = false;
+
 
     }
 
     private async void saveCourseEditButton_Clicked(object sender, EventArgs e)
     {
-
         #region Exceptions and Validation
 
         if (string.IsNullOrWhiteSpace(courseNameEntry.Text) == true)
@@ -172,13 +231,13 @@ public partial class CourseInfo : ContentPage
             await DisplayAlert("Error", "Start Date can not be after Due Date", "Ok");
             return;
         }
-        else if (statusEntry.SelectedIndex == -1)
+        else if (statusPicker.SelectedIndex == -1)
         {
             await DisplayAlert("Missing Value", "Course Status must be selected", "Ok");
             return;
         }
-
         #endregion
+
 
         else
         {
@@ -197,19 +256,47 @@ public partial class CourseInfo : ContentPage
                 status = "Completed";
             }
 
-            if (notifyBool == true)
+            if (notifyCheckbox.IsChecked == true)
             {
-                notifyCheckbox.IsChecked = true;
+                notifyBool = true;
             }
-            else if (notifyBool == false)
+            else if (notifyCheckbox.IsChecked == false)
             {
-                notifyCheckbox.IsChecked = false;
+                notifyBool = false;
             }
 
 
 
-            await dbQuery.updateCourse(selectedCourse.coursesId, courseNameEntry.Text, descriptionEntry.Text, startEntry.Date.ToShortDateString(), endEntry.Date.ToShortDateString(), status, "temp", dueDateEntry.Date.ToShortDateString(), notifyBool);
+            await dbQuery.updateCourse(selectedCourse.coursesId, courseNameEntry.Text, descriptionEntry.Text, startEntry.Date.ToShortDateString(), endEntry.Date.ToShortDateString(), status, notesEditor.Text, dueDateEntry.Date.ToShortDateString(), notifyBool);
 
+            if (notifyCheckbox.IsChecked == true)
+            {
+                try
+                {
+
+                  await  dbQuery.updateCourseNotify(selectedCourse.coursesId, courseNameEntry.Text, startEntry.Date.ToShortDateString(), endEntry.Date.ToShortDateString(), dueDateEntry.Date.ToShortDateString());
+                    
+                }
+                catch 
+                { 
+                    await dbQuery.AddNotifyCourse(selectedCourse.coursesId, courseNameEntry.Text, startEntry.Date.ToShortDateString(), endEntry.Date.ToShortDateString(), dueDateEntry.Date.ToShortDateString());
+                    
+                }
+
+            }
+            else if (notifyCheckbox.IsChecked == false) 
+            {
+                try
+                {
+                   await dbQuery.deleteCourseNotify(selectedCourse.coursesId);
+                }
+                catch
+                {
+                    
+                }
+            }
+
+            notifyCheckbox.IsEnabled = false;
 
             IEnumerable<courses> updatedCourse;
 
@@ -219,6 +306,35 @@ public partial class CourseInfo : ContentPage
 
             await Navigation.PushModalAsync(new CourseInfo(selectedCourse));
         }
-
     }
+
+    public async Task shareNotes(string text)
+    {
+        await Share.Default.RequestAsync(new ShareTextRequest
+        {
+            Text = text,
+            Title = "Share Text"
+        });
+    }
+
+    private async void shareButton_Clicked(object sender, EventArgs e)
+    {
+        await shareNotes("Notes for " + selectedCourse.courseName + " : " + selectedCourse.notes);
+    }
+
+    private void notifyCheckbox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        if (notifyCheckbox.IsEnabled == true && notifyCheckbox.IsChecked == true)
+        {
+
+            DisplayAlert("Notify", "You will be notified of upcoming start, end, and due dates", "Ok");
+        }
+        if (notifyCheckbox.IsEnabled == true && notifyCheckbox.IsChecked == false)
+        {
+
+            DisplayAlert("Notify", "You will NOT be notified of upcoming start, end, and due dates", "Ok");
+        }
+    }
+
+
 }

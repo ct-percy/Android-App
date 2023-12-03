@@ -108,7 +108,7 @@
 
 
 
-            <CheckBox x:Name="notifyCheckbox"  Grid.Row="1" Grid.Column="1" ></CheckBox>
+            <CheckBox x:Name="notifyCheckbox" CheckedChanged="notifyCheckbox_CheckedChanged" Grid.Row="1" Grid.Column="1" ></CheckBox>
             <Label Grid.Row="1" Grid.Column="2" HorizontalOptions="Start" Text="Notify?" VerticalOptions="Center" FontSize="Large" />
             <!--#endregion-->
 
@@ -127,10 +127,10 @@
                 <Entry x:Name="instructorEntry" TextColor="Red"  Grid.Row="0" Grid.Column="2" BackgroundColor="Yellow" Grid.ColumnSpan="3" ZIndex="4" />
                 <Entry x:Name="emailEntry" TextColor="Red"  Grid.Row="1" Grid.Column="2" BackgroundColor="Yellow" Grid.ColumnSpan="3" ZIndex="4" >
                     <Entry.Behaviors>
-                        <toolkit:EmailValidationBehavior  x:Name="emailValidator" Flags="ValidateOnValueChanged" ></toolkit:EmailValidationBehavior>
+                        <toolkit:EmailValidationBehavior x:Name="emailValidator" Flags="ValidateOnValueChanged" ></toolkit:EmailValidationBehavior>
                     </Entry.Behaviors>
                 </Entry>
-                
+
                 <Entry x:Name="phoneEntry" TextColor="Red"  Grid.Row="2" Grid.Column="2" BackgroundColor="Yellow" Grid.ColumnSpan="3" ZIndex="4" >
                     <Entry.Behaviors>
                         <toolkit:TextValidationBehavior x:Name="phoneValidator" RegexPattern="^\d{3}-\d{3}-\d{4}$"  Flags="ValidateOnValueChanged" ></toolkit:TextValidationBehavior>
@@ -140,9 +140,6 @@
                 <Label TextColor="Red" Text="Instructor:" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="BLUE" />
                 <Label TextColor="Red" Text="Email:" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="BLUE" />
                 <Label TextColor="Red" Text="Phone:" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="BLUE" />
-
-
-
 
 
 
@@ -239,7 +236,34 @@
             <!--#endregion-->
 
 
-          
+            <!--#region Notes -->
+            <StackLayout Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="5"
+                         BackgroundColor="Coral"
+                         >
+                <Grid RowDefinitions="100,90">
+                    <ScrollView >
+                        <CollectionView  x:Name="notesCV" ItemsSource="{Binding courses}"  >
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Label Text="{Binding notes}" Grid.Row="0" BackgroundColor="blue" TextColor="White"/>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </ScrollView>
+                    <Editor x:Name="notesEditor" Grid.Row="0" Grid.RowSpan="2" BackgroundColor="Chartreuse" IsVisible="false" />
+
+
+
+
+                    <Button x:Name="shareButton" Text="Share" Clicked="shareButton_Clicked"  Grid.Row="1" WidthRequest="100" HorizontalOptions="End" VerticalOptions="End" />
+
+                </Grid>
+            </StackLayout>
+            <!--#endregion-->
 
 
             <!--#region Assessments -->
@@ -249,11 +273,58 @@
 
 
                 <Label Text="Objective Assessments" HorizontalOptions="Center" />
-                
+                <ScrollView>
+                    <CollectionView  HeightRequest="40" SelectionMode="Single" SelectionChanged="oaCV_SelectionChanged" x:Name="oaCV"  ItemsSource="{Binding OAs}" VerticalScrollBarVisibility="Always"   >
+                        <CollectionView.EmptyView>
+                            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
+                                <Label TextColor="Grey" Text="No Objective Assessments yet!"></Label>
+                            </StackLayout>
+                        </CollectionView.EmptyView>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <Grid ColumnDefinitions="*,*,*">
+                                    <Label Text="{Binding oaName}" />
+                                    <Label Text="{Binding startDate}" Grid.Column="1" BackgroundColor="CadetBlue"/>
+                                    <Label Text="{Binding endDate}" Grid.Column="2" BackgroundColor="CadetBlue"/>
+                                </Grid>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
 
                 <Label Text=" Performance Assessments" HorizontalOptions="Center" />
 
-               
+                <ScrollView>
+                    <CollectionView HeightRequest="40" SelectionMode="Single" SelectionChanged="pa_SelectionChanged" VerticalScrollBarVisibility="Always" x:Name="paCV" ItemsSource="{Binding PAs}"  >
+                        <CollectionView.EmptyView>
+                            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
+                                <Label TextColor="Grey" Text="No Objective Assessments yet!"></Label>
+                            </StackLayout>
+                        </CollectionView.EmptyView>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <Grid ColumnDefinitions="*,*,*">
+                                    <Label Text="{Binding paName}" />
+                                    <Label Text="{Binding startDate}" Grid.Column="1" BackgroundColor="CadetBlue"/>
+                                    <Label Text="{Binding endDate}" Grid.Column="2" BackgroundColor="CadetBlue"/>
+                                </Grid>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+
+                <Grid ColumnDefinitions="*,*">
+                    <Button Text="Add" HorizontalOptions="Start" Clicked="addAssessment_Clicked" />
+                    <Button Text="Edit" Grid.ColumnSpan="2" HorizontalOptions="Center" Clicked="editAssessment_Clicked"/>
+                    <Button Text="Delete" Clicked="deleteAssessment_Clicked" Grid.Column="1" HorizontalOptions="End" />
+
+                </Grid>
+                <!--#endregion-->
 
 
 
@@ -265,5 +336,6 @@
         </Grid>
 
     </StackLayout>
+
 
 </ContentPage>

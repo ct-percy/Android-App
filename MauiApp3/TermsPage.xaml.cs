@@ -1007,6 +1007,7 @@ public partial class TermsPage : ContentPage
 
     }
 
+    #region Open Course Info
     private async void term1CourseTapped(object sender, ItemTappedEventArgs e)
     {
 
@@ -1106,6 +1107,7 @@ public partial class TermsPage : ContentPage
             await Navigation.PushModalAsync(new CourseInfo(selectedCourse as courses));
         }
     }
+    #endregion
 
     private async void deleteCourse_Clicked(object sender, EventArgs e)
     {
@@ -1185,8 +1187,6 @@ public partial class TermsPage : ContentPage
         }
         catch { }
         #endregion
-
-
 
     }
 }

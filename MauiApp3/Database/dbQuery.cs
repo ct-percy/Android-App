@@ -199,6 +199,7 @@ namespace MauiApp3.Database
 
             await Connection._db.ExecuteAsync("UPDATE courses SET courseName ='" + courseName + "', description ='" + description + "', startDate ='" + startDate + "', endDate = '" + endDate + "', status ='" + status + "', notes = '" + notes + "', dueDate ='" + dueDate + "', notify = " + notify + " WHERE coursesId = " + courseId);
 
+           
         }
 
 
@@ -430,6 +431,33 @@ namespace MauiApp3.Database
             return notify;
         }
 
+        public async static Task<IEnumerable<notifyCourse>> getCourseNotify(int courseId)
+        {
+
+            await Connection.Init();
+
+
+            var notify = await Connection._db.QueryAsync<notifyCourse>("SELECT * FROM notifyCourse WHERE Id =" + courseId );
+
+
+            return notify;
+        }
+        public static async Task updateCourseNotify(int courseId, string courseName,string startDate, string endDate, string dueDate)
+        {
+            await Connection.Init();
+
+
+            await Connection._db.ExecuteAsync("UPDATE notifyCourse SET courseName ='" + courseName + "', start'" + startDate + "', endDate = '" + endDate + "', dueDate ='" + dueDate + "' WHERE Id = " + courseId);
+
+        }
+
+        public static async Task deleteCourseNotify(int courseId)
+        {
+            await Connection.Init();
+
+            await Connection._db.QueryAsync<notifyCourse>("DELETE FROM notifyCourse WHERE Id =" + courseId);
+
+        }
 
         #endregion
     }

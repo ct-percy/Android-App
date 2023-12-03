@@ -1,3 +1,18 @@
+CommunityToolkit.Maui.Alerts.Snackbar+SnackbarCallback, CommunityToolkit.Maui;crc648fc34c62be8fbbff.Snackbar_SnackbarCallback
+CommunityToolkit.Maui.Alerts.Snackbar.SnackbarCallback;crc648fc34c62be8fbbff.Snackbar_SnackbarCallback
+communitytoolkit.maui.alerts.Snackbar_SnackbarCallback;crc648fc34c62be8fbbff.Snackbar_SnackbarCallback
+CommunityToolkit.Maui.Media.SpeechToTextImplementation+SpeechRecognitionListener, CommunityToolkit.Maui.Core;crc64d6358e7bf64fbac4.SpeechToTextImplementation_SpeechRecognitionListener
+CommunityToolkit.Maui.Media.SpeechToTextImplementation.SpeechRecognitionListener;crc64d6358e7bf64fbac4.SpeechToTextImplementation_SpeechRecognitionListener
+communitytoolkit.maui.media.SpeechToTextImplementation_SpeechRecognitionListener;crc64d6358e7bf64fbac4.SpeechToTextImplementation_SpeechRecognitionListener
+CommunityToolkit.Maui.Core.Views.MauiDrawingView, CommunityToolkit.Maui.Core;crc64159f3caeb1269279.MauiDrawingView
+CommunityToolkit.Maui.Core.Views.MauiDrawingView;crc64159f3caeb1269279.MauiDrawingView
+communitytoolkit.maui.core.views.MauiDrawingView;crc64159f3caeb1269279.MauiDrawingView
+CommunityToolkit.Maui.Core.Views.MauiPopup, CommunityToolkit.Maui.Core;crc64159f3caeb1269279.MauiPopup
+CommunityToolkit.Maui.Core.Views.MauiPopup;crc64159f3caeb1269279.MauiPopup
+communitytoolkit.maui.core.views.MauiPopup;crc64159f3caeb1269279.MauiPopup
+CommunityToolkit.Maui.Core.Views.MauiSemanticOrderView, CommunityToolkit.Maui.Core;crc64159f3caeb1269279.MauiSemanticOrderView
+CommunityToolkit.Maui.Core.Views.MauiSemanticOrderView;crc64159f3caeb1269279.MauiSemanticOrderView
+communitytoolkit.maui.core.views.MauiSemanticOrderView;crc64159f3caeb1269279.MauiSemanticOrderView
 Microsoft.Maui.Graphics.Platform.PlatformGraphicsView, Microsoft.Maui.Graphics;crc643f2b18b2570eaa5a.PlatformGraphicsView
 Microsoft.Maui.Graphics.Platform.PlatformGraphicsView;crc643f2b18b2570eaa5a.PlatformGraphicsView
 microsoft.maui.graphics.platform.PlatformGraphicsView;crc643f2b18b2570eaa5a.PlatformGraphicsView
@@ -91,6 +106,9 @@ androidx.core.util.Predicate;androidx.core.util.Predicate
 AndroidX.Core.Internal.View.ISupportMenuItem, Xamarin.AndroidX.Core;androidx.core.internal.view.SupportMenuItem
 AndroidX.Core.Internal.View.ISupportMenuItem;androidx.core.internal.view.SupportMenuItem
 androidx.core.internal.view.SupportMenuItem;androidx.core.internal.view.SupportMenuItem
+AndroidX.Core.App.ActivityCompat+IPermissionCompatDelegate, Xamarin.AndroidX.Core;androidx.core.app.ActivityCompat$PermissionCompatDelegate
+AndroidX.Core.App.ActivityCompat.IPermissionCompatDelegate;androidx.core.app.ActivityCompat$PermissionCompatDelegate
+androidx.core.app.ActivityCompat$PermissionCompatDelegate;androidx.core.app.ActivityCompat$PermissionCompatDelegate
 AndroidX.Core.App.SharedElementCallback+IOnSharedElementsReadyListener, Xamarin.AndroidX.Core;androidx.core.app.SharedElementCallback$OnSharedElementsReadyListener
 AndroidX.Core.App.SharedElementCallback.IOnSharedElementsReadyListener;androidx.core.app.SharedElementCallback$OnSharedElementsReadyListener
 androidx.core.app.SharedElementCallback$OnSharedElementsReadyListener;androidx.core.app.SharedElementCallback$OnSharedElementsReadyListener
@@ -310,6 +328,12 @@ com.google.android.material.button.MaterialButton$OnCheckedChangeListener;com.go
 Google.Android.Material.Button.MaterialButton+IOnCheckedChangeListenerImplementor, Xamarin.Google.Android.Material;mono.com.google.android.material.button.MaterialButton_OnCheckedChangeListenerImplementor
 Google.Android.Material.Button.MaterialButton.IOnCheckedChangeListenerImplementor;mono.com.google.android.material.button.MaterialButton_OnCheckedChangeListenerImplementor
 mono.com.google.android.material.button.MaterialButton_OnCheckedChangeListenerImplementor;mono.com.google.android.material.button.MaterialButton_OnCheckedChangeListenerImplementor
+Google.Android.Material.Behavior.SwipeDismissBehavior+IOnDismissListener, Xamarin.Google.Android.Material;com.google.android.material.behavior.SwipeDismissBehavior$OnDismissListener
+Google.Android.Material.Behavior.SwipeDismissBehavior.IOnDismissListener;com.google.android.material.behavior.SwipeDismissBehavior$OnDismissListener
+com.google.android.material.behavior.SwipeDismissBehavior$OnDismissListener;com.google.android.material.behavior.SwipeDismissBehavior$OnDismissListener
+Google.Android.Material.Behavior.SwipeDismissBehavior+IOnDismissListenerImplementor, Xamarin.Google.Android.Material;mono.com.google.android.material.behavior.SwipeDismissBehavior_OnDismissListenerImplementor
+Google.Android.Material.Behavior.SwipeDismissBehavior.IOnDismissListenerImplementor;mono.com.google.android.material.behavior.SwipeDismissBehavior_OnDismissListenerImplementor
+mono.com.google.android.material.behavior.SwipeDismissBehavior_OnDismissListenerImplementor;mono.com.google.android.material.behavior.SwipeDismissBehavior_OnDismissListenerImplementor
 Google.Android.Material.Navigation.NavigationBarView+IOnItemReselectedListener, Xamarin.Google.Android.Material;com.google.android.material.navigation.NavigationBarView$OnItemReselectedListener
 Google.Android.Material.Navigation.NavigationBarView.IOnItemReselectedListener;com.google.android.material.navigation.NavigationBarView$OnItemReselectedListener
 com.google.android.material.navigation.NavigationBarView$OnItemReselectedListener;com.google.android.material.navigation.NavigationBarView$OnItemReselectedListener
@@ -340,6 +364,12 @@ com.google.android.material.tabs.TabLayout$OnTabSelectedListener;com.google.andr
 Google.Android.Material.Tabs.TabLayoutMediator+ITabConfigurationStrategy, Xamarin.Google.Android.Material;com.google.android.material.tabs.TabLayoutMediator$TabConfigurationStrategy
 Google.Android.Material.Tabs.TabLayoutMediator.ITabConfigurationStrategy;com.google.android.material.tabs.TabLayoutMediator$TabConfigurationStrategy
 com.google.android.material.tabs.TabLayoutMediator$TabConfigurationStrategy;com.google.android.material.tabs.TabLayoutMediator$TabConfigurationStrategy
+Google.Android.Material.Snackbar.Snackbar+SnackbarActionClickImplementor, Xamarin.Google.Android.Material;com.google.android.material.snackbar.Snackbar_SnackbarActionClickImplementor
+Google.Android.Material.Snackbar.Snackbar.SnackbarActionClickImplementor;com.google.android.material.snackbar.Snackbar_SnackbarActionClickImplementor
+com.google.android.material.snackbar.Snackbar_SnackbarActionClickImplementor;com.google.android.material.snackbar.Snackbar_SnackbarActionClickImplementor
+Google.Android.Material.Snackbar.IContentViewCallback, Xamarin.Google.Android.Material;com.google.android.material.snackbar.ContentViewCallback
+Google.Android.Material.Snackbar.IContentViewCallback;com.google.android.material.snackbar.ContentViewCallback
+com.google.android.material.snackbar.ContentViewCallback;com.google.android.material.snackbar.ContentViewCallback
 Google.Android.Material.Internal.IStaticLayoutBuilderConfigurer, Xamarin.Google.Android.Material;com.google.android.material.internal.StaticLayoutBuilderConfigurer
 Google.Android.Material.Internal.IStaticLayoutBuilderConfigurer;com.google.android.material.internal.StaticLayoutBuilderConfigurer
 com.google.android.material.internal.StaticLayoutBuilderConfigurer;com.google.android.material.internal.StaticLayoutBuilderConfigurer
@@ -364,6 +394,102 @@ com.google.android.material.appbar.AppBarLayout$OnOffsetChangedListener;com.goog
 Google.Android.Material.AppBar.AppBarLayout+IOnOffsetChangedListenerImplementor, Xamarin.Google.Android.Material;mono.com.google.android.material.appbar.AppBarLayout_OnOffsetChangedListenerImplementor
 Google.Android.Material.AppBar.AppBarLayout.IOnOffsetChangedListenerImplementor;mono.com.google.android.material.appbar.AppBarLayout_OnOffsetChangedListenerImplementor
 mono.com.google.android.material.appbar.AppBarLayout_OnOffsetChangedListenerImplementor;mono.com.google.android.material.appbar.AppBarLayout_OnOffsetChangedListenerImplementor
+Android.Gms.Common.Api.Internal.IConnectionCallbacks, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.ConnectionCallbacks
+Android.Gms.Common.Api.Internal.IConnectionCallbacks;com.google.android.gms.common.api.internal.ConnectionCallbacks
+com.google.android.gms.common.api.internal.ConnectionCallbacks;com.google.android.gms.common.api.internal.ConnectionCallbacks
+Android.Gms.Common.Api.Internal.IOnConnectionFailedListener, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.OnConnectionFailedListener
+Android.Gms.Common.Api.Internal.IOnConnectionFailedListener;com.google.android.gms.common.api.internal.OnConnectionFailedListener
+com.google.android.gms.common.api.internal.OnConnectionFailedListener;com.google.android.gms.common.api.internal.OnConnectionFailedListener
+Android.Gms.Common.Api.Internal.IRemoteCall, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.RemoteCall
+Android.Gms.Common.Api.Internal.IRemoteCall;com.google.android.gms.common.api.internal.RemoteCall
+com.google.android.gms.common.api.internal.RemoteCall;com.google.android.gms.common.api.internal.RemoteCall
+Android.Gms.Common.Api.Internal.ISignInConnectionListener, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.SignInConnectionListener
+Android.Gms.Common.Api.Internal.ISignInConnectionListener;com.google.android.gms.common.api.internal.SignInConnectionListener
+com.google.android.gms.common.api.internal.SignInConnectionListener;com.google.android.gms.common.api.internal.SignInConnectionListener
+Android.Gms.Common.Api.Internal.ListenerHolder+INotifier, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.internal.ListenerHolder$Notifier
+Android.Gms.Common.Api.Internal.ListenerHolder.INotifier;com.google.android.gms.common.api.internal.ListenerHolder$Notifier
+com.google.android.gms.common.api.internal.ListenerHolder$Notifier;com.google.android.gms.common.api.internal.ListenerHolder$Notifier
+Android.Gms.Common.Apis.GoogleApiClient+IConnectionCallbacks, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks
+Android.Gms.Common.Apis.GoogleApiClient.IConnectionCallbacks;com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks
+com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks;com.google.android.gms.common.api.GoogleApiClient$ConnectionCallbacks
+Android.Gms.Common.Apis.GoogleApiClient+IOnConnectionFailedListener, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener
+Android.Gms.Common.Apis.GoogleApiClient.IOnConnectionFailedListener;com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener
+com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener;com.google.android.gms.common.api.GoogleApiClient$OnConnectionFailedListener
+Android.Gms.Common.Apis.Api+IAnyClient, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.Api$AnyClient
+Android.Gms.Common.Apis.Api.IAnyClient;com.google.android.gms.common.api.Api$AnyClient
+com.google.android.gms.common.api.Api$AnyClient;com.google.android.gms.common.api.Api$AnyClient
+Android.Gms.Common.Apis.Api+IClient, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.Api$Client
+Android.Gms.Common.Apis.Api.IClient;com.google.android.gms.common.api.Api$Client
+com.google.android.gms.common.api.Api$Client;com.google.android.gms.common.api.Api$Client
+Android.Gms.Common.Apis.PendingResult+IStatusListener, Xamarin.GooglePlayServices.Base;com.google.android.gms.common.api.PendingResult$StatusListener
+Android.Gms.Common.Apis.PendingResult.IStatusListener;com.google.android.gms.common.api.PendingResult$StatusListener
+com.google.android.gms.common.api.PendingResult$StatusListener;com.google.android.gms.common.api.PendingResult$StatusListener
+Android.Gms.Common.Apis.PendingResult+IStatusListenerImplementor, Xamarin.GooglePlayServices.Base;mono.com.google.android.gms.common.api.PendingResult_StatusListenerImplementor
+Android.Gms.Common.Apis.PendingResult.IStatusListenerImplementor;mono.com.google.android.gms.common.api.PendingResult_StatusListenerImplementor
+mono.com.google.android.gms.common.api.PendingResult_StatusListenerImplementor;mono.com.google.android.gms.common.api.PendingResult_StatusListenerImplementor
+Android.Gms.Common.Util.IBiConsumer, Xamarin.GooglePlayServices.Basement;com.google.android.gms.common.util.BiConsumer
+Android.Gms.Common.Util.IBiConsumer;com.google.android.gms.common.util.BiConsumer
+com.google.android.gms.common.util.BiConsumer;com.google.android.gms.common.util.BiConsumer
+Android.Gms.Common.Internal.IAccountAccessor, Xamarin.GooglePlayServices.Basement;com.google.android.gms.common.internal.IAccountAccessor
+Android.Gms.Common.Internal.IAccountAccessor;com.google.android.gms.common.internal.IAccountAccessor
+com.google.android.gms.common.internal.IAccountAccessor;com.google.android.gms.common.internal.IAccountAccessor
+Android.Gms.Common.Internal.ICancelToken, Xamarin.GooglePlayServices.Basement;com.google.android.gms.common.internal.ICancelToken
+Android.Gms.Common.Internal.ICancelToken;com.google.android.gms.common.internal.ICancelToken
+com.google.android.gms.common.internal.ICancelToken;com.google.android.gms.common.internal.ICancelToken
+Android.Gms.Common.Apis.IResult, Xamarin.GooglePlayServices.Basement;com.google.android.gms.common.api.Result
+Android.Gms.Common.Apis.IResult;com.google.android.gms.common.api.Result
+com.google.android.gms.common.api.Result;com.google.android.gms.common.api.Result
+Android.Gms.Common.Apis.IResultCallback, Xamarin.GooglePlayServices.Basement;com.google.android.gms.common.api.ResultCallback
+Android.Gms.Common.Apis.IResultCallback;com.google.android.gms.common.api.ResultCallback
+com.google.android.gms.common.api.ResultCallback;com.google.android.gms.common.api.ResultCallback
+Android.Gms.Common.Apis.Internal.ILifecycleFragment, Xamarin.GooglePlayServices.Basement;com.google.android.gms.common.api.internal.LifecycleFragment
+Android.Gms.Common.Apis.Internal.ILifecycleFragment;com.google.android.gms.common.api.internal.LifecycleFragment
+com.google.android.gms.common.api.internal.LifecycleFragment;com.google.android.gms.common.api.internal.LifecycleFragment
+Android.Gms.Common.Apis.Internal.IStatusExceptionMapper, Xamarin.GooglePlayServices.Basement;com.google.android.gms.common.api.internal.StatusExceptionMapper
+Android.Gms.Common.Apis.Internal.IStatusExceptionMapper;com.google.android.gms.common.api.internal.StatusExceptionMapper
+com.google.android.gms.common.api.internal.StatusExceptionMapper;com.google.android.gms.common.api.internal.StatusExceptionMapper
+Android.Gms.Location.LocationCallback, Xamarin.GooglePlayServices.Location;crc64e95e69e34d869711.LocationCallback
+Android.Gms.Location.LocationCallback;crc64e95e69e34d869711.LocationCallback
+android.gms.location.LocationCallback;crc64e95e69e34d869711.LocationCallback
+Android.Gms.Location.IFusedLocationProviderApi, Xamarin.GooglePlayServices.Location;com.google.android.gms.location.FusedLocationProviderApi
+Android.Gms.Location.IFusedLocationProviderApi;com.google.android.gms.location.FusedLocationProviderApi
+com.google.android.gms.location.FusedLocationProviderApi;com.google.android.gms.location.FusedLocationProviderApi
+Android.Gms.Location.IGeofence, Xamarin.GooglePlayServices.Location;com.google.android.gms.location.Geofence
+Android.Gms.Location.IGeofence;com.google.android.gms.location.Geofence
+com.google.android.gms.location.Geofence;com.google.android.gms.location.Geofence
+Android.Gms.Location.IGeofencingApi, Xamarin.GooglePlayServices.Location;com.google.android.gms.location.GeofencingApi
+Android.Gms.Location.IGeofencingApi;com.google.android.gms.location.GeofencingApi
+com.google.android.gms.location.GeofencingApi;com.google.android.gms.location.GeofencingApi
+Android.Gms.Location.ILocationListener, Xamarin.GooglePlayServices.Location;com.google.android.gms.location.LocationListener
+Android.Gms.Location.ILocationListener;com.google.android.gms.location.LocationListener
+com.google.android.gms.location.LocationListener;com.google.android.gms.location.LocationListener
+Android.Gms.Location.ISettingsApi, Xamarin.GooglePlayServices.Location;com.google.android.gms.location.SettingsApi
+Android.Gms.Location.ISettingsApi;com.google.android.gms.location.SettingsApi
+com.google.android.gms.location.SettingsApi;com.google.android.gms.location.SettingsApi
+Android.Gms.Tasks.IContinuation, Xamarin.GooglePlayServices.Tasks;com.google.android.gms.tasks.Continuation
+Android.Gms.Tasks.IContinuation;com.google.android.gms.tasks.Continuation
+com.google.android.gms.tasks.Continuation;com.google.android.gms.tasks.Continuation
+Android.Gms.Tasks.IOnCanceledListener, Xamarin.GooglePlayServices.Tasks;com.google.android.gms.tasks.OnCanceledListener
+Android.Gms.Tasks.IOnCanceledListener;com.google.android.gms.tasks.OnCanceledListener
+com.google.android.gms.tasks.OnCanceledListener;com.google.android.gms.tasks.OnCanceledListener
+Android.Gms.Tasks.IOnCompleteListener, Xamarin.GooglePlayServices.Tasks;com.google.android.gms.tasks.OnCompleteListener
+Android.Gms.Tasks.IOnCompleteListener;com.google.android.gms.tasks.OnCompleteListener
+com.google.android.gms.tasks.OnCompleteListener;com.google.android.gms.tasks.OnCompleteListener
+Android.Gms.Tasks.IOnFailureListener, Xamarin.GooglePlayServices.Tasks;com.google.android.gms.tasks.OnFailureListener
+Android.Gms.Tasks.IOnFailureListener;com.google.android.gms.tasks.OnFailureListener
+com.google.android.gms.tasks.OnFailureListener;com.google.android.gms.tasks.OnFailureListener
+Android.Gms.Tasks.IOnSuccessListener, Xamarin.GooglePlayServices.Tasks;com.google.android.gms.tasks.OnSuccessListener
+Android.Gms.Tasks.IOnSuccessListener;com.google.android.gms.tasks.OnSuccessListener
+com.google.android.gms.tasks.OnSuccessListener;com.google.android.gms.tasks.OnSuccessListener
+Android.Gms.Tasks.IOnTokenCanceledListener, Xamarin.GooglePlayServices.Tasks;com.google.android.gms.tasks.OnTokenCanceledListener
+Android.Gms.Tasks.IOnTokenCanceledListener;com.google.android.gms.tasks.OnTokenCanceledListener
+com.google.android.gms.tasks.OnTokenCanceledListener;com.google.android.gms.tasks.OnTokenCanceledListener
+Android.Gms.Tasks.ISuccessContinuation, Xamarin.GooglePlayServices.Tasks;com.google.android.gms.tasks.SuccessContinuation
+Android.Gms.Tasks.ISuccessContinuation;com.google.android.gms.tasks.SuccessContinuation
+com.google.android.gms.tasks.SuccessContinuation;com.google.android.gms.tasks.SuccessContinuation
+Android.Gms.Extensions.AwaitableTaskCompleteListener`1, Xamarin.GooglePlayServices.Tasks;crc6495d4f5d63cc5c882.AwaitableTaskCompleteListener_1
+Android.Gms.Extensions.AwaitableTaskCompleteListener`1;crc6495d4f5d63cc5c882.AwaitableTaskCompleteListener_1
+android.gms.extensions.AwaitableTaskCompleteListener_1;crc6495d4f5d63cc5c882.AwaitableTaskCompleteListener_1
 Kotlin.IFunction, Xamarin.Kotlin.StdLib;kotlin.Function
 Kotlin.IFunction;kotlin.Function
 kotlin.Function;kotlin.Function
@@ -925,6 +1051,9 @@ microsoft.maui.controls.handlers.compatibility.TableViewRenderer;crc64e1fb321c08
 Microsoft.Maui.ApplicationModel.ActivityLifecycleContextListener, Microsoft.Maui.Essentials;crc64ba438d8f48cf7e75.ActivityLifecycleContextListener
 Microsoft.Maui.ApplicationModel.ActivityLifecycleContextListener;crc64ba438d8f48cf7e75.ActivityLifecycleContextListener
 microsoft.maui.applicationmodel.ActivityLifecycleContextListener;crc64ba438d8f48cf7e75.ActivityLifecycleContextListener
+Microsoft.Maui.ApplicationModel.IntermediateActivity, Microsoft.Maui.Essentials;crc64ba438d8f48cf7e75.IntermediateActivity
+Microsoft.Maui.ApplicationModel.IntermediateActivity;crc64ba438d8f48cf7e75.IntermediateActivity
+microsoft.maui.applicationmodel.IntermediateActivity;crc64ba438d8f48cf7e75.IntermediateActivity
 Microsoft.Maui.Devices.DeviceDisplayImplementation+Listener, Microsoft.Maui.Essentials;crc640a8d9a12ddbf2cf2.DeviceDisplayImplementation_Listener
 Microsoft.Maui.Devices.DeviceDisplayImplementation.Listener;crc640a8d9a12ddbf2cf2.DeviceDisplayImplementation_Listener
 microsoft.maui.devices.DeviceDisplayImplementation_Listener;crc640a8d9a12ddbf2cf2.DeviceDisplayImplementation_Listener
