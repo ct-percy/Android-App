@@ -444,9 +444,9 @@ public partial class TermsPage : ContentPage
        /* await Connection._db.DropTableAsync<OAs>();
         await Connection._db.DropTableAsync<PAs>();
         await Connection._db.DropTableAsync<instructors>();
-        await Connection._db.DropTableAsync<courses>();*/
-       // await Connection._db.DropTableAsync<terms>();
-       // await Connection._db.DropTableAsync<notifyCourse>();
+        await Connection._db.DropTableAsync<courses>();
+        await Connection._db.DropTableAsync<terms>();
+        await Connection._db.DropTableAsync<notifyCourse>();*/
 
         #region Term1 
         if (sender == collapse1)

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MauiApp3.AddCourse"
              Title="AddCourse">
+    
+    
+    
     <StackLayout>
         <Grid  RowDefinitions="*,*,AUTO" >
 
@@ -58,10 +62,22 @@ HorizontalTextAlignment="Center"  BackgroundColor="Blue" />
             <Entry HeightRequest="80" ZIndex="1" x:Name="profEntry" Grid.Row="2"  BackgroundColor="Aqua" Grid.Column="4" Grid.ColumnSpan="6" />
 
             <Label HeightRequest="80" Grid.Row="3" Text="Instructor Email" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
-            <Entry HeightRequest="80" ZIndex="1" x:Name="emailEntry" Grid.Row="3" BackgroundColor="Aqua" Grid.Column="4" Grid.ColumnSpan="6" />
+            <Entry HeightRequest="80" ZIndex="1" x:Name="emailEntry" Grid.Row="3" BackgroundColor="Aqua" Grid.Column="4" Grid.ColumnSpan="6" >
+                <Entry.Behaviors>
+                    <toolkit:EmailValidationBehavior
+                        x:Name="emailValidator"></toolkit:EmailValidationBehavior>
+                </Entry.Behaviors>
+            </Entry>
+
+
+
 
             <Label HeightRequest="80" Grid.Row="4" Text="Instructor Phone" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
-            <Entry HeightRequest="80" ZIndex="1" x:Name="phoneEntry" Grid.Row="4"  BackgroundColor="Aqua" Grid.Column="4" Grid.ColumnSpan="6" />
+            <Entry HeightRequest="80" ZIndex="1" x:Name="phoneEntry" Grid.Row="4"  BackgroundColor="Aqua" Grid.Column="4" Grid.ColumnSpan="6" >
+                <Entry.Behaviors >
+                    <toolkit:TextValidationBehavior x:Name="phoneValidator" RegexPattern="^\d{3}-\d{3}-\d{4}$"  ></toolkit:TextValidationBehavior>
+                </Entry.Behaviors> 
+            </Entry>
 
             <Label HeightRequest="80" Grid.Row="5" Text="Expected Start Date" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
             <DatePicker HeightRequest="80" ZIndex="1" x:Name="startEntry" BackgroundColor="BlueViolet" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="6" />
@@ -82,7 +98,7 @@ HorizontalTextAlignment="Center"  BackgroundColor="Blue" />
                 </Picker.Items>
             </Picker>
 
-            <CheckBox x:Name="notifyCheckbox" CheckedChanged="notifyCheckbox_CheckedChanged"  ZIndex="1" Grid.Row="8" Grid.Column="5" IsChecked="True" ></CheckBox>
+            <CheckBox x:Name="notifyCheckbox" CheckedChanged="notifyCheckbox_CheckedChanged"  ZIndex="1" Grid.Row="8" Grid.Column="5"></CheckBox>
 
             <Label Text="Notify?" VerticalOptions="Center" Grid.Row="8" Grid.Column="6" Grid.ColumnSpan="2"></Label>
 

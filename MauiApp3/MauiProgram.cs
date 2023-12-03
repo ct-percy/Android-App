@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 using Plugin.LocalNotification;
 
 namespace MauiApp3
@@ -11,6 +12,7 @@ namespace MauiApp3
             builder
                 .UseMauiApp<App>()
                 .UseLocalNotification()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

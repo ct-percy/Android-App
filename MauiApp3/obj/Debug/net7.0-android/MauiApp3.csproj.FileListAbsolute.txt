@@ -1022,3 +1022,10 @@ C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\lp\158\jl\files.cache
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\lp\159\jl\files.cache
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\lp\160\jl\files.cache
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\lp\161\jl\files.cache
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\assets\CommunityToolkit.Maui.Core.dll
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\assets\CommunityToolkit.Maui.dll
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\src\crc64159f3caeb1269279\MauiDrawingView.java
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\src\crc64159f3caeb1269279\MauiPopup.java
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\src\crc64159f3caeb1269279\MauiSemanticOrderView.java
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\src\crc648fc34c62be8fbbff\Snackbar_SnackbarCallback.java
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\src\crc64d6358e7bf64fbac4\SpeechToTextImplementation_SpeechRecognitionListener.java

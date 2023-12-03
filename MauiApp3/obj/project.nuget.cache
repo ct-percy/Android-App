@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "vEX48XTFg4jSvKZTMXBhCXFXdsbZK9tg8CDicwbfPAIVOpPvM2wXxCSgHPoGy351/4lZy/QIvctECSCrov8paQ==",
+  "dgSpecHash": "GUolINew0iApUDnq5hLbM65B0DXQ2uOwZDl/3tM1P5lSy0h13eEpiSY3VejfAR4mwxYDpB3tZVVnI6mpIUu8ZA==",
   "success": true,
   "projectFilePath": "C:\\Maui_C971\\MauiApp3\\MauiApp3.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ctper\\.nuget\\packages\\communitytoolkit.maui\\6.1.0\\communitytoolkit.maui.6.1.0.nupkg.sha512",
+    "C:\\Users\\ctper\\.nuget\\packages\\communitytoolkit.maui.core\\6.1.0\\communitytoolkit.maui.core.6.1.0.nupkg.sha512",
     "C:\\Users\\ctper\\.nuget\\packages\\googlegson\\2.9.1.1\\googlegson.2.9.1.1.nupkg.sha512",
     "C:\\Users\\ctper\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\ctper\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
@@ -14,11 +16,7 @@
     "C:\\Users\\ctper\\.nuget\\packages\\microsoft.extensions.logging.debug\\7.0.0\\microsoft.extensions.logging.debug.7.0.0.nupkg.sha512",
     "C:\\Users\\ctper\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\ctper\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
-    "C:\\Users\\ctper\\.nuget\\packages\\microsoft.graphics.win2d\\1.0.5.1\\microsoft.graphics.win2d.1.0.5.1.nupkg.sha512",
     "C:\\Users\\ctper\\.nuget\\packages\\microsoft.maui.graphics\\7.0.92\\microsoft.maui.graphics.7.0.92.nupkg.sha512",
-    "C:\\Users\\ctper\\.nuget\\packages\\microsoft.maui.graphics.win2d.winui.desktop\\7.0.92\\microsoft.maui.graphics.win2d.winui.desktop.7.0.92.nupkg.sha512",
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\10.0.22621.756\\microsoft.windows.sdk.buildtools.10.0.22621.756.nupkg.sha512",
-    "C:\\Users\\ctper\\.nuget\\packages\\microsoft.windowsappsdk\\1.2.221209.1\\microsoft.windowsappsdk.1.2.221209.1.nupkg.sha512",
     "C:\\Users\\ctper\\.nuget\\packages\\plugin.localnotification\\10.1.8\\plugin.localnotification.10.1.8.nupkg.sha512",
     "C:\\Users\\ctper\\.nuget\\packages\\sqlite-net-pcl\\1.8.116\\sqlite-net-pcl.1.8.116.nupkg.sha512",
     "C:\\Users\\ctper\\.nuget\\packages\\sqlitepclraw.bundle_green\\2.0.4\\sqlitepclraw.bundle_green.2.0.4.nupkg.sha512",
@@ -115,11 +113,7 @@
     "C:\\Users\\ctper\\.nuget\\packages\\xamarin.kotlin.stdlib.jdk7\\1.8.0.1\\xamarin.kotlin.stdlib.jdk7.1.8.0.1.nupkg.sha512",
     "C:\\Users\\ctper\\.nuget\\packages\\xamarin.kotlin.stdlib.jdk8\\1.8.0.1\\xamarin.kotlin.stdlib.jdk8.1.8.0.1.nupkg.sha512",
     "C:\\Users\\ctper\\.nuget\\packages\\xamarin.kotlinx.coroutines.android\\1.6.4.2\\xamarin.kotlinx.coroutines.android.1.6.4.2.nupkg.sha512",
-    "C:\\Users\\ctper\\.nuget\\packages\\xamarin.kotlinx.coroutines.core.jvm\\1.6.4.2\\xamarin.kotlinx.coroutines.core.jvm.1.6.4.2.nupkg.sha512",
-    "C:\\Users\\ctper\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.29\\microsoft.windows.sdk.net.ref.10.0.19041.29.nupkg.sha512",
-    "C:\\Users\\ctper\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.11\\microsoft.aspnetcore.app.runtime.win-x64.7.0.11.nupkg.sha512",
-    "C:\\Users\\ctper\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.11\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.11.nupkg.sha512",
-    "C:\\Users\\ctper\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\7.0.11\\microsoft.netcore.app.runtime.win-x64.7.0.11.nupkg.sha512"
+    "C:\\Users\\ctper\\.nuget\\packages\\xamarin.kotlinx.coroutines.core.jvm\\1.6.4.2\\xamarin.kotlinx.coroutines.core.jvm.1.6.4.2.nupkg.sha512"
   ],
   "logs": []
 }
