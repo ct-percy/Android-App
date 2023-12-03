@@ -39,56 +39,49 @@ public partial class AddCourse : ContentPage
     private async void saveButton_Clicked(object sender, EventArgs e)
     {
 
-       
+
 
         #region Exceptions and Validation
 
-        if (courseNameEntry.Text == null)
+        if (string.IsNullOrWhiteSpace(courseNameEntry.Text) == true)
         {
-          await  DisplayAlert("Missing Value", "Course Title can not be empty", "Ok");
+            await DisplayAlert("Missing Value", "Course Title can not be empty", "Ok");
             return;
         }
-       else if (profEntry.Text == null)
+        else if (string.IsNullOrWhiteSpace(profEntry.Text) == true)
         {
             await DisplayAlert("Missing Value", "Instructor can not be empty", "Ok");
             return;
         }
-       
-        else if (emailValidator.IsNotValid || emailEntry.Text == null)
+
+        else if (emailValidator.IsNotValid || string.IsNullOrWhiteSpace(emailEntry.Text) == true)
         {
             await DisplayAlert("Invalid Email", "Email must be in correct format", "Ok");
-            
+
             return;
         }
-        else if (phoneValidator.IsNotValid || phoneEntry.Text == null)
+        else if (phoneValidator.IsNotValid || string.IsNullOrWhiteSpace(phoneEntry.Text) == true)
         {
             await DisplayAlert("Invalid Phone", "Phone must be in xxx-xxx-xxxx format", "Ok");
             return;
         }
-       else if (endEntry.Date < startEntry.Date)
+        else if (endEntry.Date < startEntry.Date)
         {
             await DisplayAlert("Error", "Start Date can not be after End Date", "Ok");
-                return;
+            return;
         }
-       else if (dueEntry.Date < startEntry.Date)
+        else if (dueEntry.Date < startEntry.Date)
         {
             await DisplayAlert("Error", "Start Date can not be after Due Date", "Ok");
             return;
         }
-        else if (dueEntry.Date > endEntry.Date)
-        {
-            await DisplayAlert("Error", "End Date can not be after Due Date", "Ok");
-            return;
-        }
-        #endregion
-
-
         else if (statusEntry.SelectedIndex == -1)
         {
             await DisplayAlert("Missing Value", "Course Status must be selected", "Ok");
             return;
         }
-        else 
+        #endregion
+        else
         {
             int instructorId = await dbQuery.AddInstructor(profEntry.Text, phoneEntry.Text, emailEntry.Text);
 
