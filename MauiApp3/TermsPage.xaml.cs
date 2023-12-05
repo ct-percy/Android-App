@@ -1,6 +1,5 @@
 using MauiApp3.Database;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
+
 
 namespace MauiApp3;
 
@@ -171,6 +170,12 @@ public partial class TermsPage : ContentPage
             collapse4.IsVisible = false;
             collapse5.IsVisible = false;
             collapse6.IsVisible = false;
+            Term2.IsVisible = false;
+            Term3.IsVisible = false;
+            Term4.IsVisible = false;
+            Term5.IsVisible = false;
+            Term6.IsVisible = false;
+
         }
         if (termCount == 1)
         {
@@ -181,6 +186,11 @@ public partial class TermsPage : ContentPage
             collapse4.IsVisible = false;
             collapse5.IsVisible = false;
             collapse6.IsVisible = false;
+            Term2.IsVisible = false;
+            Term3.IsVisible = false;
+            Term4.IsVisible = false;
+            Term5.IsVisible = false;
+            Term6.IsVisible = false;
 
         }
         if (termCount == 2)
@@ -190,6 +200,10 @@ public partial class TermsPage : ContentPage
             collapse4.IsVisible = false;
             collapse5.IsVisible = false;
             collapse6.IsVisible = false;
+            Term3.IsVisible = false;
+            Term4.IsVisible = false;
+            Term5.IsVisible = false;
+            Term6.IsVisible = false;
 
 
         }
@@ -199,6 +213,10 @@ public partial class TermsPage : ContentPage
             collapse4.IsVisible = false;
             collapse5.IsVisible = false;
             collapse6.IsVisible = false;
+           
+            Term4.IsVisible = false;
+            Term5.IsVisible = false;
+            Term6.IsVisible = false;
 
 
         }
@@ -207,6 +225,9 @@ public partial class TermsPage : ContentPage
 
             collapse5.IsVisible = false;
             collapse6.IsVisible = false;
+       
+            Term5.IsVisible = false;
+            Term6.IsVisible = false;
 
 
         }
@@ -215,7 +236,7 @@ public partial class TermsPage : ContentPage
 
             collapse6.IsVisible = false;
 
-
+            Term6.IsVisible = false;
 
         }
 
@@ -295,12 +316,15 @@ public partial class TermsPage : ContentPage
             Term1.IsVisible = false;
 
             string termName = term1.First().termName;
+            
 
             editStart1.IsVisible = true;
             editDash1.IsVisible = true;
             editEnd1.IsVisible = true;
             editTerm1Entry.IsVisible = true;
             editTerm1Entry.Text = termName;
+            editStart1.Date = DateTime.Parse(term1.First().startDate);
+            editEnd1.Date = DateTime.Parse(term1.First().endDate);
             cancelEdit1.IsVisible = true;
             editTerm1.IsVisible = false;
             save1.IsVisible = true;
@@ -325,6 +349,8 @@ public partial class TermsPage : ContentPage
             editEnd2.IsVisible = true;
             editTerm2Entry.IsVisible = true;
             editTerm2Entry.Text = termName;
+            editStart2.Date = DateTime.Parse(term2.First().startDate);
+            editEnd2.Date = DateTime.Parse(term2.First().endDate);
             cancelEdit2.IsVisible = true;
             editTerm2.IsVisible = false;
             save2.IsVisible = true;
@@ -351,6 +377,8 @@ public partial class TermsPage : ContentPage
             editEnd3.IsVisible = true;
             editTerm3Entry.IsVisible = true;
             editTerm3Entry.Text = termName;
+            editStart3.Date = DateTime.Parse(term3.First().startDate);
+            editEnd3.Date = DateTime.Parse(term3.First().endDate);
             cancelEdit3.IsVisible = true;
             editTerm3.IsVisible = false;
             save3.IsVisible = true;
@@ -376,6 +404,8 @@ public partial class TermsPage : ContentPage
             editEnd4.IsVisible = true;
             editTerm4Entry.IsVisible = true;
             editTerm4Entry.Text = termName;
+            editStart4.Date = DateTime.Parse(term4.First().startDate);
+            editEnd4.Date = DateTime.Parse(term4.First().endDate);
             cancelEdit4.IsVisible = true;
             editTerm4.IsVisible = false;
             save4.IsVisible = true;
@@ -401,6 +431,8 @@ public partial class TermsPage : ContentPage
             editEnd5.IsVisible = true;
             editTerm5Entry.IsVisible = true;
             editTerm5Entry.Text = termName;
+            editStart5.Date = DateTime.Parse(term5.First().startDate);
+            editEnd5.Date = DateTime.Parse(term5.First().endDate);
             cancelEdit5.IsVisible = true;
             editTerm5.IsVisible = false;
             save5.IsVisible = true;
@@ -426,6 +458,8 @@ public partial class TermsPage : ContentPage
             editEnd6.IsVisible = true;
             editTerm6Entry.IsVisible = true;
             editTerm6Entry.Text = termName;
+            editStart6.Date = DateTime.Parse(term6.First().startDate);
+            editEnd6.Date = DateTime.Parse(term6.First().endDate);
             cancelEdit6.IsVisible = true;
             editTerm6.IsVisible = false;
             save6.IsVisible = true;

@@ -28582,6 +28582,12 @@ namespace MauiApp3
 			// aapt resource value: 0x7F0700ED
 			public const int tooltip_frame_light = 2131165421;
 			
+			// aapt resource value: 0x7F0700EE
+			public const int wgu = 2131165422;
+			
+			// aapt resource value: 0x7F0700EF
+			public const int wgu_seal = 2131165423;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

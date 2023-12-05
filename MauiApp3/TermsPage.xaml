@@ -2,126 +2,280 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp3.TermsPage"
-             >
+             xmlns:statusBar="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             BackgroundImageSource="wgu_seal.png">
+
+    <Page.Behaviors>
+        <statusBar:StatusBarBehavior StatusBarColor="#042c54" />
+    </Page.Behaviors>
+
     <!--this grid creates header, body, and footer -->
 
-    
-    
-    <Grid RowDefinitions="200,* ,auto"
-             ColumnDefinitions="*">
+
+    <Grid RowDefinitions="170,* ,auto"
+          ColumnDefinitions="*">
+
+
 
         <!--#region Header-->
 
-        <Image Aspect="Fill" Source="dotnet_bot.png" BackgroundColor="White"/>
+        <Image Aspect="Fill"
+               Source="wgu.png"
+               BackgroundColor="White" />
 
         <!--#endregion-->
 
 
+
         <!--#region Body-->
 
-        <ScrollView ZIndex="3" Grid.Row="1" VerticalScrollBarVisibility="Always">
+        <ScrollView ZIndex="3"
+                    Grid.Row="1"
+                    VerticalScrollBarVisibility="Always">
 
 
             <StackLayout>
 
                 <!--#region Term1-->
+
                 <Grid RowDefinitions="*,*,*"
-                       ColumnDefinitions="*,*">
+                      ColumnDefinitions="*,*"
+                      BackgroundColor="#042c54">
 
-                    <ImageButton x:Name="collapse1" ZIndex="2" Clicked="collapse_Clicked" Source="collapse.png" VerticalOptions="Start" Grid.Row="1"
-                                Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
+                    <ImageButton x:Name="collapse1"
+                                 ZIndex="2"
+                                 Clicked="collapse_Clicked"
+                                 Source="collapse.png"
+                                 VerticalOptions="Start"
+                                 Grid.Row="1"
+                                 Grid.RowSpan="1"
+                                 Grid.Column="1"
+                                 HeightRequest="35"
+                                 HorizontalOptions="End"
+                                 WidthRequest="50" />
 
-                    <ImageButton x:Name="editTerm1" IsVisible="false" Clicked="editTermButton_Clicked" ZIndex="1" Source="edit_icon.png" Grid.Row="1" Grid.Column="2"
-                                VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
+                    <ImageButton x:Name="editTerm1"
+                                 IsVisible="false"
+                                 Clicked="editTermButton_Clicked"
+                                 ZIndex="1"
+                                 Source="edit_icon.png"
+                                 Grid.Row="1"
+                                 Grid.Column="2"
+                                 VerticalOptions="End"
+                                 HorizontalOptions="End"
+                                 HeightRequest="30"
+                                 WidthRequest="45" />
 
 
-                    <Entry x:Name="editTerm1Entry" Grid.Row="1" Grid.RowSpan="2" IsVisible="false" />
+                    <Entry x:Name="editTerm1Entry"
+                           Grid.Row="1"
+                           Grid.RowSpan="2"
+                           IsVisible="false"
+                           FontSize="Large"
+                           FontAttributes="Bold"
+                           TextColor="LightGrey" />
 
 
                     <CollectionView x:Name="Term1"
-                       ItemsSource="{Binding terms}"
-                             Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" 
-                                       EmptyView="Click 'Add Term' to get started!" 
-                                      >
+                                    ItemsSource="{Binding terms}"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    BackgroundColor="#042c54">
+                        <CollectionView.Shadow>
+                            <Shadow Brush="black"
+                                    Radius="20"></Shadow>
+                        </CollectionView.Shadow>
 
+                        <CollectionView.EmptyView>
+                            <Label TextColor="White"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Text="Click 'Add A New Term' to get started!" />
+                        </CollectionView.EmptyView>
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
 
-                                <Grid RowDefinitions="*,*, *,*" ColumnDefinitions="*, *">
+                                <Grid Margin="5"
+                                      RowDefinitions="*,*, *,*"
+                                      ColumnDefinitions="*, *">
 
-                                    <Label Grid.Row="0" VerticalOptions="End" Grid.ColumnSpan="5" Grid.RowSpan="2" x:Name="termName" FontSize="Large"  Text="{Binding termName}"></Label>
-                                    <Label Grid.Row="2" Grid.RowSpan="2" Text="{Binding startDate}" ></Label>
-                                    <Label Text="-" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" ></Label>
-                                    <Label Grid.Row="2" Grid.Column="0"  HorizontalOptions="End" Text="{Binding endDate}" ></Label>
+                                    <Label Grid.Row="0"
+                                           Grid.ColumnSpan="5"
+                                           Grid.RowSpan="2"
+                                           x:Name="termName"
+                                           FontSize="Large"
+                                           FontAttributes="Bold"
+                                           TextColor="LightGrey"
+                                           Text="{Binding termName}"></Label>
+                                    <Label Grid.Row="2"
+                                           Grid.RowSpan="2"
+                                           Text="{Binding startDate}"
+                                           TextColor="LightGrey"></Label>
+                                    <Label Text="-"
+                                           Grid.Row="2"
+                                           HorizontalOptions="Center"
+                                           TextColor="LightGrey"></Label>
+                                    <Label Grid.Row="2"
+                                           Grid.Column="0"
+                                           HorizontalOptions="End"
+                                           Text="{Binding endDate}"
+                                           TextColor="LightGrey"></Label>
 
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
+
+                </Grid>
+
+                <Grid BackgroundColor="#042c54"
+                      RowDefinitions="*,*,*,*"
+                      ColumnDefinitions="*,*,*,*">
+
+                    <DatePicker Grid.Row="1"
+                                WidthRequest="90"
+                                x:Name="editStart1"
+                                IsVisible="false"
+                                HorizontalOptions="Start"
+                                TextColor="LightGrey" />
+                    <Label x:Name="editDash1"
+                           Text="-   "
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           HorizontalOptions="End"
+                           IsVisible="false"
+                           TextColor="LightGrey" />
+                    <DatePicker Grid.Row="1"
+                                Grid.Column="1"
+                                x:Name="editEnd1"
+                                HorizontalOptions="StartAndExpand"
+                                IsVisible="false"
+                                TextColor="LightGrey" />
+
+
+                    <ImageButton x:Name="cancelEdit1"
+                                 Clicked="cancel_Clicked"
+                                 IsVisible="false"
+                                 ZIndex="1"
+                                 Source="cancel.png"
+                                 Grid.Row="1"
+                                 Grid.Column="4"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="End"
+                                 HeightRequest="35"
+                                 WidthRequest="30" />
+
+                    <ImageButton x:Name="delete1"
+                                 ZIndex="1"
+                                 Source="delete.png"
+                                 Grid.Row="1"
+                                 Grid.Column="3"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 HeightRequest="30"
+                                 WidthRequest="30"
+                                 Clicked="deleteTerm_Clicked"
+                                 IsVisible="false" />
+
+                    <ImageButton x:Name="save1"
+                                 Clicked="saveTerm_Clicked"
+                                 ZIndex="1"
+                                 Source="save.png"
+                                 Grid.Row="1"
+                                 Grid.Column="3"
+                                 Grid.ColumnSpan="2"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Start"
+                                 HeightRequest="30"
+                                 WidthRequest="30"
+                                 IsVisible="false" />
+
+
                 </Grid>
 
 
-                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*,*">
 
-                    <DatePicker Grid.Row="1" WidthRequest="90" x:Name="editStart1" IsVisible="false" HorizontalOptions="Start" />
-                    <Label x:Name="editDash1" Text="-" Grid.Row="1"  Grid.Column="0"  VerticalOptions="Center" HorizontalOptions="End" IsVisible="false" />
-                    <DatePicker Grid.Row="1" Grid.Column="1" x:Name="editEnd1" HorizontalOptions="StartAndExpand" IsVisible="false"></DatePicker>
-
-
-                    <ImageButton x:Name="cancelEdit1" Clicked="cancel_Clicked" IsVisible="false" ZIndex="1" 
-                                    Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
-
-                    <ImageButton x:Name="delete1"   ZIndex="1" Source="delete.png" Grid.Row="1" Grid.Column="3"
-                                    VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" 
-                                    WidthRequest="30" Clicked="deleteTerm_Clicked"
-                                    IsVisible="false" />
-
-                    <ImageButton x:Name="save1" Clicked="saveTerm_Clicked"  ZIndex="1" Source="save.png" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
-                                    VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
-
-
-                </Grid>
 
                 <!--#endregion-->
 
 
 
+
                 <!--#region term1Courses-->
 
-                <Label x:Name="noCourses1" Text="No Courses Yet!" HorizontalOptions="Center" IsVisible="false" />
+                <Label x:Name="noCourses1"
+                       BackgroundColor="#042c54"
+                       TextColor="White"
+                       Text="No Courses Yet!"
+                       FontSize="Body"
+                       FontAttributes="Bold"
+                       Margin="10"
+                       HorizontalOptions="Center"
+                       IsVisible="false" />
 
-                <ListView Margin="5" x:Name="Term1Courses"
-                         ItemsSource="{Binding courses}"
-                            ItemTapped="term1CourseTapped"
-                             IsVisible="false"
-                             VerticalOptions="Start"
-                         
-                            
-                        
-                             >
+                <ListView Margin="5"
+                          x:Name="Term1Courses"
+                          ItemsSource="{Binding courses}"
+                          ItemTapped="term1CourseTapped"
+                          IsVisible="false"
+                          VerticalOptions="Start"
+                          BackgroundColor="LightGray"
+                          SeparatorColor="#042c54">
+
 
 
 
                     <ListView.ItemTemplate>
-                        <DataTemplate >
-                            <ViewCell >
-                                <Grid RowDefinitions="auto" ColumnDefinitions="*,*,*"  >
-                                    <Label Text="{Binding courseName}" Padding="0" />
-                                    <Label Text="{Binding startDate}" Grid.Column="1" HorizontalTextAlignment="End"  />
-                                    <Label Text="                 - " Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"  />
-                                    <Label Text="{Binding endDate}" Grid.Column="2" HorizontalTextAlignment="End" />
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid RowDefinitions="auto"
+                                      ColumnDefinitions="*,*,*">
+                                    <Label Text="{Binding courseName}"
+                                           FontSize="Body"
+                                           FontAttributes="Bold" />
+                                    <Label Text="{Binding startDate}"
+                                           Grid.Column="1"
+                                           FontAttributes="Bold"
+                                           HorizontalTextAlignment="End"
+                                           FontSize="Body" />
+                                    <Label Text="                 - "
+                                           Grid.Column="1"
+                                           Grid.ColumnSpan="2"
+                                           FontAttributes="Bold"
+                                           FontSize="Body"
+                                           HorizontalTextAlignment="Center"
+                                           HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding endDate}"
+                                           Grid.Column="2"
+                                           HorizontalTextAlignment="End"
+                                           FontAttributes="Bold"
+                                           FontSize="Body" />
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <Grid >
+                <Grid>
 
-                    <Button   x:Name="addCourse1" Clicked="addCourse_Clicked" Text="Add" HorizontalOptions="End" IsVisible="false"  />
+                    <Button Margin="3"
+                            HeightRequest="40"
+                            BackgroundColor="#042c54"
+                            x:Name="addCourse1"
+                            Clicked="addCourse_Clicked"
+                            Text="Add"
+                            HorizontalOptions="End"
+                            IsVisible="false" />
 
-                    <Button x:Name="deleteCourse1" Clicked="deleteCourse_Clicked"  Text="Delete" HorizontalOptions="End" IsVisible="false"  />
+                    <Button x:Name="deleteCourse1"
+                            BackgroundColor="#042c54"
+                            Clicked="deleteCourse_Clicked"
+                            Text="Delete"
+                            HorizontalOptions="End"
+                            IsVisible="false" />
                 </Grid>
 
                 <!--#endregion-->
@@ -129,56 +283,153 @@
 
                 <!--#region Term2-->
 
-                <Grid RowSpacing="10" RowDefinitions="*,*,*"
-    ColumnDefinitions="*,*">
+                <Grid RowDefinitions="*,*,*"
+                      ColumnDefinitions="*,*"
+                      BackgroundColor="#042c54">
 
-                    <ImageButton x:Name="collapse2" ZIndex="2" Clicked="collapse_Clicked" Source="collapse.png" VerticalOptions="Start" Grid.Row="1"
-             Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
+                    <ImageButton x:Name="collapse2"
+                                 ZIndex="2"
+                                 Clicked="collapse_Clicked"
+                                 Source="collapse.png"
+                                 VerticalOptions="Start"
+                                 Grid.Row="1"
+                                 Grid.RowSpan="1"
+                                 Grid.Column="1"
+                                 HeightRequest="35"
+                                 HorizontalOptions="End"
+                                 WidthRequest="50" />
 
-                    <ImageButton x:Name="editTerm2" IsVisible="false" Clicked="editTermButton_Clicked" ZIndex="1" Source="edit_icon.png" Grid.Row="1" Grid.Column="2"
-             VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
+                    <ImageButton x:Name="editTerm2"
+                                 IsVisible="false"
+                                 Clicked="editTermButton_Clicked"
+                                 ZIndex="1"
+                                 Source="edit_icon.png"
+                                 Grid.Row="1"
+                                 Grid.Column="2"
+                                 VerticalOptions="End"
+                                 HorizontalOptions="End"
+                                 HeightRequest="30"
+                                 WidthRequest="45" />
 
 
-                    <Entry x:Name="editTerm2Entry" Grid.Row="1" Grid.RowSpan="2" IsVisible="false" />
+                    <Entry x:Name="editTerm2Entry"
+                           Grid.Row="1"
+                           Grid.RowSpan="2"
+                           IsVisible="false"
+                           FontSize="Large"
+                           FontAttributes="Bold"
+                           TextColor="LightGrey" />
 
 
                     <CollectionView x:Name="Term2"
-    ItemsSource="{Binding terms}"
-          Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" >
-
+                                    ItemsSource="{Binding terms}"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    BackgroundColor="#042c54">
+                        <CollectionView.Shadow>
+                            <Shadow Brush="black"
+                                    Radius="20"></Shadow>
+                        </CollectionView.Shadow>
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
 
-                                <Grid RowDefinitions="*,*, *,*" ColumnDefinitions="*, *">
+                                <Grid Margin="5"
+                                      RowDefinitions="*,*, *,*"
+                                      ColumnDefinitions="*, *">
 
-                                    <Label Grid.Row="0" VerticalOptions="End" Grid.ColumnSpan="5" Grid.RowSpan="2" x:Name="termName" FontSize="Large"  Text="{Binding termName}"></Label>
-                                    <Label Grid.Row="2" Grid.RowSpan="2" Text="{Binding startDate}" ></Label>
-                                    <Label Text="-" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" ></Label>
-                                    <Label Grid.Row="2" Grid.Column="0" HorizontalOptions="End" Text="{Binding endDate}" ></Label>
+                                    <Label Grid.Row="0"
+                                           Grid.ColumnSpan="5"
+                                           Grid.RowSpan="2"
+                                           x:Name="termName"
+                                           FontSize="Large"
+                                           FontAttributes="Bold"
+                                           TextColor="LightGrey"
+                                           Text="{Binding termName}"></Label>
+                                    <Label Grid.Row="2"
+                                           Grid.RowSpan="2"
+                                           Text="{Binding startDate}"
+                                           TextColor="LightGrey"></Label>
+                                    <Label Text="-"
+                                           Grid.Row="2"
+                                           HorizontalOptions="Center"
+                                           TextColor="LightGrey"></Label>
+                                    <Label Grid.Row="2"
+                                           Grid.Column="0"
+                                           HorizontalOptions="End"
+                                           Text="{Binding endDate}"
+                                           TextColor="LightGrey"></Label>
 
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
+
                 </Grid>
 
+                <Grid BackgroundColor="#042c54"
+                      RowDefinitions="*,*,*,*"
+                      ColumnDefinitions="*,*,*,*">
 
-                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*,*">
+                    <DatePicker Grid.Row="1"
+                                WidthRequest="90"
+                                x:Name="editStart2"
+                                IsVisible="false"
+                                HorizontalOptions="Start"
+                                TextColor="LightGrey" />
+                    <Label x:Name="editDash2"
+                           Text="-   "
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           HorizontalOptions="End"
+                           IsVisible="false"
+                           TextColor="LightGrey" />
+                    <DatePicker Grid.Row="1"
+                                Grid.Column="1"
+                                x:Name="editEnd2"
+                                HorizontalOptions="StartAndExpand"
+                                IsVisible="false"
+                                TextColor="LightGrey" />
 
-                    <DatePicker Grid.Row="1" WidthRequest="90" x:Name="editStart2" IsVisible="false" HorizontalOptions="Start" />
-                    <Label x:Name="editDash2" Text="-" Grid.Row="1"  Grid.Column="0"  VerticalOptions="Center" HorizontalOptions="End" IsVisible="false" />
-                    <DatePicker Grid.Row="1" Grid.Column="1" x:Name="editEnd2" HorizontalOptions="StartAndExpand" IsVisible="false"></DatePicker>
 
+                    <ImageButton x:Name="cancelEdit2"
+                                 Clicked="cancel_Clicked"
+                                 IsVisible="false"
+                                 ZIndex="1"
+                                 Source="cancel.png"
+                                 Grid.Row="1"
+                                 Grid.Column="4"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="End"
+                                 HeightRequest="35"
+                                 WidthRequest="30" />
 
-                    <ImageButton x:Name="cancelEdit2" Clicked="cancel_Clicked" IsVisible="false" ZIndex="1" 
-                 Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
+                    <ImageButton x:Name="delete2"
+                                 ZIndex="1"
+                                 Source="delete.png"
+                                 Grid.Row="1"
+                                 Grid.Column="3"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 HeightRequest="30"
+                                 WidthRequest="30"
+                                 Clicked="deleteTerm_Clicked"
+                                 IsVisible="false" />
 
-                    <ImageButton x:Name="delete2"  Clicked="deleteTerm_Clicked" ZIndex="1" Source="delete.png" Grid.Row="1" Grid.Column="3"
-                 VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
-
-                    <ImageButton x:Name="save2"  Clicked="saveTerm_Clicked" ZIndex="1" Source="save.png" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
-                 VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
+                    <ImageButton x:Name="save2"
+                                 Clicked="saveTerm_Clicked"
+                                 ZIndex="1"
+                                 Source="save.png"
+                                 Grid.Row="1"
+                                 Grid.Column="3"
+                                 Grid.ColumnSpan="2"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Start"
+                                 HeightRequest="30"
+                                 WidthRequest="30"
+                                 IsVisible="false" />
 
 
                 </Grid>
@@ -188,36 +439,76 @@
 
                 <!--#region term2Courses-->
 
-                <Label x:Name="noCourses2" Text="No Courses Yet!" HorizontalOptions="Center" IsVisible="false" />
+                <Label x:Name="noCourses2"
+                       BackgroundColor="#042c54"
+                       TextColor="White"
+                       Text="No Courses Yet!"
+                       FontSize="Body"
+                       FontAttributes="Bold"
+                       Margin="10"
+                       HorizontalOptions="Center"
+                       IsVisible="false" />
+
+                <ListView Margin="5"
+                          x:Name="Term2Courses"
+                          ItemsSource="{Binding courses}"
+                          ItemTapped="term1CourseTapped"
+                          IsVisible="false"
+                          VerticalOptions="Start"
+                          BackgroundColor="LightGray"
+                          SeparatorColor="#042c54">
 
 
-                <ListView Margin="5" x:Name="Term2Courses"
-     ItemsSource="{Binding courses}"
-        ItemTapped="term2CourseTapped"
-                              IsVisible="false"
-                         VerticalOptions="Start"
-                         >
+
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid ColumnDefinitions="*,*,*" >
-                                    <Label Text="{Binding courseName}" />
-                                    <Label Text="{Binding startDate}" Grid.Column="1" HorizontalTextAlignment="End" />
-                                    <Label Text="                 - " Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
-                                    <Label Text="{Binding endDate}" Grid.Column="2" HorizontalTextAlignment="End" />
+                                <Grid RowDefinitions="auto"
+                                      ColumnDefinitions="*,*,*">
+                                    <Label Text="{Binding courseName}"
+                                           FontSize="Body"
+                                           FontAttributes="Bold" />
+                                    <Label Text="{Binding startDate}"
+                                           Grid.Column="1"
+                                           FontAttributes="Bold"
+                                           HorizontalTextAlignment="End"
+                                           FontSize="Body" />
+                                    <Label Text="                 - "
+                                           Grid.Column="1"
+                                           Grid.ColumnSpan="2"
+                                           FontAttributes="Bold"
+                                           FontSize="Body"
+                                           HorizontalTextAlignment="Center"
+                                           HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding endDate}"
+                                           Grid.Column="2"
+                                           HorizontalTextAlignment="End"
+                                           FontAttributes="Bold"
+                                           FontSize="Body" />
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
 
-
                 <Grid>
 
-                    <Button x:Name="addCourse2" Clicked="addCourse_Clicked" Text="Add" HorizontalOptions="End" IsVisible="false"  />
+                    <Button Margin="3"
+                            HeightRequest="40"
+                            BackgroundColor="#042c54"
+                            x:Name="addCourse2"
+                            Clicked="addCourse_Clicked"
+                            Text="Add"
+                            HorizontalOptions="End"
+                            IsVisible="false" />
 
-                    <Button x:Name="deleteCourse2" Clicked="deleteCourse_Clicked"  Text="Delete" HorizontalOptions="End" IsVisible="false"  />
+                    <Button x:Name="deleteCourse2"
+                            BackgroundColor="#042c54"
+                            Clicked="deleteCourse_Clicked"
+                            Text="Delete"
+                            HorizontalOptions="End"
+                            IsVisible="false" />
                 </Grid>
 
                 <!--#endregion-->
@@ -226,92 +517,232 @@
 
                 <!--#region Term3-->
 
-                <Grid RowSpacing="10" RowDefinitions="*,*,*"
-    ColumnDefinitions="*,*">
-
-                    <ImageButton x:Name="collapse3" ZIndex="2" Clicked="collapse_Clicked" Source="collapse.png" VerticalOptions="Start" Grid.Row="1"
-             Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
-
-                    <ImageButton x:Name="editTerm3" IsVisible="false" Clicked="editTermButton_Clicked" ZIndex="1" Source="edit_icon.png" Grid.Row="1" Grid.Column="2"
-             VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
 
 
-                    <Entry x:Name="editTerm3Entry" Grid.Row="1" Grid.RowSpan="2" IsVisible="false" />
+                <Grid RowDefinitions="*,*,*"
+                      ColumnDefinitions="*,*"
+                      BackgroundColor="#042c54">
+
+                    <ImageButton x:Name="collapse3"
+                                 ZIndex="2"
+                                 Clicked="collapse_Clicked"
+                                 Source="collapse.png"
+                                 VerticalOptions="Start"
+                                 Grid.Row="1"
+                                 Grid.RowSpan="1"
+                                 Grid.Column="1"
+                                 HeightRequest="35"
+                                 HorizontalOptions="End"
+                                 WidthRequest="50" />
+
+                    <ImageButton x:Name="editTerm3"
+                                 IsVisible="false"
+                                 Clicked="editTermButton_Clicked"
+                                 ZIndex="1"
+                                 Source="edit_icon.png"
+                                 Grid.Row="1"
+                                 Grid.Column="2"
+                                 VerticalOptions="End"
+                                 HorizontalOptions="End"
+                                 HeightRequest="30"
+                                 WidthRequest="45" />
+
+
+                    <Entry x:Name="editTerm3Entry"
+                           Grid.Row="1"
+                           Grid.RowSpan="2"
+                           IsVisible="false"
+                           FontSize="Large"
+                           FontAttributes="Bold"
+                           TextColor="LightGrey" />
 
 
                     <CollectionView x:Name="Term3"
-    ItemsSource="{Binding terms}"
-          Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" >
-
+                                    ItemsSource="{Binding terms}"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    BackgroundColor="#042c54">
+                        <CollectionView.Shadow>
+                            <Shadow Brush="black"
+                                    Radius="20"></Shadow>
+                        </CollectionView.Shadow>
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
 
-                                <Grid RowDefinitions="*,*, *,*" ColumnDefinitions="*, *">
+                                <Grid Margin="5"
+                                      RowDefinitions="*,*, *,*"
+                                      ColumnDefinitions="*, *">
 
-                                    <Label Grid.Row="0" VerticalOptions="End" Grid.ColumnSpan="5" Grid.RowSpan="2" x:Name="termName" FontSize="Large"  Text="{Binding termName}"></Label>
-                                    <Label Grid.Row="2" Grid.RowSpan="2" Text="{Binding startDate}" ></Label>
-                                    <Label Text="-" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" ></Label>
-                                    <Label Grid.Row="2" Grid.Column="0" HorizontalOptions="End" Text="{Binding endDate}" ></Label>
+                                    <Label Grid.Row="0"
+                                           Grid.ColumnSpan="5"
+                                           Grid.RowSpan="2"
+                                           x:Name="termName"
+                                           FontSize="Large"
+                                           FontAttributes="Bold"
+                                           TextColor="LightGrey"
+                                           Text="{Binding termName}"></Label>
+                                    <Label Grid.Row="2"
+                                           Grid.RowSpan="2"
+                                           Text="{Binding startDate}"
+                                           TextColor="LightGrey"></Label>
+                                    <Label Text="-"
+                                           Grid.Row="2"
+                                           HorizontalOptions="Center"
+                                           TextColor="LightGrey"></Label>
+                                    <Label Grid.Row="2"
+                                           Grid.Column="0"
+                                           HorizontalOptions="End"
+                                           Text="{Binding endDate}"
+                                           TextColor="LightGrey"></Label>
 
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
+
+                </Grid>
+
+                <Grid BackgroundColor="#042c54"
+                      RowDefinitions="*,*,*,*"
+                      ColumnDefinitions="*,*,*,*">
+
+                    <DatePicker Grid.Row="1"
+                                WidthRequest="90"
+                                x:Name="editStart3"
+                                IsVisible="false"
+                                HorizontalOptions="Start"
+                                TextColor="LightGrey" />
+                    <Label x:Name="editDash3"
+                           Text="-   "
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           HorizontalOptions="End"
+                           IsVisible="false"
+                           TextColor="LightGrey" />
+                    <DatePicker Grid.Row="1"
+                                Grid.Column="1"
+                                x:Name="editEnd3"
+                                HorizontalOptions="StartAndExpand"
+                                IsVisible="false"
+                                TextColor="LightGrey" />
+
+
+                    <ImageButton x:Name="cancelEdit3"
+                                 Clicked="cancel_Clicked"
+                                 IsVisible="false"
+                                 ZIndex="1"
+                                 Source="cancel.png"
+                                 Grid.Row="1"
+                                 Grid.Column="4"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="End"
+                                 HeightRequest="35"
+                                 WidthRequest="30" />
+
+                    <ImageButton x:Name="delete3"
+                                 ZIndex="1"
+                                 Source="delete.png"
+                                 Grid.Row="1"
+                                 Grid.Column="3"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 HeightRequest="30"
+                                 WidthRequest="30"
+                                 Clicked="deleteTerm_Clicked"
+                                 IsVisible="false" />
+
+                    <ImageButton x:Name="save3"
+                                 Clicked="saveTerm_Clicked"
+                                 ZIndex="1"
+                                 Source="save.png"
+                                 Grid.Row="1"
+                                 Grid.Column="3"
+                                 Grid.ColumnSpan="2"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Start"
+                                 HeightRequest="30"
+                                 WidthRequest="30"
+                                 IsVisible="false" />
+
+
                 </Grid>
 
 
-                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*,*">
-
-                    <DatePicker Grid.Row="1" WidthRequest="90" x:Name="editStart3" IsVisible="false" HorizontalOptions="Start" />
-                    <Label x:Name="editDash3" Text="-" Grid.Row="1"  Grid.Column="0"  VerticalOptions="Center" HorizontalOptions="End" IsVisible="false" />
-                    <DatePicker Grid.Row="1" Grid.Column="1" x:Name="editEnd3" HorizontalOptions="StartAndExpand" IsVisible="false"></DatePicker>
-
-
-                    <ImageButton x:Name="cancelEdit3" Clicked="cancel_Clicked" IsVisible="false" ZIndex="1" 
-                 Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
-
-                    <ImageButton x:Name="delete3" Clicked="deleteTerm_Clicked"  ZIndex="1" Source="delete.png" Grid.Row="1" Grid.Column="3"
-                 VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
-
-                    <ImageButton x:Name="save3" Clicked="saveTerm_Clicked"  ZIndex="1" Source="save.png" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
-                 VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
-
-
-                </Grid>
                 <!--#endregion-->
 
 
                 <!--#region term3Courses-->
 
-                <Label x:Name="noCourses3" Text="No Courses Yet!" HorizontalOptions="Center" IsVisible="false" />
+                <Label x:Name="noCourses3"
+                       BackgroundColor="#042c54"
+                       TextColor="White"
+                       Text="No Courses Yet!"
+                       FontSize="Body"
+                       FontAttributes="Bold"
+                       Margin="10"
+                       HorizontalOptions="Center"
+                       IsVisible="false" />
 
+                <ListView Margin="5"
+                          x:Name="Term3Courses"
+                          ItemsSource="{Binding courses}"
+                          ItemTapped="term1CourseTapped"
+                          IsVisible="false"
+                          VerticalOptions="Start"
+                          BackgroundColor="LightGray"
+                          SeparatorColor="#042c54">
 
-                <ListView Margin="5" x:Name="Term3Courses"
-     ItemsSource="{Binding courses}"
-        ItemTapped="term3CourseTapped"
-                              IsVisible="false"
-                              VerticalOptions="Start">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid ColumnDefinitions="*,*,*" >
-                                    <Label Text="{Binding courseName}" />
-                                    <Label Text="{Binding startDate}" Grid.Column="1" HorizontalTextAlignment="End" />
-                                    <Label Text="                 - " Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
-                                    <Label Text="{Binding endDate}" Grid.Column="2" HorizontalTextAlignment="End" />
+                                <Grid RowDefinitions="auto"
+                                      ColumnDefinitions="*,*,*">
+                                    <Label Text="{Binding courseName}"
+                                           FontSize="Body"
+                                           FontAttributes="Bold" />
+                                    <Label Text="{Binding startDate}"
+                                           Grid.Column="1"
+                                           FontAttributes="Bold"
+                                           HorizontalTextAlignment="End"
+                                           FontSize="Body" />
+                                    <Label Text="                 - "
+                                           Grid.Column="1"
+                                           Grid.ColumnSpan="2"
+                                           FontAttributes="Bold"
+                                           FontSize="Body"
+                                           HorizontalTextAlignment="Center"
+                                           HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding endDate}"
+                                           Grid.Column="2"
+                                           HorizontalTextAlignment="End"
+                                           FontAttributes="Bold"
+                                           FontSize="Body" />
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
 
-
                 <Grid>
 
-                    <Button x:Name="addCourse3" Clicked="addCourse_Clicked" Text="Add" HorizontalOptions="End" IsVisible="false"  />
+                    <Button Margin="3"
+                            HeightRequest="40"
+                            BackgroundColor="#042c54"
+                            x:Name="addCourse3"
+                            Clicked="addCourse_Clicked"
+                            Text="Add"
+                            HorizontalOptions="End"
+                            IsVisible="false" />
 
-                    <Button x:Name="deleteCourse3" Clicked="deleteCourse_Clicked"  Text="Delete" HorizontalOptions="End" IsVisible="false"  />
+                    <Button x:Name="deleteCourse3"
+                            BackgroundColor="#042c54"
+                            Clicked="deleteCourse_Clicked"
+                            Text="Delete"
+                            HorizontalOptions="End"
+                            IsVisible="false" />
                 </Grid>
 
                 <!--#endregion-->
@@ -319,82 +750,209 @@
 
                 <!--#region Term4-->
 
-                <Grid RowSpacing="10" RowDefinitions="*,*,*"
-    ColumnDefinitions="*,*">
 
 
-                    <ImageButton x:Name="collapse4" ZIndex="2" Clicked="collapse_Clicked" Source="collapse.png" VerticalOptions="Start" Grid.Row="1"
-             Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
+                <Grid RowDefinitions="*,*,*"
+                      ColumnDefinitions="*,*"
+                      BackgroundColor="#042c54">
 
-                    <ImageButton x:Name="editTerm4" IsVisible="false" Clicked="editTermButton_Clicked" ZIndex="1" Source="edit_icon.png" Grid.Row="1" Grid.Column="2"
-             VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
+                    <ImageButton x:Name="collapse4"
+                                 ZIndex="2"
+                                 Clicked="collapse_Clicked"
+                                 Source="collapse.png"
+                                 VerticalOptions="Start"
+                                 Grid.Row="1"
+                                 Grid.RowSpan="1"
+                                 Grid.Column="1"
+                                 HeightRequest="35"
+                                 HorizontalOptions="End"
+                                 WidthRequest="50" />
+
+                    <ImageButton x:Name="editTerm4"
+                                 IsVisible="false"
+                                 Clicked="editTermButton_Clicked"
+                                 ZIndex="1"
+                                 Source="edit_icon.png"
+                                 Grid.Row="1"
+                                 Grid.Column="2"
+                                 VerticalOptions="End"
+                                 HorizontalOptions="End"
+                                 HeightRequest="30"
+                                 WidthRequest="45" />
 
 
-                    <Entry x:Name="editTerm4Entry" Grid.Row="1" Grid.RowSpan="2" IsVisible="false" />
+                    <Entry x:Name="editTerm4Entry"
+                           Grid.Row="1"
+                           Grid.RowSpan="2"
+                           IsVisible="false"
+                           FontSize="Large"
+                           FontAttributes="Bold"
+                           TextColor="LightGrey" />
 
 
                     <CollectionView x:Name="Term4"
-    ItemsSource="{Binding terms}"
-          Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" >
-
+                                    ItemsSource="{Binding terms}"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    BackgroundColor="#042c54">
+                        <CollectionView.Shadow>
+                            <Shadow Brush="black"
+                                    Radius="20"></Shadow>
+                        </CollectionView.Shadow>
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
 
-                                <Grid RowDefinitions="*,*, *,*" ColumnDefinitions="*, *">
+                                <Grid Margin="5"
+                                      RowDefinitions="*,*, *,*"
+                                      ColumnDefinitions="*, *">
 
-                                    <Label Grid.Row="0" VerticalOptions="End" Grid.ColumnSpan="5" Grid.RowSpan="2" x:Name="termName" FontSize="Large"  Text="{Binding termName}"></Label>
-                                    <Label Grid.Row="2" Grid.RowSpan="2" Text="{Binding startDate}" ></Label>
-                                    <Label Text="-" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" ></Label>
-                                    <Label Grid.Row="2" Grid.Column="0" HorizontalOptions="End" Text="{Binding endDate}" ></Label>
+                                    <Label Grid.Row="0"
+                                           Grid.ColumnSpan="5"
+                                           Grid.RowSpan="2"
+                                           x:Name="termName"
+                                           FontSize="Large"
+                                           FontAttributes="Bold"
+                                           TextColor="LightGrey"
+                                           Text="{Binding termName}"></Label>
+                                    <Label Grid.Row="2"
+                                           Grid.RowSpan="2"
+                                           Text="{Binding startDate}"
+                                           TextColor="LightGrey"></Label>
+                                    <Label Text="-"
+                                           Grid.Row="2"
+                                           HorizontalOptions="Center"
+                                           TextColor="LightGrey"></Label>
+                                    <Label Grid.Row="2"
+                                           Grid.Column="0"
+                                           HorizontalOptions="End"
+                                           Text="{Binding endDate}"
+                                           TextColor="LightGrey"></Label>
 
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                </Grid>
-
-
-                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*,*">
-
-                    <DatePicker Grid.Row="1" WidthRequest="90" x:Name="editStart4" IsVisible="false" HorizontalOptions="Start" />
-                    <Label x:Name="editDash4" Text="-" Grid.Row="1"  Grid.Column="0"  VerticalOptions="Center" HorizontalOptions="End" IsVisible="false" />
-                    <DatePicker Grid.Row="1" Grid.Column="1" x:Name="editEnd4" HorizontalOptions="StartAndExpand" IsVisible="false"></DatePicker>
-
-
-                    <ImageButton x:Name="cancelEdit4" Clicked="cancel_Clicked" IsVisible="false" ZIndex="1" 
-                 Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
-
-                    <ImageButton x:Name="delete4"  Clicked="deleteTerm_Clicked" ZIndex="1" Source="delete.png" Grid.Row="1" Grid.Column="3"
-                 VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
-
-                    <ImageButton x:Name="save4" Clicked="saveTerm_Clicked"  ZIndex="1" Source="save.png" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
-                 VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
-
 
                 </Grid>
+
+                <Grid BackgroundColor="#042c54"
+                      RowDefinitions="*,*,*,*"
+                      ColumnDefinitions="*,*,*,*">
+
+                    <DatePicker Grid.Row="1"
+                                WidthRequest="90"
+                                x:Name="editStart4"
+                                IsVisible="false"
+                                HorizontalOptions="Start"
+                                TextColor="LightGrey" />
+                    <Label x:Name="editDash4"
+                           Text="-   "
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           HorizontalOptions="End"
+                           IsVisible="false"
+                           TextColor="LightGrey" />
+                    <DatePicker Grid.Row="1"
+                                Grid.Column="1"
+                                x:Name="editEnd4"
+                                HorizontalOptions="StartAndExpand"
+                                IsVisible="false"
+                                TextColor="LightGrey" />
+
+
+                    <ImageButton x:Name="cancelEdit4"
+                                 Clicked="cancel_Clicked"
+                                 IsVisible="false"
+                                 ZIndex="1"
+                                 Source="cancel.png"
+                                 Grid.Row="1"
+                                 Grid.Column="4"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="End"
+                                 HeightRequest="35"
+                                 WidthRequest="30" />
+
+                    <ImageButton x:Name="delete4"
+                                 ZIndex="1"
+                                 Source="delete.png"
+                                 Grid.Row="1"
+                                 Grid.Column="3"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 HeightRequest="30"
+                                 WidthRequest="30"
+                                 Clicked="deleteTerm_Clicked"
+                                 IsVisible="false" />
+
+                    <ImageButton x:Name="save4"
+                                 Clicked="saveTerm_Clicked"
+                                 ZIndex="1"
+                                 Source="save.png"
+                                 Grid.Row="1"
+                                 Grid.Column="3"
+                                 Grid.ColumnSpan="2"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Start"
+                                 HeightRequest="30"
+                                 WidthRequest="30"
+                                 IsVisible="false" />
+
+
+                </Grid>
+
 
                 <!--#endregion-->
 
 
                 <!--#region term4Courses-->
 
-                <Label x:Name="noCourses4" Text="No Courses Yet!" HorizontalOptions="Center" IsVisible="false" />
+                <Label x:Name="noCourses4"
+                       BackgroundColor="#042c54"
+                       TextColor="White"
+                       Text="No Courses Yet!"
+                       FontSize="Body"
+                       FontAttributes="Bold"
+                       Margin="10"
+                       HorizontalOptions="Center"
+                       IsVisible="false" />
 
+                <ListView Margin="5"
+                          x:Name="Term4Courses"
+                          ItemsSource="{Binding courses}"
+                          ItemTapped="term1CourseTapped"
+                          IsVisible="false"
+                          VerticalOptions="Start"
+                          BackgroundColor="LightGray"
+                          SeparatorColor="#042c54">
 
-                <ListView Margin="5" x:Name="Term4Courses"
-     ItemsSource="{Binding courses}"
-        ItemTapped="term4CourseTapped"
-                              IsVisible="false"
-                              VerticalOptions="Start">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid ColumnDefinitions="*,*,*" >
-                                    <Label Text="{Binding courseName}" />
-                                    <Label Text="{Binding startDate}" Grid.Column="1" HorizontalTextAlignment="End" />
-                                    <Label Text="                 - " Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
-                                    <Label Text="{Binding endDate}" Grid.Column="2" HorizontalTextAlignment="End" />
+                                <Grid RowDefinitions="auto"
+                                      ColumnDefinitions="*,*,*">
+                                    <Label Text="{Binding courseName}"
+                                           FontSize="Body"
+                                           FontAttributes="Bold" />
+                                    <Label Text="{Binding startDate}"
+                                           Grid.Column="1"
+                                           FontAttributes="Bold"
+                                           HorizontalTextAlignment="End"
+                                           FontSize="Body" />
+                                    <Label Text="                 - "
+                                           Grid.Column="1"
+                                           Grid.ColumnSpan="2"
+                                           FontAttributes="Bold"
+                                           FontSize="Body"
+                                           HorizontalTextAlignment="Center"
+                                           HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding endDate}"
+                                           Grid.Column="2"
+                                           HorizontalTextAlignment="End"
+                                           FontAttributes="Bold"
+                                           FontSize="Body" />
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
@@ -403,90 +961,232 @@
 
                 <Grid>
 
-                    <Button x:Name="addCourse4" Clicked="addCourse_Clicked" Text="Add" HorizontalOptions="End" IsVisible="false"  />
+                    <Button Margin="3"
+                            HeightRequest="40"
+                            BackgroundColor="#042c54"
+                            x:Name="addCourse4"
+                            Clicked="addCourse_Clicked"
+                            Text="Add"
+                            HorizontalOptions="End"
+                            IsVisible="false" />
 
-                    <Button x:Name="deleteCourse4" Clicked="deleteCourse_Clicked"  Text="Delete" HorizontalOptions="End" IsVisible="false"  />
+                    <Button x:Name="deleteCourse4"
+                            BackgroundColor="#042c54"
+                            Clicked="deleteCourse_Clicked"
+                            Text="Delete"
+                            HorizontalOptions="End"
+                            IsVisible="false" />
                 </Grid>
+
                 <!--#endregion-->
 
 
                 <!--#region Term5-->
 
-                <Grid RowSpacing="10" RowDefinitions="*,*,*"
-    ColumnDefinitions="*,*">
-
-                    <ImageButton x:Name="collapse5" ZIndex="2" Clicked="collapse_Clicked" Source="collapse.png" VerticalOptions="Start" Grid.Row="1"
-             Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
-
-                    <ImageButton x:Name="editTerm5" IsVisible="false" Clicked="editTermButton_Clicked" ZIndex="1" Source="edit_icon.png" Grid.Row="1" Grid.Column="2"
-             VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
 
 
-                    <Entry x:Name="editTerm5Entry" Grid.Row="1" Grid.RowSpan="2" IsVisible="false" />
+                <Grid RowDefinitions="*,*,*"
+                      ColumnDefinitions="*,*"
+                      BackgroundColor="#042c54">
+
+                    <ImageButton x:Name="collapse5"
+                                 ZIndex="2"
+                                 Clicked="collapse_Clicked"
+                                 Source="collapse.png"
+                                 VerticalOptions="Start"
+                                 Grid.Row="1"
+                                 Grid.RowSpan="1"
+                                 Grid.Column="1"
+                                 HeightRequest="35"
+                                 HorizontalOptions="End"
+                                 WidthRequest="50" />
+
+                    <ImageButton x:Name="editTerm5"
+                                 IsVisible="false"
+                                 Clicked="editTermButton_Clicked"
+                                 ZIndex="1"
+                                 Source="edit_icon.png"
+                                 Grid.Row="1"
+                                 Grid.Column="2"
+                                 VerticalOptions="End"
+                                 HorizontalOptions="End"
+                                 HeightRequest="30"
+                                 WidthRequest="45" />
+
+
+                    <Entry x:Name="editTerm5Entry"
+                           Grid.Row="1"
+                           Grid.RowSpan="2"
+                           IsVisible="false"
+                           FontSize="Large"
+                           FontAttributes="Bold"
+                           TextColor="LightGrey" />
 
 
                     <CollectionView x:Name="Term5"
-    ItemsSource="{Binding terms}"
-          Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" >
+                                    ItemsSource="{Binding terms}"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    BackgroundColor="#042c54">
 
+                        <CollectionView.Shadow>
+                            <Shadow Brush="black"
+                                    Radius="20"></Shadow>
+                        </CollectionView.Shadow>
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
 
-                                <Grid RowDefinitions="*,*, *,*" ColumnDefinitions="*, *">
+                                <Grid Margin="5"
+                                      RowDefinitions="*,*, *,*"
+                                      ColumnDefinitions="*, *">
 
-                                    <Label Grid.Row="0" VerticalOptions="End" Grid.ColumnSpan="5" Grid.RowSpan="2" x:Name="termName" FontSize="Large"  Text="{Binding termName}"></Label>
-                                    <Label Grid.Row="2" Grid.RowSpan="2" Text="{Binding startDate}" ></Label>
-                                    <Label Text="-" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" ></Label>
-                                    <Label Grid.Row="2" Grid.Column="0" HorizontalOptions="End" Text="{Binding endDate}" ></Label>
+                                    <Label Grid.Row="0"
+                                           Grid.ColumnSpan="5"
+                                           Grid.RowSpan="2"
+                                           x:Name="termName"
+                                           FontSize="Large"
+                                           FontAttributes="Bold"
+                                           TextColor="LightGrey"
+                                           Text="{Binding termName}"></Label>
+                                    <Label Grid.Row="2"
+                                           Grid.RowSpan="2"
+                                           Text="{Binding startDate}"
+                                           TextColor="LightGrey"></Label>
+                                    <Label Text="-"
+                                           Grid.Row="2"
+                                           HorizontalOptions="Center"
+                                           TextColor="LightGrey"></Label>
+                                    <Label Grid.Row="2"
+                                           Grid.Column="0"
+                                           HorizontalOptions="End"
+                                           Text="{Binding endDate}"
+                                           TextColor="LightGrey"></Label>
 
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                </Grid>
-
-
-                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*,*">
-
-                    <DatePicker Grid.Row="1" WidthRequest="90" x:Name="editStart5" IsVisible="false" HorizontalOptions="Start" />
-                    <Label x:Name="editDash5" Text="-" Grid.Row="1"  Grid.Column="0"  VerticalOptions="Center" HorizontalOptions="End" IsVisible="false" />
-                    <DatePicker Grid.Row="1" Grid.Column="1" x:Name="editEnd5" HorizontalOptions="StartAndExpand" IsVisible="false"></DatePicker>
-
-
-                    <ImageButton x:Name="cancelEdit5" Clicked="cancel_Clicked" IsVisible="false" ZIndex="1" 
-                 Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
-
-                    <ImageButton x:Name="delete5" Clicked="deleteTerm_Clicked"  ZIndex="1" Source="delete.png" Grid.Row="1" Grid.Column="3"
-                 VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
-
-                    <ImageButton x:Name="save5" Clicked="saveTerm_Clicked"  ZIndex="1" Source="save.png" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
-                 VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
-
 
                 </Grid>
+
+                <Grid BackgroundColor="#042c54"
+                      RowDefinitions="*,*,*,*"
+                      ColumnDefinitions="*,*,*,*">
+
+                    <DatePicker Grid.Row="1"
+                                WidthRequest="90"
+                                x:Name="editStart5"
+                                IsVisible="false"
+                                HorizontalOptions="Start"
+                                TextColor="LightGrey" />
+                    <Label x:Name="editDash5"
+                           Text="-   "
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           HorizontalOptions="End"
+                           IsVisible="false"
+                           TextColor="LightGrey" />
+                    <DatePicker Grid.Row="1"
+                                Grid.Column="1"
+                                x:Name="editEnd5"
+                                HorizontalOptions="StartAndExpand"
+                                IsVisible="false"
+                                TextColor="LightGrey" />
+
+
+                    <ImageButton x:Name="cancelEdit5"
+                                 Clicked="cancel_Clicked"
+                                 IsVisible="false"
+                                 ZIndex="1"
+                                 Source="cancel.png"
+                                 Grid.Row="1"
+                                 Grid.Column="4"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="End"
+                                 HeightRequest="35"
+                                 WidthRequest="30" />
+
+                    <ImageButton x:Name="delete5"
+                                 ZIndex="1"
+                                 Source="delete.png"
+                                 Grid.Row="1"
+                                 Grid.Column="3"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 HeightRequest="30"
+                                 WidthRequest="30"
+                                 Clicked="deleteTerm_Clicked"
+                                 IsVisible="false" />
+
+                    <ImageButton x:Name="save5"
+                                 Clicked="saveTerm_Clicked"
+                                 ZIndex="1"
+                                 Source="save.png"
+                                 Grid.Row="1"
+                                 Grid.Column="3"
+                                 Grid.ColumnSpan="2"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Start"
+                                 HeightRequest="30"
+                                 WidthRequest="30"
+                                 IsVisible="false" />
+
+
+                </Grid>
+
 
                 <!--#endregion-->
 
 
                 <!--#region term5Courses-->
 
-                <Label x:Name="noCourses5" Text="No Courses Yet!" HorizontalOptions="Center" IsVisible="false" />
+                <Label x:Name="noCourses5"
+                       BackgroundColor="#042c54"
+                       TextColor="White"
+                       Text="No Courses Yet!"
+                       FontSize="Body"
+                       FontAttributes="Bold"
+                       Margin="10"
+                       HorizontalOptions="Center"
+                       IsVisible="false" />
 
+                <ListView Margin="5"
+                          x:Name="Term5Courses"
+                          ItemsSource="{Binding courses}"
+                          ItemTapped="term1CourseTapped"
+                          IsVisible="false"
+                          VerticalOptions="Start"
+                          BackgroundColor="LightGray"
+                          SeparatorColor="#042c54">
 
-                <ListView Margin="5" x:Name="Term5Courses"
-     ItemsSource="{Binding courses}"
-        ItemTapped="term5CourseTapped"
-                              IsVisible="false"
-                              VerticalOptions="Start">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid ColumnDefinitions="*,*,*" >
-                                    <Label Text="{Binding courseName}" />
-                                    <Label Text="{Binding startDate}" Grid.Column="1" HorizontalTextAlignment="End" />
-                                    <Label Text="                 - " Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
-                                    <Label Text="{Binding endDate}" Grid.Column="2" HorizontalTextAlignment="End" />
+                                <Grid RowDefinitions="auto"
+                                      ColumnDefinitions="*,*,*">
+                                    <Label Text="{Binding courseName}"
+                                           FontSize="Body"
+                                           FontAttributes="Bold" />
+                                    <Label Text="{Binding startDate}"
+                                           Grid.Column="1"
+                                           FontAttributes="Bold"
+                                           HorizontalTextAlignment="End"
+                                           FontSize="Body" />
+                                    <Label Text="                 - "
+                                           Grid.Column="1"
+                                           Grid.ColumnSpan="2"
+                                           FontAttributes="Bold"
+                                           FontSize="Body"
+                                           HorizontalTextAlignment="Center"
+                                           HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding endDate}"
+                                           Grid.Column="2"
+                                           HorizontalTextAlignment="End"
+                                           FontAttributes="Bold"
+                                           FontSize="Body" />
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
@@ -495,90 +1195,231 @@
 
                 <Grid>
 
-                    <Button x:Name="addCourse5" Clicked="addCourse_Clicked" Text="Add" HorizontalOptions="End" IsVisible="false"  />
+                    <Button Margin="3"
+                            HeightRequest="40"
+                            BackgroundColor="#042c54"
+                            x:Name="addCourse5"
+                            Clicked="addCourse_Clicked"
+                            Text="Add"
+                            HorizontalOptions="End"
+                            IsVisible="false" />
 
-                    <Button x:Name="deleteCourse5" Clicked="deleteCourse_Clicked"  Text="Delete" HorizontalOptions="End" IsVisible="false"  />
+                    <Button x:Name="deleteCourse5"
+                            BackgroundColor="#042c54"
+                            Clicked="deleteCourse_Clicked"
+                            Text="Delete"
+                            HorizontalOptions="End"
+                            IsVisible="false" />
                 </Grid>
 
                 <!--#endregion-->
 
 
                 <!--#region Term6-->
-                <Grid RowSpacing="10" RowDefinitions="*,*,*"
-    ColumnDefinitions="*,*">
-
-                    <ImageButton x:Name="collapse6" ZIndex="2" Clicked="collapse_Clicked" Source="collapse.png" VerticalOptions="Start" Grid.Row="1"
-             Grid.RowSpan="2"  Grid.Column="1" HeightRequest="30" HorizontalOptions="End" WidthRequest="50" BackgroundColor="blue" />
-
-                    <ImageButton x:Name="editTerm6" IsVisible="false" Clicked="editTermButton_Clicked" ZIndex="1" Source="edit_icon.png" Grid.Row="1" Grid.Column="2"
-             VerticalOptions="End" HorizontalOptions="EndAndExpand" HeightRequest="20" WidthRequest="50" BackgroundColor="Yellow"/>
 
 
-                    <Entry x:Name="editTerm6Entry" Grid.Row="1" Grid.RowSpan="2" IsVisible="false" />
+                <Grid RowDefinitions="*,*,*"
+                      ColumnDefinitions="*,*"
+                      BackgroundColor="#042c54">
+
+                    <ImageButton x:Name="collapse6"
+                                 ZIndex="2"
+                                 Clicked="collapse_Clicked"
+                                 Source="collapse.png"
+                                 VerticalOptions="Start"
+                                 Grid.Row="1"
+                                 Grid.RowSpan="1"
+                                 Grid.Column="1"
+                                 HeightRequest="35"
+                                 HorizontalOptions="End"
+                                 WidthRequest="50" />
+
+                    <ImageButton x:Name="editTerm6"
+                                 IsVisible="false"
+                                 Clicked="editTermButton_Clicked"
+                                 ZIndex="1"
+                                 Source="edit_icon.png"
+                                 Grid.Row="1"
+                                 Grid.Column="2"
+                                 VerticalOptions="End"
+                                 HorizontalOptions="End"
+                                 HeightRequest="30"
+                                 WidthRequest="45" />
+
+
+                    <Entry x:Name="editTerm6Entry"
+                           Grid.Row="1"
+                           Grid.RowSpan="2"
+                           IsVisible="false"
+                           FontSize="Large"
+                           FontAttributes="Bold"
+                           TextColor="LightGrey" />
 
 
                     <CollectionView x:Name="Term6"
-    ItemsSource="{Binding terms}"
-          Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" >
+                                    ItemsSource="{Binding terms}"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    BackgroundColor="#042c54">
+                        <CollectionView.Shadow>
+                            <Shadow Brush="black"
+                                    Radius="20"></Shadow>
+                        </CollectionView.Shadow>
 
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
 
-                                <Grid RowDefinitions="*,*, *,*" ColumnDefinitions="*, *">
+                                <Grid Margin="5"
+                                      RowDefinitions="*,*, *,*"
+                                      ColumnDefinitions="*, *">
 
-                                    <Label Grid.Row="0" VerticalOptions="End" Grid.ColumnSpan="5" Grid.RowSpan="2" x:Name="termName" FontSize="Large"  Text="{Binding termName}"></Label>
-                                    <Label Grid.Row="2" Grid.RowSpan="2" Text="{Binding startDate}" ></Label>
-                                    <Label Text="-" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" ></Label>
-                                    <Label Grid.Row="2" Grid.Column="0" HorizontalOptions="End" Text="{Binding endDate}" ></Label>
+                                    <Label Grid.Row="0"
+                                           Grid.ColumnSpan="5"
+                                           Grid.RowSpan="2"
+                                           x:Name="termName"
+                                           FontSize="Large"
+                                           FontAttributes="Bold"
+                                           TextColor="LightGrey"
+                                           Text="{Binding termName}"></Label>
+                                    <Label Grid.Row="2"
+                                           Grid.RowSpan="2"
+                                           Text="{Binding startDate}"
+                                           TextColor="LightGrey"></Label>
+                                    <Label Text="-"
+                                           Grid.Row="2"
+                                           HorizontalOptions="Center"
+                                           TextColor="LightGrey"></Label>
+                                    <Label Grid.Row="2"
+                                           Grid.Column="0"
+                                           HorizontalOptions="End"
+                                           Text="{Binding endDate}"
+                                           TextColor="LightGrey"></Label>
 
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                </Grid>
-
-
-                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*,*">
-
-                    <DatePicker Grid.Row="1" WidthRequest="90" x:Name="editStart6" IsVisible="false" HorizontalOptions="Start" />
-                    <Label x:Name="editDash6" Text="-" Grid.Row="1"  Grid.Column="0"  VerticalOptions="Center" HorizontalOptions="End" IsVisible="false" />
-                    <DatePicker Grid.Row="1" Grid.Column="1" x:Name="editEnd6" HorizontalOptions="StartAndExpand" IsVisible="false"></DatePicker>
-
-
-                    <ImageButton x:Name="cancelEdit6" Clicked="cancel_Clicked" IsVisible="false" ZIndex="1" 
-                 Source="cancel.png" Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="30"  WidthRequest="30"  />
-
-                    <ImageButton x:Name="delete6" Clicked="deleteTerm_Clicked"  ZIndex="1" Source="delete.png" Grid.Row="1" Grid.Column="3"
-                 VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
-
-                    <ImageButton x:Name="save6"  Clicked="saveTerm_Clicked" ZIndex="1" Source="save.png" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
-                 VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="30"  WidthRequest="30" IsVisible="false" />
-
 
                 </Grid>
+
+                <Grid BackgroundColor="#042c54"
+                      RowDefinitions="*,*,*,*"
+                      ColumnDefinitions="*,*,*,*">
+
+                    <DatePicker Grid.Row="1"
+                                WidthRequest="90"
+                                x:Name="editStart6"
+                                IsVisible="false"
+                                HorizontalOptions="Start"
+                                TextColor="LightGrey" />
+                    <Label x:Name="editDash6"
+                           Text="-   "
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           HorizontalOptions="End"
+                           IsVisible="false"
+                           TextColor="LightGrey" />
+                    <DatePicker Grid.Row="1"
+                                Grid.Column="1"
+                                x:Name="editEnd6"
+                                HorizontalOptions="StartAndExpand"
+                                IsVisible="false"
+                                TextColor="LightGrey" />
+
+
+                    <ImageButton x:Name="cancelEdit6"
+                                 Clicked="cancel_Clicked"
+                                 IsVisible="false"
+                                 ZIndex="1"
+                                 Source="cancel.png"
+                                 Grid.Row="1"
+                                 Grid.Column="4"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="End"
+                                 HeightRequest="35"
+                                 WidthRequest="30" />
+
+                    <ImageButton x:Name="delete6"
+                                 ZIndex="1"
+                                 Source="delete.png"
+                                 Grid.Row="1"
+                                 Grid.Column="3"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 HeightRequest="30"
+                                 WidthRequest="30"
+                                 Clicked="deleteTerm_Clicked"
+                                 IsVisible="false" />
+
+                    <ImageButton x:Name="save6"
+                                 Clicked="saveTerm_Clicked"
+                                 ZIndex="1"
+                                 Source="save.png"
+                                 Grid.Row="1"
+                                 Grid.Column="3"
+                                 Grid.ColumnSpan="2"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Start"
+                                 HeightRequest="30"
+                                 WidthRequest="30"
+                                 IsVisible="false" />
+
+
+                </Grid>
+
 
                 <!--#endregion-->
 
 
                 <!--#region term6Courses-->
 
-                <Label x:Name="noCourses6" Text="No Courses Yet!" HorizontalOptions="Center" IsVisible="false" />
+                <Label x:Name="noCourses6"
+                       BackgroundColor="#042c54"
+                       TextColor="White"
+                       Text="No Courses Yet!"
+                       FontSize="Body"
+                       FontAttributes="Bold"
+                       Margin="10"
+                       HorizontalOptions="Center"
+                       IsVisible="false" />
 
+                <ListView Margin="5"
+                          x:Name="Term6Courses"
+                          ItemsSource="{Binding courses}"
+                          ItemTapped="term1CourseTapped"
+                          IsVisible="false"
+                          VerticalOptions="Start"
+                          BackgroundColor="LightGray"
+                          SeparatorColor="#042c54">
 
-                <ListView Margin="5" x:Name="Term6Courses"
-     ItemsSource="{Binding courses}"
-        ItemTapped="term6CourseTapped"
-                              IsVisible="false"
-                              VerticalOptions="Start">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid ColumnDefinitions="*,*,*" >
-                                    <Label Text="{Binding courseName}" />
-                                    <Label Text="{Binding startDate}" Grid.Column="1" HorizontalTextAlignment="End" />
-                                    <Label Text="                 - " Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
-                                    <Label Text="{Binding endDate}" Grid.Column="2" HorizontalTextAlignment="End" />
+                                <Grid RowDefinitions="auto"
+                                      ColumnDefinitions="*,*,*">
+                                    <Label Text="{Binding courseName}"
+                                           FontSize="Body"
+                                           FontAttributes="Bold" />
+                                    <Label Text="{Binding startDate}"
+                                           Grid.Column="1"
+                                           FontAttributes="Bold"
+                                           HorizontalTextAlignment="End"
+                                           FontSize="Body" />
+                                    <Label Text="                 - "
+                                           Grid.Column="1"
+                                           Grid.ColumnSpan="2"
+                                           FontAttributes="Bold"
+                                           FontSize="Body"
+                                           HorizontalTextAlignment="Center"
+                                           HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding endDate}"
+                                           Grid.Column="2"
+                                           HorizontalTextAlignment="End"
+                                           FontAttributes="Bold"
+                                           FontSize="Body" />
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
@@ -587,11 +1428,27 @@
 
                 <Grid>
 
-                    <Button x:Name="addCourse6" Clicked="addCourse_Clicked" Text="Add" HorizontalOptions="End" IsVisible="false"  />
+                    <Button Margin="3"
+                            HeightRequest="40"
+                            BackgroundColor="#042c54"
+                            x:Name="addCourse6"
+                            Clicked="addCourse_Clicked"
+                            Text="Add"
+                            HorizontalOptions="End"
+                            IsVisible="false" />
 
-                    <Button x:Name="deleteCourse6" Clicked="deleteCourse_Clicked"  Text="Delete" HorizontalOptions="End" IsVisible="false"  />
+                    <Button x:Name="deleteCourse6"
+                            BackgroundColor="#042c54"
+                            Clicked="deleteCourse_Clicked"
+                            Text="Delete"
+                            HorizontalOptions="End"
+                            IsVisible="false" />
                 </Grid>
+
                 <!--#endregion-->
+
+
+
 
             </StackLayout>
 
@@ -606,21 +1463,105 @@
 
 
 
-        <Grid  ZIndex="4" Grid.RowSpan="2" VerticalOptions="End" BackgroundColor="Blue" Grid.Row="2" RowDefinitions="auto, auto,auto " ColumnDefinitions="*, *, *, *">
+        <Grid  ZIndex="4"
+               Grid.RowSpan="2"
+               VerticalOptions="End"
+               Grid.Row="2"
+               RowDefinitions="auto, auto,auto "
+               ColumnDefinitions="*, *, *, *"
+               BackgroundColor="#042c54">
+
+            <Grid.Shadow>
+                <Shadow Brush="black"
+                        Radius="40" />
+            </Grid.Shadow>
+
+            <Entry  x:Name="addTermName"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="4"
+                    Placeholder="New Term"
+                    FontFamily="bold"
+                    FontSize="Large"
+                    IsVisible="false"
+                    HorizontalTextAlignment="Center" />
+
+            <Label x:Name="startLabel"
+                   Text="Start Date"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"
+                   FontFamily="Bold"
+                   FontSize="Medium"
+                   TextColor="White"
+                   IsVisible="false" />
+
+            <DatePicker  x:Name="addTermStart"
+                         Grid.Row="1"
+                         Grid.Column="1"
+                         Grid.ColumnSpan="1"
+                         HorizontalOptions="Start"
+                         IsVisible="false"
+                         TextColor="White"
+                         FontFamily="Bold"
+                         FontSize="Body" />
+
+            <Label  x:Name="endLabel"
+                    Text="End Date"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    IsVisible="false"
+                    TextColor="White"
+                    FontFamily="Bold"
+                    FontSize="Medium" />
+
+            <DatePicker x:Name="addTermEnd"
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        HorizontalOptions="Start"
+                        IsVisible="false"
+                        TextColor="White"
+                        FontFamily="Bold"
+                        FontSize="Body" />
+
+            <Button x:Name="addTerm"
+                    VerticalOptions="End"
+                    Text="Add A New Term"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="4"
+                    HorizontalOptions="Fill"
+                    Clicked="addTerm_Clicked"
+                    TextColor="Black"
+                    FontSize="Body"
+                    FontAttributes="Bold"
+                    BackgroundColor="#ad8119" />
+
+            <Button x:Name="saveTerm"
+                    Clicked="saveTerm_Clicked"
+                    Text="Save"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="5"
+                    IsVisible="false"
+                    TextColor="Black"
+                    BackgroundColor="#c08f1c" />
+
+            <Button x:Name="cancelTerm"
+                    Clicked="cancel_Clicked"
+                    Text="Cancel"
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    Margin="5"
+                    IsVisible="false"
+                    TextColor="Black"
+                    BackgroundColor="#c08f1c" />
 
 
-            <Entry  x:Name="addTermName" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Placeholder="New Term"
-                   BackgroundColor="Blue"  IsVisible="false" HorizontalTextAlignment="Center"  />
-
-            <Label BackgroundColor="Yellow" x:Name="startLabel" Text="Start Date" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" IsVisible="false"/>
-            <DatePicker  x:Name="addTermStart" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" HorizontalOptions="Start" IsVisible="false" />
-            <Label  x:Name="endLabel" Text="End Date" Grid.Row="1" Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="End" IsVisible="false" />
-
-            <DatePicker x:Name="addTermEnd"  Grid.Row="1" Grid.Column="3"  HorizontalOptions="Center" IsVisible="false"/>
-
-            <Button x:Name="addTerm" VerticalOptions="End" Text="Add A New Term" Grid.Column="0" Grid.ColumnSpan="4"    HorizontalOptions="Fill" Clicked="addTerm_Clicked" />
-            <Button x:Name="saveTerm" Clicked="saveTerm_Clicked" Text="Save" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" IsVisible="false" />
-            <Button x:Name="cancelTerm" Clicked="cancel_Clicked" Text="Cancel" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" IsVisible="false"/>
         </Grid>
 
 

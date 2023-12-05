@@ -450,3 +450,5 @@ C:\Maui_C971\MauiApp3\obj\Release\net7.0-android\stamp\_ConvertResourcesCases.st
 C:\Maui_C971\MauiApp3\obj\Release\net7.0-android\stamp\_GenerateJavaStubs.stamp
 C:\Maui_C971\MauiApp3\obj\Release\net7.0-android\stamp\_GeneratePackageManagerJava.stamp
 C:\Maui_C971\MauiApp3\obj\Release\net7.0-android\stamp\_ResolveLibraryProjectImports.stamp
+C:\Maui_C971\MauiApp3\obj\Release\net7.0-android\resizetizer\r\drawable\wgu.jpg
+C:\Maui_C971\MauiApp3\obj\Release\net7.0-android\resizetizer\r\drawable\wgu_seal.png
