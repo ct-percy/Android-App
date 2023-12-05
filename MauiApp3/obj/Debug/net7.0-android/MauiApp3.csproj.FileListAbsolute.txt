@@ -1018,6 +1018,9 @@ C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\lp\172\jl\files.cache
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\lp\174\jl\files.cache
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\resizetizer\r\drawable\wgu.png
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\resizetizer\r\drawable\wgu.jpg
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\resizetizer\r\drawable\wgu_seal.png
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\resizetizer\r\drawable\wgu_owl.png
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\resizetizer\r\drawable\sage1.png
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\assets\mscorlib.dll
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\assets\System.Collections.Concurrent.dll
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\assets\System.Data.Common.dll
@@ -1031,6 +1034,3 @@ C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\assets\System.Runtime.dll
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\assets\System.Runtime.Extensions.dll
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\assets\System.Runtime.Serialization.Formatters.dll
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\assets\System.Xml.dll
-C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\resizetizer\r\drawable\wgu_seal.png
-C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\resizetizer\r\drawable\wgu_owl.png
-C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\resizetizer\r\drawable\sage1.png

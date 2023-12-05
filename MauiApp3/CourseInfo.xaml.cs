@@ -144,6 +144,7 @@ public partial class CourseInfo : ContentPage
         courseCV2.IsVisible = false;
         dueDateCV.IsVisible = false;
         notesCV.IsVisible = false;
+        notesFrame.IsVisible = false;
         shareButton.IsVisible = false;
 
         editCourseGrid.IsVisible = true;
@@ -151,7 +152,9 @@ public partial class CourseInfo : ContentPage
         editDueDateGrid.IsVisible = true;
         statusPicker.IsVisible = true;
         notesEditor.IsVisible = true;
+        notesEditorFrame.IsVisible = true;
         notifyCheckbox.IsEnabled = true;
+        pendingButton.IsVisible = true;
 
         if (selectedCourse.status == "Active")
         {
@@ -195,13 +198,16 @@ public partial class CourseInfo : ContentPage
         dueDateCV.IsVisible = true;
         notesCV.IsVisible = true;
         shareButton.IsVisible = true;
+        notesFrame.IsVisible = true;
 
         editCourseGrid.IsVisible = false;
         editInstructorGrid.IsVisible = false;
         editDueDateGrid.IsVisible = false;
         statusPicker.IsVisible = false;
         notesEditor.IsVisible = false;
+        notesEditorFrame.IsVisible = false;
         notifyCheckbox.IsEnabled = false;
+        pendingButton.IsVisible = false;
 
 
     }
