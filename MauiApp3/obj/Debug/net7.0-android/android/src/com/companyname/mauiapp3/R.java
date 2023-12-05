@@ -10919,7 +10919,8 @@ public final class R {
     public static final int tooltip_frame_dark=0x7f0700ec;
     public static final int tooltip_frame_light=0x7f0700ed;
     public static final int wgu=0x7f0700ee;
-    public static final int wgu_seal=0x7f0700ef;
+    public static final int wgu_owl=0x7f0700ef;
+    public static final int wgu_seal=0x7f0700f0;
   }
   public static final class id {
     public static final int ALT=0x7f080000;

@@ -28586,7 +28586,10 @@ namespace MauiApp3
 			public const int wgu = 2131165422;
 			
 			// aapt resource value: 0x7F0700EF
-			public const int wgu_seal = 2131165423;
+			public const int wgu_owl = 2131165423;
+			
+			// aapt resource value: 0x7F0700F0
+			public const int wgu_seal = 2131165424;
 			
 			static Drawable()
 			{

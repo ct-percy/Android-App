@@ -3,92 +3,257 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MauiApp3.AddCourse"
-             Title="AddCourse">
-    
-    
-    
+             Title="AddCourse"
+             BackgroundImageSource="wgu_owl.png">
+
+
+
     <StackLayout>
-        <Grid  RowDefinitions="*,*,AUTO" >
+        <Grid  RowDefinitions="*,*,AUTO">
 
-            <Button ZIndex="1" Text="Back" Clicked="Back_Clicked" Grid.Row="0" VerticalOptions="Start" HorizontalOptions="Start"   HeightRequest="50" Grid.Column="0" Grid.ColumnSpan="3" />
-
-
-            <Label ZIndex="0" HeightRequest="50" Text="Add Course" TextColor="Yellow" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" VerticalTextAlignment="Center" FontSize="Large"
-HorizontalTextAlignment="Center"  BackgroundColor="Blue" />
+            <Button ZIndex="1"
+                    Text="Back"
+                    Clicked="Back_Clicked"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start"
+                    HeightRequest="45"
+                    WidthRequest="70"
+                    BackgroundColor="#042c54"/>
 
 
             <CollectionView x:Name="termNameCV"
-                          ZIndex="2"
+                            BackgroundColor="#c08f1c"
                             ItemsSource="{Binding terms}"
-                            Grid.Row="2"
-                             Grid.Column="0" Grid.ColumnSpan="10"
-                        
-                           
-                           
-              
-                >
-
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="10"
+                            >
+                <CollectionView.Shadow>
+                    <Shadow Brush="black"
+                            Radius="40" />
+                </CollectionView.Shadow>
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
 
-
-                        <Label FontSize="Large" HeightRequest="50"  HorizontalTextAlignment="Center" BackgroundColor="Yellow" Text="{Binding termName}" />
+                        <Label
+                               HeightRequest="50"
+                               HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                               Text="{Binding termName}"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               TextDecorations="Underline"
+                               FontSize="Title"/>
+                       
 
                     </DataTemplate>
-
-
-
                 </CollectionView.ItemTemplate>
-
             </CollectionView>
 
+
+            <Label HeightRequest="50"
+                   Text="Add A New Course"
+                   TextColor="White"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="10"
+                   VerticalTextAlignment="Center"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   BackgroundColor="#042c54">
+                <Label.Shadow>
+                    <Shadow Brush="black"
+                            Radius="40" />
+                </Label.Shadow>
+            </Label>
 
         </Grid>
 
 
 
         <Grid RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto"
-         ColumnDefinitions="*,*,*,*,*,*,*,*,*,*"
-             RowSpacing="3" >
+              ColumnDefinitions="*,*,*,*,*,*,*,*,*,*"
+              RowSpacing="3"
+              Margin="5">
+            
+            
 
 
 
+            <Label HeightRequest="60"
+                   Grid.Row="1"
+                   Text="Course Title"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="5"
+                   FontSize="Large"
+                   
+                  
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   TextDecorations="Underline"/>
+            
+            <Entry 
+                   x:Name="courseNameEntry"
+                   Grid.Row="1"
+                   Grid.Column="4"
+                   Grid.ColumnSpan="6" 
+                   FontSize="Large"     
+                    VerticalTextAlignment="Center"/>
 
-            <Label HeightRequest="60" Grid.Row="1"  Text="Course Title" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
-            <Entry ZIndex="1" x:Name="courseNameEntry" Grid.Row="1"  BackgroundColor="Aqua" Grid.Column="4" Grid.ColumnSpan="6" />
+            <Label HeightRequest="80"
+                   Grid.Row="2"
+                   Text="Instructor"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="5"
+                   FontSize="Large"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   TextDecorations="Underline" />
+            
+            <Entry HeightRequest="80"
+                   
+                   x:Name="profEntry"
+                   Grid.Row="2"
+                   FontSize="Large"
+                   Grid.Column="4"
+                   Grid.ColumnSpan="6" />
 
-            <Label HeightRequest="80" Grid.Row="2" Text="Instructor" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
-            <Entry HeightRequest="80" ZIndex="1" x:Name="profEntry" Grid.Row="2"  BackgroundColor="Aqua" Grid.Column="4" Grid.ColumnSpan="6" />
-
-            <Label HeightRequest="80" Grid.Row="3" Text="Instructor Email" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
-            <Entry HeightRequest="80" ZIndex="1" x:Name="emailEntry" Grid.Row="3" BackgroundColor="Aqua" Grid.Column="4" Grid.ColumnSpan="6" >
+            <Label HeightRequest="80"
+                   Grid.Row="3"
+                   Text="Instructor Email"
+                    WidthRequest="150"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="5"
+                   FontSize="Large"
+                   VerticalTextAlignment="Start"
+                   HorizontalTextAlignment="Start"
+                   FontAttributes="Bold"
+                   TextDecorations="Underline"
+                   HorizontalOptions="Start"/>
+            
+            <Entry HeightRequest="80"
+                  
+                   x:Name="emailEntry"
+                   Grid.Row="3"
+                   FontSize="Large"
+                   Grid.Column="4"
+                   Grid.ColumnSpan="6">
                 <Entry.Behaviors>
-                    <toolkit:EmailValidationBehavior
-                        x:Name="emailValidator"></toolkit:EmailValidationBehavior>
+                    <toolkit:EmailValidationBehavior x:Name="emailValidator"></toolkit:EmailValidationBehavior>
                 </Entry.Behaviors>
             </Entry>
 
 
 
 
-            <Label HeightRequest="80" Grid.Row="4" Text="Instructor Phone" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
-            <Entry HeightRequest="80" ZIndex="1" x:Name="phoneEntry" Grid.Row="4"  BackgroundColor="Aqua" Grid.Column="4" Grid.ColumnSpan="6" >
-                <Entry.Behaviors >
-                    <toolkit:TextValidationBehavior x:Name="phoneValidator" RegexPattern="^\d{3}-\d{3}-\d{4}$"  ></toolkit:TextValidationBehavior>
-                </Entry.Behaviors> 
+            <Label HeightRequest="80"
+                   WidthRequest="150"
+                   Grid.Row="4"
+                   Text="Instructor Phone"
+                   
+                   Grid.Column="0"
+                   Grid.ColumnSpan="5"
+                   FontSize="Large"
+                   VerticalTextAlignment="Start"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   FontAttributes="Bold"
+                   TextDecorations="Underline" />
+            
+            <Entry HeightRequest="80"
+                  
+                   x:Name="phoneEntry"
+                   Grid.Row="4"
+                   FontSize="Large"
+                   Grid.Column="4"
+                   Grid.ColumnSpan="6">
+                <Entry.Behaviors>
+                    <toolkit:TextValidationBehavior x:Name="phoneValidator"
+                                                    RegexPattern="^\d{3}-\d{3}-\d{4}$"></toolkit:TextValidationBehavior>
+                </Entry.Behaviors>
             </Entry>
 
-            <Label HeightRequest="80" Grid.Row="5" Text="Expected Start Date" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
-            <DatePicker HeightRequest="80" ZIndex="1" x:Name="startEntry" BackgroundColor="BlueViolet" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="6" />
+            <Label HeightRequest="80"
+                   WidthRequest="150"
+                   Grid.Row="5"
+                   Text="Start Date"
+                   
+                   Grid.Column="0"
+                   Grid.ColumnSpan="5"
+                   FontSize="Large"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Start"
+                   HorizontalOptions="Start"
+                   FontAttributes="Bold"
+                   TextDecorations="Underline" />
+            
+            <DatePicker HeightRequest="80"
+                        
+                        x:Name="startEntry"
+                        FontSize="Large"
+                        Grid.Row="5"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="6" />
 
-            <Label HeightRequest="80" Grid.Row="6" Text="Expected End Date" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
-            <DatePicker HeightRequest="80" ZIndex="1" x:Name="endEntry" BackgroundColor="BlueViolet" Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="6" />
+            <Label HeightRequest="80"
+                   Grid.Row="6"
+                   Text="End Date"
+                  
+                   Grid.Column="0"
+                   Grid.ColumnSpan="5"
+                   FontSize="Large"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   TextDecorations="Underline" />
+            
+            <DatePicker HeightRequest="80"
+                     
+                        x:Name="endEntry"
+                        FontSize="Large"
+                        Grid.Row="6"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="6"
+                        />
 
-            <Label HeightRequest="80" Grid.Row="7" Text="Due Date" BackgroundColor="Aqua" Grid.Column="0" Grid.ColumnSpan="5" />
-            <DatePicker HeightRequest="80" ZIndex="1" x:Name="dueEntry" BackgroundColor="BlueViolet" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="6" />
+            <Label HeightRequest="80"
+                   Grid.Row="7"
+                   Text="Due Date"
+                  
+                   Grid.Column="0"
+                   Grid.ColumnSpan="5"
+                   FontSize="Large"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   TextDecorations="Underline" />
+            
+            <DatePicker HeightRequest="80"
+                      
+                        x:Name="dueEntry"
+                        FontSize="Large"
+                        Grid.Row="7"
+                        Grid.Column="4"
+                        Grid.ColumnSpan="6" />
 
-            <Picker HeightRequest="80" x:Name="statusEntry" ZIndex="1" Grid.Row="8" BackgroundColor="blue"  Grid.ColumnSpan="3" Title="Status" IsEnabled="True" >
+            <Picker
+                    WidthRequest="150"
+                    HeightRequest="80"
+                    x:Name="statusEntry"
+                   VerticalOptions="Center"
+                    Grid.Row="8"
+                   
+                    HorizontalTextAlignment="Center"
+                    Grid.ColumnSpan="3"
+                    Title="Status"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    
+                    
+                    >
                 <Picker.Items>
 
                     <x:String>Active</x:String>
@@ -98,11 +263,29 @@ HorizontalTextAlignment="Center"  BackgroundColor="Blue" />
                 </Picker.Items>
             </Picker>
 
-            <CheckBox x:Name="notifyCheckbox" CheckedChanged="notifyCheckbox_CheckedChanged"  ZIndex="1" Grid.Row="8" Grid.Column="5"></CheckBox>
+            <CheckBox x:Name="notifyCheckbox"
+                      CheckedChanged="notifyCheckbox_CheckedChanged"
+                      Color="#042c54"
+                      Grid.Row="8"
+                      Grid.Column="5"></CheckBox>
 
-            <Label Text="Notify?" VerticalOptions="Center" Grid.Row="8" Grid.Column="6" Grid.ColumnSpan="2"></Label>
+            <Label Text="Notify?"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"
+                   Grid.Row="8"
+                   Grid.Column="6"
+                   Grid.ColumnSpan="2"></Label>
 
-            <Button ZIndex="1"  Text="Save" x:Name="saveButton" Clicked="saveButton_Clicked" Grid.Row="09" Grid.Column="3" Grid.ColumnSpan="4"  ></Button>
+            <Button 
+                    Text="Save"
+                    BackgroundColor="#042c54"
+                     WidthRequest="200"
+                    x:Name="saveButton"
+                    Clicked="saveButton_Clicked"
+                    Grid.Row="09"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="4"></Button>
 
 
 
