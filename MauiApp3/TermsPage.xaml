@@ -5,9 +5,14 @@
              xmlns:statusBar="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              BackgroundImageSource="wgu_seal.png">
 
+    <!--This changes status bar color -->
+
     <Page.Behaviors>
         <statusBar:StatusBarBehavior StatusBarColor="#042c54" />
     </Page.Behaviors>
+
+
+
 
     <!--this grid creates header, body, and footer -->
 

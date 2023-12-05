@@ -1,5 +1,5 @@
 using MauiApp3.Database;
-
+using Microsoft.Maui.Controls;
 
 namespace MauiApp3;
 
@@ -1056,7 +1056,7 @@ public partial class TermsPage : ContentPage
         Term6Courses.SelectedItem = null;
 
         selectedCourse = Term1Courses.SelectedItem;
-
+        
 
 
         if (deleteCourse1.IsVisible != true)
@@ -1075,6 +1075,7 @@ public partial class TermsPage : ContentPage
         Term6Courses.SelectedItem = null;
 
         selectedCourse = Term2Courses.SelectedItem;
+        
 
         if (deleteCourse2.IsVisible != true)
         {

@@ -1033,3 +1033,4 @@ C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\assets\System.Runtime.Ser
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\android\assets\System.Xml.dll
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\resizetizer\r\drawable\wgu_seal.png
 C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\resizetizer\r\drawable\wgu_owl.png
+C:\Maui_C971\MauiApp3\obj\Debug\net7.0-android\resizetizer\r\drawable\sage1.png
