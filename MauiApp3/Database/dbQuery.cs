@@ -11,7 +11,7 @@ namespace MauiApp3.Database
 
         #region Terms Queries
 
-        public static async Task AddTerm(string name, string start, string end)
+        public static async Task<int> AddTerm(string name, string start, string end)
         {
             await Connection.Init();
 
@@ -26,6 +26,8 @@ namespace MauiApp3.Database
             };
 
             await Connection._db.InsertAsync(term);
+
+            return term.Id;
 
         }
         public async static Task<IEnumerable<terms>> GetTerm1()

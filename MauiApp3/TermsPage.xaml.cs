@@ -36,6 +36,9 @@ public partial class TermsPage : ContentPage
     public async void onStart()
     {
 
+       
+
+
         #region Try/Catch gets and sets data
         try
         {
@@ -448,18 +451,6 @@ public partial class TermsPage : ContentPage
 
     private async void collapse_Clicked(object sender, EventArgs e)
     {
-
-       /* await Connection._db.DropTableAsync<terms>();
-
-        await Connection._db.DropTableAsync<courses>();
-        await Connection._db.DropTableAsync<PAs>();
-        await Connection._db.DropTableAsync<OAs>();
-        await Connection._db.DropTableAsync<instructors>();
-        await Connection._db.DropTableAsync<notifyCourse>();
-        await Connection._db.DropTableAsync<notifyPA>();
-        await Connection._db.DropTableAsync<notifyOA>();*/
-
-
 
         #region Term1 
         if (sender == collapse1)

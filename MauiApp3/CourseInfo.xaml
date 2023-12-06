@@ -393,7 +393,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid ColumnDefinitions="20,20,20,20,*"
-                              RowDefinitions="50,50,50,50">
+                              RowDefinitions="50,55,45,50">
 
 
                             <Label TextColor="White"
@@ -432,15 +432,17 @@
                                    WidthRequest="200" />
 
                             <Label TextColor="White"
+                                   ZIndex="4"
                                    Text="{Binding eMail}"
                                    Grid.Row="1"
-                                   Grid.Column="4"
-                                   Grid.ColumnSpan="3"
+                                   
+                                   Grid.Column="3"
+                                   Grid.ColumnSpan="4"
                                    BackgroundColor="#042c54"
                                    FontAttributes="Bold"
                                    HorizontalTextAlignment="End"
                                    VerticalTextAlignment="Center"
-                                   FontSize="Body" />
+                                   FontSize="Default" />
 
                             <Label TextColor="White"
                                    Text="Phone:"
@@ -451,18 +453,20 @@
                                    FontAttributes="Bold"
                                    FontSize="Body"
                                    HorizontalTextAlignment="End"
-                                   VerticalTextAlignment="Center"
-                                   WidthRequest="100" />
+                                   VerticalTextAlignment="End"
+                                   WidthRequest="100"
+                                   />
 
                             <Label TextColor="White"
                                    Text="{Binding phone}"
                                    Grid.Row="2"
                                    Grid.Column="3"
                                    Grid.ColumnSpan="2"
+                                   
                                    BackgroundColor="#042c54"
                                    FontAttributes="Bold"
                                    HorizontalTextAlignment="End"
-                                   VerticalTextAlignment="Center" />
+                                   VerticalTextAlignment="End" />
 
                         </Grid>
                     </DataTemplate>
