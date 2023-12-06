@@ -1,5 +1,6 @@
+using CommunityToolkit.Maui.Converters;
 using MauiApp3.Database;
-using Microsoft.Maui.Controls;
+
 
 namespace MauiApp3;
 
@@ -33,28 +34,6 @@ public partial class TermsPage : ContentPage
 
     public async void onStart()
     {
-
-       
-
-      /*  await dbQuery.AddTerm("1st term", DateTime.Today.ToShortDateString(), DateTime.Today.ToShortDateString()) ;
-           await dbQuery.AddTerm("2nd term", DateTime.Today.ToShortDateString(), DateTime.Today.ToShortDateString());
-              await dbQuery.AddTerm("3rd term", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString());
-             await dbQuery.AddTerm("4nd term", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString());
-             await dbQuery.AddTerm("5th term", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString());
-             await dbQuery.AddTerm("6th term", DateTime.Now.ToShortDateString() , DateTime.Now.ToShortDateString());
-  
-
-           await dbQuery.AddCourse(1, "pe class", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString(), 1, "test", "test", "test", true);
-           await dbQuery.AddCourse(1, "poiop class", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString(), 1 , "test", "test", "test", true);
-            await dbQuery.AddCourse(1, "hasda class", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString(), 1, "test", "test", "test", true);
-            await dbQuery.AddCourse(1, "dsds ass", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString(), 1, "test", "test", "test",true);
-               await dbQuery.AddCourse(1, "oasdaa class", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString(), 1, "test", "test", "test", true);
-               await dbQuery.AddCourse(1, "odadada class", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString(), DateTime.Now.ToShortDateString() , 1, "test", "test", "test", true);
-    
-*/
-
-
-
 
         #region Try/Catch gets and sets data
         try
@@ -475,14 +454,7 @@ public partial class TermsPage : ContentPage
 
     private async void collapse_Clicked(object sender, EventArgs e)
     {
-        /*await Connection._db.DropTableAsync<OAs>();
-        await Connection._db.DropTableAsync<PAs>();
-        await Connection._db.DropTableAsync<instructors>();
-        await Connection._db.DropTableAsync<courses>();
-        await Connection._db.DropTableAsync<terms>();
-        await Connection._db.DropTableAsync<notifyCourse>();
-        await Connection._db.DropTableAsync<notifyPA>();
-        await Connection._db.DropTableAsync<notifyOA>();*/
+        
 
         #region Term1 
         if (sender == collapse1)
@@ -998,9 +970,15 @@ public partial class TermsPage : ContentPage
             else
             {
                 //For Saving New Term
-
-                await dbQuery.AddTerm(addTermName.Text, addTermStart.Date.ToShortDateString(), addTermEnd.Date.ToShortDateString());
-
+                if (string.IsNullOrWhiteSpace(addTermName.Text) == true)
+                {
+                    await DisplayAlert("Error", "Term name can not be empty", "Ok");
+                    return;
+                }
+                else
+                {
+                    await dbQuery.AddTerm(addTermName.Text, addTermStart.Date.ToShortDateString(), addTermEnd.Date.ToShortDateString());
+                }
 
             };
         }

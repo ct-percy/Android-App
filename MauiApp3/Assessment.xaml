@@ -2,32 +2,107 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp3.Assessment"
-             Title="Assessment">
-    <Grid RowDefinitions="70,*,*,*,*,*,*,*" ColumnDefinitions="*,*">
-        <CollectionView x:Name="courseNameCV" ItemsSource="{Binding courses}" BackgroundColor="Blue" Grid.Row="0" Grid.ColumnSpan="2">
+             Title="Assessment"
+             BackgroundImageSource="owl_fly.png">
+
+
+    <Grid RowDefinitions="50,*,*,*,*,*,*,*,*"
+          ColumnDefinitions="*,*"
+          Margin="3">
+
+        <!--#region Header-->
+
+        <CollectionView x:Name="courseNameCV"
+                        ItemsSource="{Binding courses}"
+                        BackgroundColor="#c08f1c"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        Margin="-4"
+                        VerticalOptions="Center">
+            <CollectionView.Shadow>
+                <Shadow Brush="black"
+                        Radius="40" />
+            </CollectionView.Shadow>
+
             <CollectionView.ItemTemplate>
                 <DataTemplate>
 
-                    <Label FontSize="Title" Padding="20" HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding courseName}" TextColor="White" />
+                    <Label FontSize="Title"
+                           FontAttributes="Bold"
+                           HeightRequest="60"
+                           HorizontalOptions="Center"
+                           VerticalTextAlignment="Center"
+                           Text="{Binding courseName}"
+                           TextColor="Black" />
 
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button x:Name="backButton" Clicked="backButton_Clicked"
-            Text="Back" Grid.Column="0" Grid.ColumnSpan="2" WidthRequest="75" HorizontalOptions="Start"  />
 
 
 
+        <Button x:Name="backButton"
+                Clicked="backButton_Clicked"
+                Text="Back"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                WidthRequest="70"
+                HeightRequest="45"
+                HorizontalOptions="Start"
+                BackgroundColor="#042c54"
+                TextColor="White"
+                FontAttributes="Bold">
+            <Button.Shadow>
+                <Shadow Brush="black"
+                        Radius="40" />
+            </Button.Shadow>
+        </Button>
+
+        <Label Text="Assessment Information"
+               Grid.Row="1"
+               Grid.ColumnSpan="2"
+               BackgroundColor="#042c54"
+               FontSize="Large"
+               TextColor="White"
+               FontAttributes="Bold"
+               WidthRequest="500"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               VerticalOptions="Start"
+               HeightRequest="50">
+            <Label.Shadow>
+                <Shadow Brush="Black"
+                        Radius="40" />
+            </Label.Shadow>
+        </Label>
+
+        <!--#endregion-->
 
 
 
+        <!--#region Assessment Info-->
 
-        <!--#region Add New Assessment-->
+        <Label Text="Select Type:"
+               VerticalOptions="Center"
+               FontSize="Large"
+               Grid.Row="2"
+               FontAttributes="Bold">
+            <Label.Shadow>
+                <Shadow Brush="Black"
+                        Radius="40" />
+            </Label.Shadow>
+        </Label>
 
-        <Label Text="Select Type:" VerticalOptions="Center" FontSize="Large" Grid.Row="1" />
 
-        <Picker x:Name="assessmentType" FontSize="Large" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="3" Title="Assessment Type" >
+        <Picker x:Name="assessmentType"
+                FontSize="Large"
+                VerticalOptions="Center"
+                Grid.Row="2"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
+                Title="Assessment Type"
+                FontAttributes="Bold">
             <Picker.Items>
 
                 <x:String>Objective</x:String>
@@ -36,27 +111,86 @@
             </Picker.Items>
         </Picker>
 
-        <Label Text="Assessment Name" FontSize="Large" VerticalOptions="Center" Grid.Row="2" />
+        <Label Text="Assessment Name:"
+               FontSize="Large"
+               VerticalOptions="Center"
+               Grid.Row="3"
+               FontAttributes="Bold" />
 
-        <Entry x:Name="assessmentName" FontSize="Large" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" />
+        <Entry x:Name="assessmentName"
+               FontSize="Large"
+               VerticalOptions="Center"
+               Grid.Row="3"
+               Grid.Column="1"
+               FontAttributes="Bold" />
 
-        <Label Text="Expected Start" FontSize="Large" VerticalOptions="Center" Grid.Row="3" />
+        <Label Text="Expected Start:"
+               FontSize="Large"
+               VerticalOptions="Center"
+               Grid.Row="4"
+               FontAttributes="Bold" />
 
-        <DatePicker x:Name="startDate" FontSize="Large" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" />
+        <DatePicker x:Name="startDate"
+                    FontSize="Large"
+                    VerticalOptions="Center"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    FontAttributes="Bold" />
 
-        <Label Text="Expected End" FontSize="Large" VerticalOptions="Center" Grid.Row="4"  />
+        <Label Text="Expected End:"
+               FontSize="Large"
+               VerticalOptions="Center"
+               Grid.Row="5"
+               FontAttributes="Bold" />
 
-        <DatePicker x:Name="endDate" FontSize="Large" VerticalOptions="Center" Grid.Row="4" Grid.Column="1" />
+        <DatePicker x:Name="endDate"
+                    FontSize="Large"
+                    VerticalOptions="Center"
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    FontAttributes="Bold" />
 
-        <Label Text="Due Date:" FontSize="Large" VerticalOptions="Center" Grid.Row="5" />
+        <Label Text="Due Date:"
+               FontSize="Large"
+               VerticalOptions="Center"
+               Grid.Row="6"
+               FontAttributes="Bold" />
 
-        <DatePicker x:Name="dueDate" FontSize="Large" VerticalOptions="Center" Grid.Row="5" Grid.Column="1"/>
+        <DatePicker x:Name="dueDate"
+                    FontSize="Large"
+                    VerticalOptions="Center"
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    FontAttributes="Bold" />
 
-        <CheckBox x:Name="notifyCheck" CheckedChanged="notifyCheck_CheckedChanged" VerticalOptions="Center" Grid.Row="6" HorizontalOptions="End" />
+        <CheckBox x:Name="notifyCheck"
+                  CheckedChanged="notifyCheck_CheckedChanged"
+                  VerticalOptions="Center"
+                  Grid.Row="7"
+                  HorizontalOptions="End"
+                  Color="#042c54" />
 
-        <Label Text="Notify?" FontSize="Large" VerticalOptions="Center" Grid.Row="6" Grid.Column="1"  />
+        <Label Text="Notify?"
+               FontSize="Large"
+               VerticalOptions="Center"
+               Grid.Row="7"
+               Grid.Column="1"
+               FontAttributes="Bold" />
 
-        <Button Text="Save" Clicked="save_Clicked" Grid.Row="7" Grid.ColumnSpan="2" HeightRequest="50" />
+        <Button Text="Save Assessment"
+                Clicked="save_Clicked"
+                Grid.Row="8"
+                Grid.ColumnSpan="2"
+                HeightRequest="50"
+                VerticalOptions="End"
+                BackgroundColor="#c08f1c"
+                TextColor="Black"
+                FontAttributes="Bold">
+            <Button.Shadow>
+                <Shadow Brush="black"
+                        Radius="40" />
+            </Button.Shadow>
+        </Button>
 
         <!--#endregion-->
 

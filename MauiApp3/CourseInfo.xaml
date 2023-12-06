@@ -10,8 +10,7 @@
     <StackLayout>
 
         <Grid RowDefinitions="*,*,*,190, *,*"
-              ColumnDefinitions="*,*,*,*,*"
-             >
+              ColumnDefinitions="*,*,*,*,*">
 
 
             <!--#region Edit Course Info-->
@@ -56,8 +55,7 @@
                         Grid.ColumnSpan="5"
                         BackgroundColor="#5f7b91"
                         FontAttributes="Bold"
-                        FontSize="Body"
-                        >
+                        FontSize="Body">
                     <Editor.Shadow>
                         <Shadow Brush="black
 "
@@ -71,9 +69,8 @@
                             BackgroundColor="#042c54"
                             FontSize="Medium"
                             FontAttributes="Bold"
-                           
                             TextColor="White"
-                            WidthRequest="100" ></DatePicker>
+                            WidthRequest="100"></DatePicker>
                 <Label Text="   -     "
                        HorizontalOptions="End"
                        Grid.Row="2"
@@ -90,11 +87,9 @@
                             Grid.Column="1"
                             Grid.ColumnSpan="3"
                             HorizontalOptions="End"
-                          
                             BackgroundColor="#042c54"
                             FontSize="Medium"
                             FontAttributes="Bold"
-                            
                             WidthRequest="160"
                             TextColor="White"></DatePicker>
 
@@ -132,8 +127,7 @@
             <CollectionView x:Name="courseCV"
                             Grid.Column="0"
                             Grid.ColumnSpan="5"
-                            ItemsSource="{Binding courses}"
-                            >
+                            ItemsSource="{Binding courses}">
 
                 <CollectionView.ItemTemplate>
 
@@ -152,7 +146,7 @@
                                     HeightRequest="45"
                                     BackgroundColor="#c08f1c"
                                     TextColor="Black"
-                                    FontAttributes="Bold"/>
+                                    FontAttributes="Bold" />
                             <ImageButton Clicked="editButton_Clicked"
                                          Source="edit_icon.png"
                                          Grid.Column="4"
@@ -160,7 +154,7 @@
                                          HorizontalOptions="End" />
 
                             <Label ZIndex="2"
-                                Text="{Binding courseName}"
+                                   Text="{Binding courseName}"
                                    FontSize="Large"
                                    BackgroundColor="#042c54"
                                    TextColor="White"
@@ -175,46 +169,45 @@
                                 </Label.Shadow>
                             </Label>
 
-                            
-                                <Label Text="{Binding description}"
+
+                            <Label Text="{Binding description}"
                                    Grid.Row="1"
                                    Grid.ColumnSpan="5"
                                    FontSize="Body"
                                    FontAttributes="Bold"
                                    HorizontalTextAlignment="Center"
                                    BackgroundColor="#5f7b91"
-                                       ZIndex="1">
-                                    
+                                   ZIndex="1">
+
                                 <Label.Shadow>
                                     <Shadow Brush="black"
                                             Radius="40" />
                                 </Label.Shadow>
                             </Label>
 
-                            
-                                <Label Text="{Binding startDate}"
+
+                            <Label Text="{Binding startDate}"
                                    Grid.Row="2"
                                    Grid.ColumnSpan="3"
                                    HorizontalOptions="Start"
                                    BackgroundColor="#042c54"
                                    FontSize="Medium"
-                                       FontAttributes="Bold"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalTextAlignment="Center"
-                                       
-                                       TextColor="White"
-                                       WidthRequest="100"/>
-                                    
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Start"
+                                   VerticalTextAlignment="Center"
+                                   TextColor="White"
+                                   WidthRequest="100" />
+
                             <Label Text="   -     "
                                    HorizontalOptions="End"
                                    Grid.Row="2"
-                                   Grid.Column="1" 
+                                   Grid.Column="1"
                                    Grid.ColumnSpan="1"
                                    BackgroundColor="#042c54"
                                    VerticalTextAlignment="Center"
                                    FontSize="Title"
                                    FontAttributes="Bold"
-                                   TextColor="White"/>
+                                   TextColor="White" />
 
                             <Label  Text="{Binding endDate}"
                                     Grid.Row="2"
@@ -227,8 +220,7 @@
                                     FontAttributes="Bold"
                                     VerticalTextAlignment="Center"
                                     WidthRequest="160"
-                                    TextColor="White"
-                                    />
+                                    TextColor="White" />
 
                             <Label Text="{Binding status}"
                                    Grid.Row="2"
@@ -239,11 +231,10 @@
                                    FontSize="Medium"
                                    FontAttributes="Bold"
                                    HorizontalTextAlignment="Center"
-                                  
                                    VerticalTextAlignment="Center"
                                    WidthRequest="150"
-                                   TextColor="White"/>
-                            
+                                   TextColor="White" />
+
 
 
                         </Grid>
@@ -259,21 +250,20 @@
                       Grid.Column="1"
                       Grid.ColumnSpan="2"
                       Color="#042c54"
-                      HorizontalOptions="Center"/>
+                      HorizontalOptions="Center" />
             <Label Grid.Row="1"
                    Grid.Column="1"
                    Grid.ColumnSpan="4"
                    HorizontalOptions="Center"
                    HorizontalTextAlignment="End"
-                   
                    Text="Notify?"
                    FontAttributes="Bold"
                    VerticalOptions="Center"
                    FontSize="Large" />
             <!--#endregion-->
 
-            
-            
+
+
 
             <!--#region edit Instructor Info-->
 
@@ -308,16 +298,18 @@
                        FontSize="Body">
                     <Entry.Behaviors>
                         <toolkit:EmailValidationBehavior x:Name="emailValidator"
-                                                         Flags="ValidateOnValueChanged"></toolkit:EmailValidationBehavior>
+                                                         Flags="ValidateOnValueChanged">
+                            
+                        </toolkit:EmailValidationBehavior>
                     </Entry.Behaviors>
                 </Entry>
+
 
                 <Entry x:Name="phoneEntry"
                        TextColor="White"
                        Grid.Row="2"
                        Grid.Column="3"
                        Grid.ColumnSpan="2"
-                    
                        BackgroundColor="#042c54"
                        FontAttributes="Bold"
                        HorizontalTextAlignment="End"
@@ -325,19 +317,19 @@
                     <Entry.Behaviors>
                         <toolkit:TextValidationBehavior x:Name="phoneValidator"
                                                         RegexPattern="^\d{3}-\d{3}-\d{4}$"
-                                                        Flags="ValidateOnValueChanged"></toolkit:TextValidationBehavior>
+                                                        Flags="ValidateOnValueChanged">
+                        </toolkit:TextValidationBehavior>
                     </Entry.Behaviors>
                 </Entry>
-                
+
                 <Label TextColor="White"
                        Text="Instructor:"
                        Grid.Row="0"
                        Grid.Column="3"
-                       
                        BackgroundColor="#042c54"
                        FontAttributes="Bold"
                        HorizontalOptions="End"
-                       HorizontalTextAlignment="End" 
+                       HorizontalTextAlignment="End"
                        VerticalTextAlignment="Center"
                        FontSize="Body"
                        WidthRequest="100" />
@@ -348,15 +340,12 @@
                        Grid.Row="1"
                        Grid.Column="0"
                        Grid.ColumnSpan="3"
-                       
                        BackgroundColor="#042c54"
                        FontAttributes="Bold"
                        HorizontalOptions="Start"
                        HorizontalTextAlignment="End"
                        VerticalTextAlignment="Center"
-                       FontSize="Body"
-                      
-                        />
+                       FontSize="Body" />
 
 
                 <Label TextColor="White"
@@ -394,7 +383,7 @@
 
 
             <CollectionView ZIndex="5"
-                ItemsSource="{Binding instructors}"
+                            ItemsSource="{Binding instructors}"
                             Grid.Row="2"
                             Grid.Column="2"
                             Grid.ColumnSpan="3"
@@ -472,7 +461,6 @@
                                    Grid.ColumnSpan="2"
                                    BackgroundColor="#042c54"
                                    FontAttributes="Bold"
-                                   
                                    HorizontalTextAlignment="End"
                                    VerticalTextAlignment="Center" />
 
@@ -501,8 +489,7 @@
                        FontAttributes="Bold"
                        FontSize="Body"
                        VerticalTextAlignment="Center"
-                       HorizontalTextAlignment="Start"
-                       ></Label>
+                       HorizontalTextAlignment="Start"></Label>
                 <DatePicker x:Name="dueDateEntry"
                             Grid.Row="3"
                             Grid.Column="2"
@@ -510,12 +497,7 @@
                             BackgroundColor="#042c54"
                             TextColor="White"
                             FontAttributes="Bold"
-                            HorizontalOptions="End"
-                            
-                           
-                           
-                            
-                             />
+                            HorizontalOptions="End" />
 
 
             </Grid>
@@ -527,13 +509,12 @@
 
 
             <!--#region Due Date -->
-                       <CollectionView ItemsSource="{Binding courses}"
+            <CollectionView ItemsSource="{Binding courses}"
                             Grid.Row="2"
                             Grid.Column="2"
                             Grid.ColumnSpan="3"
-                            x:Name="dueDateCV"
-                           >
-                
+                            x:Name="dueDateCV">
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid  Grid.RowDefinitions="50,50,50,50"
@@ -545,8 +526,7 @@
                                    TextColor="white"
                                    FontAttributes="Bold"
                                    FontSize="Body"
-                                   VerticalTextAlignment="Center"
-                                  ></Label>
+                                   VerticalTextAlignment="Center"></Label>
                             <Label x:Name="dueDate"
                                    Text="{Binding dueDate}"
                                    Grid.Row="3"
@@ -556,59 +536,60 @@
                                    TextColor="White"
                                    FontAttributes="Bold"
                                    HorizontalTextAlignment="End"
-                                   VerticalTextAlignment="Center"
-                                   />
+                                   VerticalTextAlignment="Center" />
 
                         </Grid>
 
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-           
+
             <!--#endregion-->
 
 
             <!--#region Notes -->
             <StackLayout Grid.Row="3"
                          Grid.Column="0"
-                         Grid.ColumnSpan="5"
-                         >
-              
+                         Grid.ColumnSpan="5">
+
 
                 <Grid  RowDefinitions="140,90">
 
-                    
-                    
-                    <Frame x:Name="notesFrame" ZIndex="2" Margin="1" Padding="3"
-                           BackgroundColor="#042c54" HasShadow="True"   BorderColor="#042c54"> 
-                    <ScrollView>
-                        <CollectionView Margin="4" x:Name="notesCV"
-                                         ItemsSource="{Binding courses}"
-                                    BackgroundColor="White"     >
-                            
-                            <CollectionView.Shadow>
-                                <Shadow Brush="black"
-                                        Radius="40" />
-                            </CollectionView.Shadow>
-                            
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
 
-                                    <Label Text="{Binding notes}"
-                                           HorizontalOptions="StartAndExpand"
-                                           Grid.Row="1"
-                                           Grid.RowSpan="1"
-                                           FontSize="Body"
-                                           
-                                           
-                                           TextColor="Black"
-                                           />
 
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </ScrollView>
-                     
+                    <Frame x:Name="notesFrame"
+                           ZIndex="2"
+                           Margin="1"
+                           Padding="3"
+                           BackgroundColor="#042c54"
+                           HasShadow="True"
+                           BorderColor="#042c54">
+                        <ScrollView>
+                            <CollectionView Margin="4"
+                                            x:Name="notesCV"
+                                            ItemsSource="{Binding courses}"
+                                            BackgroundColor="White">
+
+                                <CollectionView.Shadow>
+                                    <Shadow Brush="black"
+                                            Radius="40" />
+                                </CollectionView.Shadow>
+
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Label Text="{Binding notes}"
+                                               HorizontalOptions="StartAndExpand"
+                                               Grid.Row="1"
+                                               Grid.RowSpan="1"
+                                               FontSize="Body"
+                                               TextColor="Black" />
+
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </ScrollView>
+
                     </Frame>
 
                     <Frame x:Name="notesEditorFrame"
@@ -624,9 +605,9 @@
                                 Grid.Row="0"
                                 Grid.RowSpan="1"
                                 IsVisible="false"
-                           BackgroundColor="White"
+                                BackgroundColor="White"
                                 WidthRequest="370"
-                                HeightRequest="120"/>
+                                HeightRequest="120" />
 
                     </Frame>
                     <Button x:Name="shareButton"
@@ -637,8 +618,7 @@
                             VerticalOptions="Start"
                             BackgroundColor="#042c54"
                             Grid.Row="1"
-                            FontAttributes="Bold"
-                            />
+                            FontAttributes="Bold" />
                     <Button x:Name="pendingButton"
                             Text="Pending Changes....."
                             IsEnabled="False"
@@ -648,13 +628,15 @@
                             BackgroundColor="#c08f1c"
                             Grid.Row="1"
                             FontAttributes="Bold"
-                            IsVisible="false"/>
+                            IsVisible="false" />
 
                 </Grid>
-              
+
 
             </StackLayout>
             <!--#endregion-->
+
+
 
 
             <!--#region Assessments -->
@@ -668,7 +650,7 @@
                 <Label Text="Objective Assessments"
                        FontAttributes="Bold"
                        HorizontalOptions="Center"
-                       TextDecorations="Underline"/>
+                       TextDecorations="Underline" />
                 <ScrollView>
                     <CollectionView  HeightRequest="40"
                                      SelectionMode="Single"
@@ -680,9 +662,11 @@
                         <CollectionView.EmptyView>
                             <StackLayout HorizontalOptions="Center"
                                          VerticalOptions="Center">
+
                                 <Label TextColor="Grey"
                                        FontAttributes="Bold"
-                                       Text="No Objective Assessments yet!"></Label>
+                                       Text="No Objective Assessments yet!" />
+
                             </StackLayout>
                         </CollectionView.EmptyView>
                         <CollectionView.ItemTemplate>
@@ -693,12 +677,10 @@
                                            FontAttributes="Bold" />
                                     <Label Text="{Binding startDate}"
                                            FontAttributes="Bold"
-                                           Grid.Column="1"
-                                            />
+                                           Grid.Column="1" />
                                     <Label Text="{Binding endDate}"
                                            FontAttributes="Bold"
-                                           Grid.Column="2"
-                                            />
+                                           Grid.Column="2" />
                                 </Grid>
 
                             </DataTemplate>
@@ -709,7 +691,7 @@
                 <Label Text=" Performance Assessments"
                        FontAttributes="Bold"
                        HorizontalOptions="Center"
-                       TextDecorations="Underline"/>
+                       TextDecorations="Underline" />
 
                 <ScrollView>
                     <CollectionView HeightRequest="40"
@@ -719,6 +701,7 @@
                                     x:Name="paCV"
                                     ItemsSource="{Binding PAs}"
                                     BackgroundColor="LightGray">
+                        
                         <CollectionView.EmptyView>
                             <StackLayout HorizontalOptions="Center"
                                          VerticalOptions="Center">
@@ -732,15 +715,14 @@
                             <DataTemplate>
 
                                 <Grid ColumnDefinitions="*,*,*">
-                                    <Label Text="{Binding paName}" FontAttributes="Bold" />
+                                    <Label Text="{Binding paName}"
+                                           FontAttributes="Bold" />
                                     <Label Text="{Binding startDate}"
                                            Grid.Column="1"
-                                           
-                                           FontAttributes="Bold"/>
+                                           FontAttributes="Bold" />
                                     <Label Text="{Binding endDate}"
                                            FontAttributes="Bold"
-                                           Grid.Column="2"
-                                            />
+                                           Grid.Column="2" />
                                 </Grid>
 
                             </DataTemplate>
@@ -753,19 +735,19 @@
                             HorizontalOptions="Start"
                             Clicked="addAssessment_Clicked"
                             BackgroundColor="#042c54"
-                            WidthRequest="70"/>
+                            WidthRequest="70" />
                     <Button Text="Edit"
                             Grid.ColumnSpan="2"
                             HorizontalOptions="Center"
                             Clicked="editAssessment_Clicked"
                             BackgroundColor="#042c54"
-                            WidthRequest="70"/>
+                            WidthRequest="70" />
                     <Button Text="Delete"
                             Clicked="deleteAssessment_Clicked"
                             Grid.Column="1"
                             HorizontalOptions="End"
                             BackgroundColor="#042c54"
-                            WidthRequest="70"/>
+                            WidthRequest="70" />
 
                 </Grid>
                 <!--#endregion-->

@@ -1,8 +1,6 @@
-using CommunityToolkit.Maui.Behaviors;
-using CommunityToolkit.Maui.Converters;
+
 using MauiApp3.Database;
-using Plugin.LocalNotification;
-using System.Data.SqlTypes;
+
 
 namespace MauiApp3;
 
@@ -16,9 +14,7 @@ public partial class CourseInfo : ContentPage
 
     public async void onStart()
     {
-        /* await Connection._db.DropTableAsync<PAs>();
-         await Connection._db.DropTableAsync<OAs>();
- */
+        
         courseCV.ItemsSource = await dbQuery.GetCourse(selectedCourse.coursesId);
 
         dueDateCV.ItemsSource = await dbQuery.GetCourse(selectedCourse.coursesId);
@@ -51,11 +47,7 @@ public partial class CourseInfo : ContentPage
         InitializeComponent();
         this.selectedCourse = selectedCourse;
 
-
-
         onStart();
-
-
 
     }
 

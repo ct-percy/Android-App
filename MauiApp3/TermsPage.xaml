@@ -207,8 +207,6 @@
                 <!--#endregion-->
 
 
-
-
                 <!--#region term1Courses-->
 
                 <Label x:Name="noCourses1"
@@ -1485,7 +1483,7 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     Grid.ColumnSpan="4"
-                    Placeholder="New Term"
+                    Placeholder="Enter Term Name"
                     FontFamily="bold"
                     FontSize="Large"
                     IsVisible="false"
@@ -1553,7 +1551,8 @@
                     Margin="5"
                     IsVisible="false"
                     TextColor="Black"
-                    BackgroundColor="#c08f1c" />
+                    BackgroundColor="#c08f1c"
+                    FontAttributes="Bold"/>
 
             <Button x:Name="cancelTerm"
                     Clicked="cancel_Clicked"
@@ -1564,7 +1563,8 @@
                     Margin="5"
                     IsVisible="false"
                     TextColor="Black"
-                    BackgroundColor="#c08f1c" />
+                    BackgroundColor="#c08f1c"
+                    FontAttributes="Bold"/>
 
 
         </Grid>

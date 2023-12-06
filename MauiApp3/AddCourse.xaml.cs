@@ -32,8 +32,6 @@ public partial class AddCourse : ContentPage
         this.termId = termId;
         onStart(termId);
 
-        //termNameCV.ItemsSource
-
     }
 
     private async void saveButton_Clicked(object sender, EventArgs e)
@@ -102,7 +100,7 @@ public partial class AddCourse : ContentPage
 
             status = statusEntry.SelectedItem.ToString();
 
-            
+
             if (notifyCheckbox.IsChecked == false)
             {
                 notifyBool = false;
@@ -127,7 +125,7 @@ public partial class AddCourse : ContentPage
         await Navigation.PopModalAsync();
     }
 
-   
+
 
     private void notifyCheckbox_CheckedChanged(object sender, CheckedChangedEventArgs e)
     {
@@ -143,5 +141,5 @@ public partial class AddCourse : ContentPage
         }
     }
 
-  
+
 }

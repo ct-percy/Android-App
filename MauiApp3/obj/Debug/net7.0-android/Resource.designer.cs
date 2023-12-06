@@ -28568,31 +28568,34 @@ namespace MauiApp3
 			public const int notify_panel_notification_icon_bg = 2131165416;
 			
 			// aapt resource value: 0x7F0700E9
-			public const int sage1 = 2131165417;
+			public const int owl_fly = 2131165417;
 			
 			// aapt resource value: 0x7F0700EA
-			public const int save = 2131165418;
+			public const int sage1 = 2131165418;
 			
 			// aapt resource value: 0x7F0700EB
-			public const int splash = 2131165419;
+			public const int save = 2131165419;
 			
 			// aapt resource value: 0x7F0700EC
-			public const int test_level_drawable = 2131165420;
+			public const int splash = 2131165420;
 			
 			// aapt resource value: 0x7F0700ED
-			public const int tooltip_frame_dark = 2131165421;
+			public const int test_level_drawable = 2131165421;
 			
 			// aapt resource value: 0x7F0700EE
-			public const int tooltip_frame_light = 2131165422;
+			public const int tooltip_frame_dark = 2131165422;
 			
 			// aapt resource value: 0x7F0700EF
-			public const int wgu = 2131165423;
+			public const int tooltip_frame_light = 2131165423;
 			
 			// aapt resource value: 0x7F0700F0
-			public const int wgu_owl = 2131165424;
+			public const int wgu = 2131165424;
 			
 			// aapt resource value: 0x7F0700F1
-			public const int wgu_seal = 2131165425;
+			public const int wgu_owl = 2131165425;
+			
+			// aapt resource value: 0x7F0700F2
+			public const int wgu_seal = 2131165426;
 			
 			static Drawable()
 			{
