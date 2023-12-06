@@ -1,3 +1,4 @@
+using __XamlGeneratedCode__;
 using CommunityToolkit.Maui.Converters;
 using MauiApp3.Database;
 
@@ -120,22 +121,11 @@ public partial class TermsPage : ContentPage
 
         }
 
-
-
-
         //  hides if less than 6 terms
        
             collapseCount();
 
-
-
         #endregion
-
-        notify();
-       
-           
-
-      
     }
 
     public async void collapseCount()
@@ -149,11 +139,14 @@ public partial class TermsPage : ContentPage
             collapse4.IsVisible = false;
             collapse5.IsVisible = false;
             collapse6.IsVisible = false;
+            Term1.IsVisible = false;
             Term2.IsVisible = false;
             Term3.IsVisible = false;
             Term4.IsVisible = false;
             Term5.IsVisible = false;
             Term6.IsVisible = false;
+
+            noTermsLabel.IsVisible = true;
 
         }
         if (termCount == 1)
@@ -224,8 +217,9 @@ public partial class TermsPage : ContentPage
     public TermsPage()
     {
 
-
+        notify();
         onStart();
+        
         InitializeComponent();
 
 
@@ -454,7 +448,18 @@ public partial class TermsPage : ContentPage
 
     private async void collapse_Clicked(object sender, EventArgs e)
     {
-        
+
+       /* await Connection._db.DropTableAsync<terms>();
+
+        await Connection._db.DropTableAsync<courses>();
+        await Connection._db.DropTableAsync<PAs>();
+        await Connection._db.DropTableAsync<OAs>();
+        await Connection._db.DropTableAsync<instructors>();
+        await Connection._db.DropTableAsync<notifyCourse>();
+        await Connection._db.DropTableAsync<notifyPA>();
+        await Connection._db.DropTableAsync<notifyOA>();*/
+
+
 
         #region Term1 
         if (sender == collapse1)
@@ -985,40 +990,50 @@ public partial class TermsPage : ContentPage
         catch { }
 
         await Navigation.PushModalAsync(new TermsPage());
-
     }
 
     private async void deleteTerm_Clicked(object sender, EventArgs e)
     {
 
+        bool delete = await DisplayAlert("Are you sure?", "If you delete this term, it will also delete all associated courses, assessments, instructors, and notifications. Delete Term?", "Yes", "No");
 
-        if (sender == delete1)
+        if (delete == true)
         {
-            await dbQuery.deleteTerm(term1Id);
-        }
-        if (sender == delete2)
-        {
-            await dbQuery.deleteTerm(term2Id);
+
+            if (sender == delete1)
+            {
+                await dbQuery.deleteTerm(term1Id);
+
+
+            }
+            if (sender == delete2)
+            {
+                await dbQuery.deleteTerm(term2Id);
+            }
+
+            if (sender == delete3)
+            {
+                await dbQuery.deleteTerm(term3Id);
+            }
+            if (sender == delete4)
+            {
+                await dbQuery.deleteTerm(term4Id);
+            }
+            if (sender == delete5)
+            {
+                await dbQuery.deleteTerm(term5Id);
+            }
+            if (sender == delete6)
+            {
+                await dbQuery.deleteTerm(term6Id);
+            }
+            await Navigation.PushModalAsync(new TermsPage());
         }
 
-        if (sender == delete3)
+        else
         {
-            await dbQuery.deleteTerm(term3Id);
+            return;
         }
-        if (sender == delete4)
-        {
-            await dbQuery.deleteTerm(term4Id);
-        }
-        if (sender == delete5)
-        {
-            await dbQuery.deleteTerm(term5Id);
-        }
-        if (sender == delete6)
-        {
-            await dbQuery.deleteTerm(term6Id);
-        }
-        await Navigation.PushModalAsync(new TermsPage());
-
     }
 
     #region Open Course Info
@@ -1126,12 +1141,19 @@ public partial class TermsPage : ContentPage
 
     private async void deleteCourse_Clicked(object sender, EventArgs e)
     {
-        courses course = selectedCourse as courses;
 
-        await dbQuery.DeleteCourse(course.coursesId);
+        if (selectedCourse == null)
+        {
+            await DisplayAlert("Select A Course", "Select a course to delete", "Ok");
+        }
+        else
+        {
+            courses course = selectedCourse as courses;
 
-        onStart();
+            await dbQuery.DeleteCourse(course.coursesId);
 
+            onStart();
+        }
     }
 
     private async void notify()

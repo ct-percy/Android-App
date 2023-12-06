@@ -80,8 +80,18 @@
                            FontAttributes="Bold"
                            TextColor="LightGrey" />
 
-
-                    <CollectionView x:Name="Term1"
+                    <Label x:Name="noTermsLabel"
+                           IsVisible="false"
+                        Text="Click 'Add A New Term' to get started!"
+                            HorizontalTextAlignment="Center"
+                            Grid.ColumnSpan="2"
+                            TextColor="White"
+                            FontSize="Body"
+                            FontAttributes="Bold">
+                       
+                        </Label>
+                    
+                        <CollectionView x:Name="Term1"
                                     ItemsSource="{Binding terms}"
                                     Grid.Row="1"
                                     Grid.Column="0"
@@ -92,12 +102,7 @@
                                     Radius="20"></Shadow>
                         </CollectionView.Shadow>
 
-                        <CollectionView.EmptyView>
-                            <Label TextColor="White"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"
-                                   Text="Click 'Add A New Term' to get started!" />
-                        </CollectionView.EmptyView>
+                   
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
@@ -1398,6 +1403,7 @@
                           BackgroundColor="LightGray"
                           SeparatorColor="#042c54">
 
+              
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -1487,6 +1493,7 @@
                     FontFamily="bold"
                     FontSize="Large"
                     IsVisible="false"
+                    TextColor="White"
                     HorizontalTextAlignment="Center" />
 
             <Label x:Name="startLabel"

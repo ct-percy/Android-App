@@ -105,6 +105,15 @@ namespace MauiApp3.Database
 
             await Connection._db.ExecuteAsync("DELETE FROM terms WHERE Id =" + termId);
 
+            var course = await dbQuery.GetCourses(termId);
+
+            for (int i = 0; i < course.Count(); i++)
+            {
+                await dbQuery.DeleteCourse(course.ElementAt(i).coursesId);
+               
+            }
+
+
         }
 
         public static async Task updateTerm(int termId, string termName, string startDate, string endDate)
@@ -188,8 +197,32 @@ namespace MauiApp3.Database
         {
             await Connection.Init();
 
-            await Connection._db.QueryAsync<courses>("DELETE FROM courses WHERE coursesId =" + courseId);
+           
 
+            await deleteCourseNotify(courseId);
+
+            var course = await GetCourse(courseId);
+
+          
+            await dbQuery.deleteInstructor(course.FirstOrDefault().instructorId);
+
+            var oa = await dbQuery.GetOas(courseId);
+
+            for (int x = 0; x < oa.Count(); x++)
+            {
+                await dbQuery.deleteOA(oa.ElementAt(x).oaId);
+                await dbQuery.deleteOaNotify(oa.ElementAt(x).oaId);
+            }
+
+            var pa = await dbQuery.GetPas(courseId);
+
+            for (int y = 0; y < pa.Count(); y++)
+            {
+                await dbQuery.deletePA(pa.ElementAt(y).paId);
+                await dbQuery.deletePaNotify(pa.ElementAt(y).paId);
+            }
+
+            await Connection._db.QueryAsync<courses>("DELETE FROM courses WHERE coursesId =" + courseId);
         }
 
         public static async Task updateCourse(int courseId, string courseName, string description, string startDate, string endDate, string status, string notes, string dueDate, bool notify)
@@ -249,7 +282,10 @@ namespace MauiApp3.Database
 
             await Connection._db.QueryAsync<PAs>("DELETE FROM PAs WHERE paId =" + paId);
 
+           await deletePaNotify(paId);
+
         }
+
         public static async Task<int> editPA(int paId, string paName, string start, string end, string due, bool notify)
         {
             await Connection.Init();
@@ -304,7 +340,10 @@ namespace MauiApp3.Database
 
             await Connection._db.QueryAsync<OAs>("DELETE FROM OAs WHERE oaId =" + oaId);
 
+            await deleteOaNotify(oaId);
+
         }
+
         public static async Task<int> editOA(int oaId, string oaName, string start, string end, string due, bool notify)
         {
             await Connection.Init();
@@ -339,16 +378,6 @@ namespace MauiApp3.Database
 
         }
 
-        public async static Task<IEnumerable<instructors>> GetInstructors()
-        {
-
-            await Connection.Init();
-
-            var instructors = await Connection._db.Table<instructors>().ToListAsync();
-
-            return instructors;
-        }
-
         public async static Task<IEnumerable<instructors>> GetInstructor(int instructorId)
         {
 
@@ -360,23 +389,12 @@ namespace MauiApp3.Database
             return instructor;
         }
 
-        public static string GetInstructorName(int instructorId)
-        {
-
-
-
-            var instructor = Connection._db.QueryAsync<instructors>("SELECT instructorName FROM instructors WHERE Id = " + instructorId);
-
-
-            return instructor.ToString();
-        }
-
 
         public static async Task deleteInstructor(int instructorId)
         {
             await Connection.Init();
 
-            await Connection._db.DeleteAsync(instructorId);
+            await Connection._db.QueryAsync<instructors>("DELETE FROM instructors WHERE Id = " + instructorId);
 
         }
 
@@ -389,9 +407,6 @@ namespace MauiApp3.Database
             await Connection._db.ExecuteAsync("UPDATE instructors SET instructorName ='" + name + "', eMail = '" + email + "', phone = '" + phone + "' WHERE Id = " + Id);
 
         }
-
-
-
 
 
         #endregion
@@ -431,17 +446,7 @@ namespace MauiApp3.Database
             return notify;
         }
 
-        public async static Task<IEnumerable<notifyCourse>> getCourseNotify(int courseId)
-        {
-
-            await Connection.Init();
-
-
-            var notify = await Connection._db.QueryAsync<notifyCourse>("SELECT * FROM notifyCourse WHERE Id =" + courseId );
-
-
-            return notify;
-        }
+      
         public static async Task updateCourseNotify(int courseId, string courseName,string startDate, string endDate, string dueDate)
         {
             await Connection.Init();
@@ -499,18 +504,6 @@ namespace MauiApp3.Database
         }
 
 
-        public async static Task<IEnumerable<notifyPA>> getPaNotify(int paId)
-        {
-
-            await Connection.Init();
-
-
-            var notify = await Connection._db.QueryAsync<notifyPA>("SELECT * FROM notifyPA WHERE Id =" + paId);
-
-
-            return notify;
-        }
-
         public static async Task updatePaNotify(int paId, string paName, string startDate, string endDate, string dueDate)
         {
             await Connection.Init();
@@ -566,18 +559,6 @@ namespace MauiApp3.Database
             return notify;
         }
 
-
-        public async static Task<IEnumerable<notifyOA>> getOaNotify(int oaId)
-        {
-
-            await Connection.Init();
-
-
-            var notify = await Connection._db.QueryAsync<notifyOA>("SELECT * FROM notifyOA WHERE Id =" + oaId);
-
-
-            return notify;
-        }
 
         public static async Task updateOaNotify(int oaId, string oaName, string startDate, string endDate, string dueDate)
         {
