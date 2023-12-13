@@ -11,7 +11,7 @@ namespace MauiApp3
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                
+
                 .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
@@ -20,7 +20,7 @@ namespace MauiApp3
                 });
 
 #if DEBUG
-		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MauiApp3.Database
+﻿namespace MauiApp3.Database
 {
     public static class dbQuery
     {
@@ -112,7 +106,7 @@ namespace MauiApp3.Database
             for (int i = 0; i < course.Count(); i++)
             {
                 await dbQuery.DeleteCourse(course.ElementAt(i).coursesId);
-               
+
             }
 
 
@@ -199,13 +193,13 @@ namespace MauiApp3.Database
         {
             await Connection.Init();
 
-           
+
 
             await deleteCourseNotify(courseId);
 
             var course = await GetCourse(courseId);
 
-          
+
             await dbQuery.deleteInstructor(course.FirstOrDefault().instructorId);
 
             var oa = await dbQuery.GetOas(courseId);
@@ -234,7 +228,7 @@ namespace MauiApp3.Database
 
             await Connection._db.ExecuteAsync("UPDATE courses SET courseName ='" + courseName + "', description ='" + description + "', startDate ='" + startDate + "', endDate = '" + endDate + "', status ='" + status + "', notes = '" + notes + "', dueDate ='" + dueDate + "', notify = " + notify + " WHERE coursesId = " + courseId);
 
-           
+
         }
 
 
@@ -284,7 +278,7 @@ namespace MauiApp3.Database
 
             await Connection._db.QueryAsync<PAs>("DELETE FROM PAs WHERE paId =" + paId);
 
-           await deletePaNotify(paId);
+            await deletePaNotify(paId);
 
         }
 
@@ -448,8 +442,8 @@ namespace MauiApp3.Database
             return notify;
         }
 
-      
-        public static async Task updateCourseNotify(int courseId, string courseName,string startDate, string endDate, string dueDate)
+
+        public static async Task updateCourseNotify(int courseId, string courseName, string startDate, string endDate, string dueDate)
         {
             await Connection.Init();
 

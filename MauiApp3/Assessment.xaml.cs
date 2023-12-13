@@ -162,7 +162,7 @@ public partial class Assessment : ContentPage
                 catch
                 {
                     await dbQuery.AddNotifyPA(paId, assessmentName.Text, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString());
-                    
+
                 }
             }
             else if (notifyCheck.IsChecked == false)
@@ -203,16 +203,16 @@ public partial class Assessment : ContentPage
         }
 
 
-        
 
 
-      
+
+
 
         await Navigation.PushModalAsync(new CourseInfo(selectedCourse as courses));
 
 
 
-        
+
     }
 
     private void notifyCheck_CheckedChanged(object sender, CheckedChangedEventArgs e)
@@ -230,7 +230,7 @@ public partial class Assessment : ContentPage
 
     }
 
-   
+
 
     private async void backButton_Clicked(object sender, EventArgs e)
     {

@@ -4,9 +4,9 @@
     {
         public AppShell()
         {
-           
+
             InitializeComponent();
-            
+
         }
     }
 }

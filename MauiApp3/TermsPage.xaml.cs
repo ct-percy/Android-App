@@ -1,5 +1,3 @@
-using __XamlGeneratedCode__;
-using CommunityToolkit.Maui.Converters;
 using MauiApp3.Database;
 
 
@@ -118,13 +116,13 @@ public partial class TermsPage : ContentPage
         }
         catch
         {
-            
+
 
         }
 
         //  hides if less than 6 terms
-       
-            collapseCount();
+
+        collapseCount();
 
         #endregion
     }
@@ -186,7 +184,7 @@ public partial class TermsPage : ContentPage
             collapse4.IsVisible = false;
             collapse5.IsVisible = false;
             collapse6.IsVisible = false;
-           
+
             Term4.IsVisible = false;
             Term5.IsVisible = false;
             Term6.IsVisible = false;
@@ -198,7 +196,7 @@ public partial class TermsPage : ContentPage
 
             collapse5.IsVisible = false;
             collapse6.IsVisible = false;
-       
+
             Term5.IsVisible = false;
             Term6.IsVisible = false;
 
@@ -220,7 +218,7 @@ public partial class TermsPage : ContentPage
 
         notify();
         onStart();
-        
+
         InitializeComponent();
 
 
@@ -290,7 +288,7 @@ public partial class TermsPage : ContentPage
             Term1.IsVisible = false;
 
             string termName = term1.First().termName;
-            
+
 
             editStart1.IsVisible = true;
             editDash1.IsVisible = true;
@@ -449,14 +447,7 @@ public partial class TermsPage : ContentPage
 
     private async void collapse_Clicked(object sender, EventArgs e)
     {
-        await Connection._db.DropTableAsync<terms>();
-        await Connection._db.DropTableAsync<courses>();
-        await Connection._db.DropTableAsync<instructors>();
-        await Connection._db.DropTableAsync<PAs>();
-        await Connection._db.DropTableAsync<OAs>();
-        await Connection._db.DropTableAsync<notifyCourse>();
-        await Connection._db.DropTableAsync<notifyPA>();
-        await Connection._db.DropTableAsync<notifyOA>();
+        
 
 
         #region Term1 
@@ -978,6 +969,11 @@ public partial class TermsPage : ContentPage
                     await DisplayAlert("Error", "Term name can not be empty", "Ok");
                     return;
                 }
+                else if (addTermStart.Date > addTermEnd.Date)
+                {
+                    await DisplayAlert("Error", "Start date can not be after End date", "Ok");
+                    return;
+                }
                 else
                 {
                     await dbQuery.AddTerm(addTermName.Text, addTermStart.Date.ToShortDateString(), addTermEnd.Date.ToShortDateString());
@@ -1047,7 +1043,7 @@ public partial class TermsPage : ContentPage
         Term6Courses.SelectedItem = null;
 
         selectedCourse = Term1Courses.SelectedItem;
-        
+
 
 
         if (deleteCourse1.IsVisible != true)
@@ -1066,7 +1062,7 @@ public partial class TermsPage : ContentPage
         Term6Courses.SelectedItem = null;
 
         selectedCourse = Term2Courses.SelectedItem;
-        
+
 
         if (deleteCourse2.IsVisible != true)
         {
@@ -1167,9 +1163,9 @@ public partial class TermsPage : ContentPage
             {
 
 
-                if (DateTime.Parse(notifyCourse.ElementAt(i).start).AddDays(-1) ==  DateTime.Today ||
+                if (DateTime.Parse(notifyCourse.ElementAt(i).start).AddDays(-1) == DateTime.Today ||
                     DateTime.Parse(notifyCourse.ElementAt(i).start).AddDays(-3) == DateTime.Today ||
-                    DateTime.Parse(notifyCourse.ElementAt(i).start).AddDays(-7) == DateTime.Today )
+                    DateTime.Parse(notifyCourse.ElementAt(i).start).AddDays(-7) == DateTime.Today)
                 {
                     await DisplayAlert("Upcoming Start Date", notifyCourse.ElementAt(i).courseName + " is expected to start on " + notifyCourse.ElementAt(i).start, "Ok");
 

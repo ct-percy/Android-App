@@ -1,9 +1,4 @@
 ﻿using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MauiApp3.Database
 {
@@ -90,7 +85,7 @@ namespace MauiApp3.Database
     public class notifyCourse
     {
         public int Id { get; set; }
-        public string courseName {  get; set; }
+        public string courseName { get; set; }
         public string start { get; set; }
         public string end { get; set; }
         public string dueDate { get; set; }

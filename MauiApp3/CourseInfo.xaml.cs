@@ -14,7 +14,7 @@ public partial class CourseInfo : ContentPage
 
     public async void onStart()
     {
-        
+
         courseCV.ItemsSource = await dbQuery.GetCourse(selectedCourse.coursesId);
 
         dueDateCV.ItemsSource = await dbQuery.GetCourse(selectedCourse.coursesId);
@@ -83,14 +83,14 @@ public partial class CourseInfo : ContentPage
             OAs oa = oaCV.SelectedItem as OAs;
 
             await dbQuery.deleteOA(oa.oaId);
-          
+
             oaCV.ItemsSource = await dbQuery.GetOas(selectedCourse.coursesId);
         }
         else if (paCV.SelectedItem != null)
         {
             PAs pa = paCV.SelectedItem as PAs;
             await dbQuery.deletePA(pa.paId);
-          
+
             paCV.ItemsSource = await dbQuery.GetPas(selectedCourse.coursesId);
         }
         else if (oaCV.SelectedItem == null && paCV.SelectedItem == null)
@@ -125,9 +125,9 @@ public partial class CourseInfo : ContentPage
     }
 
 
-    private  void backButton_Clicked(object sender, EventArgs e)
+    private void backButton_Clicked(object sender, EventArgs e)
     {
-         Navigation.PushModalAsync(new TermsPage());
+        Navigation.PushModalAsync(new TermsPage());
     }
 
     private async void editButton_Clicked(object sender, EventArgs e)
@@ -283,25 +283,25 @@ public partial class CourseInfo : ContentPage
                 try
                 {
 
-                  await  dbQuery.updateCourseNotify(selectedCourse.coursesId, courseNameEntry.Text, startEntry.Date.ToShortDateString(), endEntry.Date.ToShortDateString(), dueDateEntry.Date.ToShortDateString());
-                    
-                }
-                catch 
-                { 
-                    await dbQuery.AddNotifyCourse(selectedCourse.coursesId, courseNameEntry.Text, startEntry.Date.ToShortDateString(), endEntry.Date.ToShortDateString(), dueDateEntry.Date.ToShortDateString());
-                    
-                }
+                    await dbQuery.updateCourseNotify(selectedCourse.coursesId, courseNameEntry.Text, startEntry.Date.ToShortDateString(), endEntry.Date.ToShortDateString(), dueDateEntry.Date.ToShortDateString());
 
-            }
-            else if (notifyCheckbox.IsChecked == false) 
-            {
-                try
-                {
-                   await dbQuery.deleteCourseNotify(selectedCourse.coursesId);
                 }
                 catch
                 {
-                    
+                    await dbQuery.AddNotifyCourse(selectedCourse.coursesId, courseNameEntry.Text, startEntry.Date.ToShortDateString(), endEntry.Date.ToShortDateString(), dueDateEntry.Date.ToShortDateString());
+
+                }
+
+            }
+            else if (notifyCheckbox.IsChecked == false)
+            {
+                try
+                {
+                    await dbQuery.deleteCourseNotify(selectedCourse.coursesId);
+                }
+                catch
+                {
+
                 }
             }
 

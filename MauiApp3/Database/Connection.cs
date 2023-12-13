@@ -36,13 +36,14 @@ namespace MauiApp3.Database
 
                 #region SAMPLE DATA 
 
-
-                int termId = await dbQuery.AddTerm("Winter Term", DateTime.Now.ToShortDateString(), DateTime.Now.AddMonths(6).ToShortDateString());
-                int instructorId = await dbQuery.AddInstructor("Anika Patel", "555-123-4567", "anika.patel@strimeuniversity.edu");
-                int courseId = await dbQuery.AddCourse(termId, ".Net Maui 101", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(3).ToShortDateString(), DateTime.Now.AddDays(7).ToShortDateString(), instructorId, "Active", "This course used to be based off of Xamarin", "Use your knowledge and skills to create a cross platform software application", false);
-                await dbQuery.AddOa("Objective Assessment", courseId, DateTime.Now.AddDays(1).ToShortDateString(), DateTime.Now.AddDays(2).ToShortDateString(), DateTime.Now.AddDays(7).ToShortDateString(), false);
-                await dbQuery.AddPa("Performance Assessment", courseId, DateTime.Now.AddDays(1).ToShortDateString(), DateTime.Now.AddDays(2).ToShortDateString(), DateTime.Now.AddDays(7).ToShortDateString(), false);
-
+                if (Connection._db.QueryAsync<terms>("SELECT * FROM terms").Result.Count() < 1)
+                {
+                    int termId = await dbQuery.AddTerm("Winter Term", DateTime.Now.ToShortDateString(), DateTime.Now.AddMonths(6).ToShortDateString());
+                    int instructorId = await dbQuery.AddInstructor("Anika Patel", "555-123-4567", "anika.patel@strimeuniversity.edu");
+                    int courseId = await dbQuery.AddCourse(termId, ".Net Maui 101", DateTime.Now.ToShortDateString(), DateTime.Now.AddDays(3).ToShortDateString(), DateTime.Now.AddDays(7).ToShortDateString(), instructorId, "Active", "This course used to be based off of Xamarin", "Use your knowledge and skills to create a cross platform software application", false);
+                    await dbQuery.AddOa("Objective Assessment", courseId, DateTime.Now.AddDays(1).ToShortDateString(), DateTime.Now.AddDays(2).ToShortDateString(), DateTime.Now.AddDays(7).ToShortDateString(), false);
+                    await dbQuery.AddPa("Performance Assessment", courseId, DateTime.Now.AddDays(1).ToShortDateString(), DateTime.Now.AddDays(2).ToShortDateString(), DateTime.Now.AddDays(7).ToShortDateString(), false);
+                }
                 #endregion
 
 
