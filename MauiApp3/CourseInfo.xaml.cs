@@ -283,7 +283,7 @@ public partial class CourseInfo : ContentPage
                 try
                 {
 
-                    await dbQuery.updateCourseNotify(selectedCourse.coursesId, courseNameEntry.Text, startEntry.Date.ToShortDateString(), endEntry.Date.ToShortDateString(), dueDateEntry.Date.ToShortDateString());
+                    dbQuery.deleteCourseNotify(selectedCourse.coursesId);
 
                 }
                 catch
@@ -297,7 +297,7 @@ public partial class CourseInfo : ContentPage
             {
                 try
                 {
-                    await dbQuery.deleteCourseNotify(selectedCourse.coursesId);
+                     dbQuery.deleteCourseNotify(selectedCourse.coursesId);
                 }
                 catch
                 {

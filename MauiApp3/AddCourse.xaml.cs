@@ -1,6 +1,6 @@
 
 using MauiApp3.Database;
-
+using Plugin.LocalNotification;
 
 namespace MauiApp3;
 
@@ -79,6 +79,7 @@ public partial class AddCourse : ContentPage
             return;
         }
         #endregion
+
         else
         {
             int instructorId = await dbQuery.AddInstructor(profEntry.Text, phoneEntry.Text, emailEntry.Text);
@@ -111,8 +112,9 @@ public partial class AddCourse : ContentPage
             {
                 notifyBool = true;
                 int courseId = await dbQuery.AddCourse(termId, courseNameEntry.Text, startEntry.Date.ToShortDateString(), endEntry.Date.ToShortDateString(), dueEntry.Date.ToShortDateString(), instructorId, status, "Click to add new notes to this course.", "Click Edit to add a course description!", notifyBool);
-                await dbQuery.AddNotifyCourse(courseId, courseNameEntry.Text, startEntry.Date.ToShortDateString(), endEntry.Date.ToShortDateString(), dueEntry.Date.ToShortDateString());
+               await dbQuery.AddNotifyCourse(courseId, courseNameEntry.Text, startEntry.Date.ToShortDateString(), endEntry.Date.ToShortDateString(), dueEntry.Date.ToShortDateString());
 
+                
             }
 
 
@@ -127,17 +129,17 @@ public partial class AddCourse : ContentPage
 
 
 
-    private void notifyCheckbox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    private async void notifyCheckbox_CheckedChanged(object sender, CheckedChangedEventArgs e)
     {
         if (notifyCheckbox.IsChecked == true)
         {
-
-            DisplayAlert("Notify", "You will be notified of upcoming start, end, and due dates", "Ok");
+            await LocalNotificationCenter.Current.RequestNotificationPermission();
+          await  DisplayAlert("Notify", "You will be notified of upcoming start, end, and due dates", "Ok");
         }
         if (notifyCheckbox.IsChecked == false)
         {
 
-            DisplayAlert("Notify", "You will NOT be notified of upcoming start, end, and due dates", "Ok");
+          await  DisplayAlert("Notify", "You will NOT be notified of upcoming start, end, and due dates", "Ok");
         }
     }
 

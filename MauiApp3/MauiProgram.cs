@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
-
+using Plugin.LocalNotification;
 
 namespace MauiApp3
 {
@@ -13,11 +13,15 @@ namespace MauiApp3
                 .UseMauiApp<App>()
 
                 .UseMauiCommunityToolkit()
+                .UseLocalNotification()
+                
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
+            
 
 #if DEBUG
             builder.Logging.AddDebug();

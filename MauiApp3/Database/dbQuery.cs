@@ -1,4 +1,6 @@
-﻿namespace MauiApp3.Database
+﻿using Plugin.LocalNotification;
+
+namespace MauiApp3.Database
 {
     public static class dbQuery
     {
@@ -195,7 +197,7 @@
 
 
 
-            await deleteCourseNotify(courseId);
+             deleteCourseNotify(courseId);
 
             var course = await GetCourse(courseId);
 
@@ -206,8 +208,8 @@
 
             for (int x = 0; x < oa.Count(); x++)
             {
-                await dbQuery.deleteOA(oa.ElementAt(x).oaId);
-                await dbQuery.deleteOaNotify(oa.ElementAt(x).oaId);
+                await deleteOA(oa.ElementAt(x).oaId);
+                 deleteOaNotify(oa.ElementAt(x).oaId);
             }
 
             var pa = await dbQuery.GetPas(courseId);
@@ -215,7 +217,7 @@
             for (int y = 0; y < pa.Count(); y++)
             {
                 await dbQuery.deletePA(pa.ElementAt(y).paId);
-                await dbQuery.deletePaNotify(pa.ElementAt(y).paId);
+                deletePaNotify(pa.ElementAt(y).paId);
             }
 
             await Connection._db.QueryAsync<courses>("DELETE FROM courses WHERE coursesId =" + courseId);
@@ -278,7 +280,7 @@
 
             await Connection._db.QueryAsync<PAs>("DELETE FROM PAs WHERE paId =" + paId);
 
-            await deletePaNotify(paId);
+            deletePaNotify(paId);
 
         }
 
@@ -336,7 +338,7 @@
 
             await Connection._db.QueryAsync<OAs>("DELETE FROM OAs WHERE oaId =" + oaId);
 
-            await deleteOaNotify(oaId);
+            deleteOaNotify(oaId);
 
         }
 
@@ -408,55 +410,83 @@
         #endregion
 
 
-        #region Notify Course Queries
+        #region Notify Course
 
         public static async Task AddNotifyCourse(int id, string courseName, string start, string end, string due)
         {
-            await Connection.Init();
 
-            var notify = new notifyCourse()
+
+            #region Notify Start
+
+            string startId = id.ToString() + 1.ToString();
+            
+
+            var notifyStart = new NotificationRequest
             {
+                NotificationId = int.Parse(startId),
+                Title = "Upcoming Start Date",
+                Description = courseName + " is expected to start on " + start,
+                Schedule = new NotificationRequestSchedule
+                {
+                    NotifyTime = DateTime.Parse(start).AddDays(-1)
 
-                Id = id,
-                courseName = courseName,
-                start = start,
-                end = end,
-                dueDate = due,
-
-
+        }
             };
 
-            await Connection._db.InsertAsync(notify);
+            await LocalNotificationCenter.Current.Show(notifyStart);
 
+            #endregion
+
+            #region Notify End
+            string endId = id.ToString() + 2.ToString();
+
+            var notifyEnd = new NotificationRequest
+            {
+                NotificationId = int.Parse(endId),
+                Title = "Upcoming End Date",
+                Description = courseName + " is expected to end on " + end,
+                Schedule = new NotificationRequestSchedule
+                {
+                    NotifyTime = DateTime.Parse(end).AddDays(-1),
+
+                }
+            };
+
+            await LocalNotificationCenter.Current.Show(notifyEnd);
+
+            #endregion
+
+            #region Notify Due
+            string dueId = id.ToString() + 3.ToString();
+
+            var notifyDue = new NotificationRequest
+            {
+                NotificationId = int.Parse(dueId),
+                Title = "Upcoming Due Date",
+                Description = courseName + " is due on " + due,
+                Schedule = new NotificationRequestSchedule
+                {
+                    NotifyTime = DateTime.Parse(due).AddDays(-1),
+
+                }
+            };
+
+            await LocalNotificationCenter.Current.Show(notifyDue);
+
+            #endregion
         }
 
-        public async static Task<IEnumerable<notifyCourse>> getNotifyCourses()
+        public static void deleteCourseNotify(int courseId)
         {
+          
 
-            await Connection.Init();
+            string startId = courseId.ToString() + 1.ToString();
+            string endId = courseId.ToString() + 2.ToString();
+            string dueId = courseId.ToString() + 3.ToString();
 
-
-            var notify = await Connection._db.QueryAsync<notifyCourse>("SELECT * FROM notifyCourse");
-
-
-            return notify;
-        }
-
-
-        public static async Task updateCourseNotify(int courseId, string courseName, string startDate, string endDate, string dueDate)
-        {
-            await Connection.Init();
-
-
-            await Connection._db.ExecuteAsync("UPDATE notifyCourse SET courseName ='" + courseName + "', start'" + startDate + "', endDate = '" + endDate + "', dueDate ='" + dueDate + "' WHERE Id = " + courseId);
-
-        }
-
-        public static async Task deleteCourseNotify(int courseId)
-        {
-            await Connection.Init();
-
-            await Connection._db.QueryAsync<notifyCourse>("DELETE FROM notifyCourse WHERE Id =" + courseId);
+            LocalNotificationCenter.Current.Cancel(int.Parse(startId));
+            LocalNotificationCenter.Current.Cancel(int.Parse(endId));
+            LocalNotificationCenter.Current.Cancel(int.Parse(dueId));
 
         }
 
@@ -468,53 +498,80 @@
 
         public static async Task AddNotifyPA(int id, string paName, string start, string end, string due)
         {
-            await Connection.Init();
+           
 
-            var notify = new notifyPA()
+            #region Notify Start
+
+            string startId = id.ToString() + 1.ToString();
+
+            var notifyStart = new NotificationRequest
             {
+                NotificationId = int.Parse(startId),
+                Title = "Upcoming Assessment Start Date",
+                Description = paName + " is expected to start on " + start,
+                Schedule = new NotificationRequestSchedule
+                {
+                    NotifyTime = DateTime.Parse(start).AddDays(-1),
 
-                Id = id,
-                paName = paName,
-                start = start,
-                end = end,
-                dueDate = due,
-
-
+                }
             };
 
-            await Connection._db.InsertAsync(notify);
+            await LocalNotificationCenter.Current.Show(notifyStart);
+
+            #endregion
+
+            #region Notify End
+            string endId = id.ToString() + 2.ToString();
+
+            var notifyEnd = new NotificationRequest
+            {
+                NotificationId = int.Parse(endId),
+                Title = "Upcoming Assessment End Date",
+                Description = paName + " is expected to end on " + end,
+                Schedule = new NotificationRequestSchedule
+                {
+                    NotifyTime = DateTime.Parse(end).AddDays(-1),
+
+                }
+            };
+
+            await LocalNotificationCenter.Current.Show(notifyEnd);
+
+            #endregion
+
+            #region Notify Due
+
+            string dueId = id.ToString() + 3.ToString();
+
+            var notifyDue = new NotificationRequest
+            {
+                NotificationId = int.Parse(dueId),
+                Title = "Upcoming Assessment Due Date",
+                Description = paName + " is due on " + due,
+                Schedule = new NotificationRequestSchedule
+                {
+                    NotifyTime = DateTime.Parse(due).AddDays(-1),
+
+                }
+            };
+
+            await LocalNotificationCenter.Current.Show(notifyDue);
+
+            #endregion
+
 
         }
 
 
-        public async static Task<IEnumerable<notifyPA>> getNotifyPAs()
+        public static void  deletePaNotify(int paId)
         {
+            string startId = paId.ToString() + 1.ToString();
+            string endId = paId.ToString() + 2.ToString();
+            string dueId = paId.ToString() + 3.ToString();
 
-            await Connection.Init();
-
-
-            var notify = await Connection._db.QueryAsync<notifyPA>("SELECT * FROM notifyPA");
-
-
-            return notify;
-        }
-
-
-        public static async Task updatePaNotify(int paId, string paName, string startDate, string endDate, string dueDate)
-        {
-            await Connection.Init();
-
-
-            await Connection._db.ExecuteAsync("UPDATE notifyPA SET paName = '" + paName + "', start ='" + startDate + "', endDate = '" + endDate + "', dueDate ='" + dueDate + "' WHERE Id = " + paId);
-
-        }
-
-        public static async Task deletePaNotify(int paId)
-        {
-            await Connection.Init();
-
-            await Connection._db.QueryAsync<notifyPA>("DELETE FROM notifyPA WHERE Id =" + paId);
-
+            LocalNotificationCenter.Current.Cancel(int.Parse(startId));
+            LocalNotificationCenter.Current.Cancel(int.Parse(endId));
+            LocalNotificationCenter.Current.Cancel(int.Parse(dueId));
         }
 
         #endregion
@@ -525,52 +582,77 @@
 
         public static async Task AddNotifyOA(int id, string oaName, string start, string end, string due)
         {
-            await Connection.Init();
 
-            var notify = new notifyOA()
+            #region Notify Start
+
+            string startId = id.ToString() + 1.ToString();
+
+            var notifyStart = new NotificationRequest
             {
+                NotificationId = int.Parse(startId),
+                Title = "Upcoming Assessment Start Date",
+                Description = oaName + " is expected to start on " + start,
+                Schedule = new NotificationRequestSchedule
+                {
+                    NotifyTime = DateTime.Parse(start).AddDays(-1),
 
-                Id = id,
-                oaName = oaName,
-                start = start,
-                end = end,
-                dueDate = due,
-
-
+                }
             };
 
-            await Connection._db.InsertAsync(notify);
+            await LocalNotificationCenter.Current.Show(notifyStart);
+
+            #endregion
+
+            #region Notify End
+            string endId = id.ToString() + 2.ToString();
+
+            var notifyEnd = new NotificationRequest
+            {
+                NotificationId = int.Parse(endId),
+                Title = "Upcoming Assessment End Date",
+                Description = oaName + " is expected to end on " + end,
+                Schedule = new NotificationRequestSchedule
+                {
+                    NotifyTime = DateTime.Parse(end).AddDays(-1),
+
+                }
+            };
+
+            await LocalNotificationCenter.Current.Show(notifyEnd);
+
+            #endregion
+
+            #region Notify Due
+
+            string dueId = id.ToString() + 3.ToString();
+
+            var notifyDue = new NotificationRequest
+            {
+                NotificationId = int.Parse(dueId),
+                Title = "Assessment Due",
+                Description = oaName + " is due on " + due,
+                Schedule = new NotificationRequestSchedule
+                {
+                    NotifyTime = DateTime.Parse(due).AddDays(-1),
+
+                }
+            };
+
+            await LocalNotificationCenter.Current.Show(notifyDue);
+
+            #endregion
 
         }
 
-        public async static Task<IEnumerable<notifyOA>> getNotifyOAs()
+        public static void deleteOaNotify(int oaId)
         {
+            string startId = oaId.ToString() + 1.ToString();
+            string endId = oaId.ToString() + 2.ToString();
+            string dueId = oaId.ToString() + 3.ToString();
 
-            await Connection.Init();
-
-
-            var notify = await Connection._db.QueryAsync<notifyOA>("SELECT * FROM notifyOA");
-
-
-            return notify;
-        }
-
-
-        public static async Task updateOaNotify(int oaId, string oaName, string startDate, string endDate, string dueDate)
-        {
-            await Connection.Init();
-
-
-            await Connection._db.ExecuteAsync("UPDATE notifyOA SET oaName ='" + oaName + "', start'" + startDate + "', endDate = '" + endDate + "', dueDate ='" + dueDate + "' WHERE Id = " + oaId);
-
-        }
-
-        public static async Task deleteOaNotify(int oaId)
-        {
-            await Connection.Init();
-
-            await Connection._db.QueryAsync<notifyPA>("DELETE FROM notifyOA WHERE Id =" + oaId);
-
+            LocalNotificationCenter.Current.Cancel(int.Parse(startId));
+            LocalNotificationCenter.Current.Cancel(int.Parse(endId));
+            LocalNotificationCenter.Current.Cancel(int.Parse(dueId));
         }
 
         #endregion

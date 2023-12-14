@@ -107,7 +107,7 @@ public partial class Assessment : ContentPage
             {
                 try
                 {
-                    await dbQuery.updateOaNotify(oaId, assessmentName.Text, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString());
+                    dbQuery.deleteOaNotify(oaId);
                 }
                 catch
                 {
@@ -119,7 +119,7 @@ public partial class Assessment : ContentPage
             {
                 try
                 {
-                    await dbQuery.deleteOaNotify(oaId);
+                     dbQuery.deleteOaNotify(oaId);
                 }
                 catch
                 {
@@ -137,7 +137,7 @@ public partial class Assessment : ContentPage
             paId = await dbQuery.AddPa(assessmentName.Text, selectedCourse.coursesId, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString(), notifyBool);
             try
             {
-                await dbQuery.deleteOaNotify(oa.oaId);
+                 dbQuery.deleteOaNotify(oa.oaId);
             }
             catch
             {
@@ -157,7 +157,7 @@ public partial class Assessment : ContentPage
             {
                 try
                 {
-                    await dbQuery.updatePaNotify(paId, assessmentName.Text, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString());
+                    dbQuery.deletePaNotify(paId);
                 }
                 catch
                 {
@@ -169,7 +169,7 @@ public partial class Assessment : ContentPage
             {
                 try
                 {
-                    await dbQuery.deletePaNotify(paId);
+                     dbQuery.deletePaNotify(paId);
                 }
                 catch
                 {
@@ -188,7 +188,7 @@ public partial class Assessment : ContentPage
 
             try
             {
-                await dbQuery.deletePaNotify(pa.paId);
+                 dbQuery.deletePaNotify(pa.paId);
             }
             catch
             {
