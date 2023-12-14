@@ -9,8 +9,6 @@ public partial class TermsPage : ContentPage
 {
     object selectedCourse;
 
-
-
     bool noCourse1;
     bool noCourse2;
     bool noCourse3;
@@ -216,13 +214,9 @@ public partial class TermsPage : ContentPage
 
     public TermsPage()
     {
-
-       
         onStart();
 
         InitializeComponent();
-
-
 
     }
 

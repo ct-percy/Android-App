@@ -419,7 +419,7 @@ namespace MauiApp3.Database
             #region Notify Start
 
             string startId = id.ToString() + 1.ToString();
-            
+
 
             var notifyStart = new NotificationRequest
             {
@@ -428,9 +428,10 @@ namespace MauiApp3.Database
                 Description = courseName + " is expected to start on " + start,
                 Schedule = new NotificationRequestSchedule
                 {
-                    NotifyTime = DateTime.Parse(start).AddDays(-1)
+                    NotifyTime = DateTime.Now.AddSeconds(5)
 
-        }
+                }
+                
             };
 
             await LocalNotificationCenter.Current.Show(notifyStart);
@@ -447,7 +448,7 @@ namespace MauiApp3.Database
                 Description = courseName + " is expected to end on " + end,
                 Schedule = new NotificationRequestSchedule
                 {
-                    NotifyTime = DateTime.Parse(end).AddDays(-1),
+                    NotifyTime = DateTime.Now.AddSeconds(5)
 
                 }
             };
@@ -466,7 +467,7 @@ namespace MauiApp3.Database
                 Description = courseName + " is due on " + due,
                 Schedule = new NotificationRequestSchedule
                 {
-                    NotifyTime = DateTime.Parse(due).AddDays(-1),
+                    NotifyTime = DateTime.Now.AddSeconds(5)
 
                 }
             };
@@ -511,7 +512,7 @@ namespace MauiApp3.Database
                 Description = paName + " is expected to start on " + start,
                 Schedule = new NotificationRequestSchedule
                 {
-                    NotifyTime = DateTime.Parse(start).AddDays(-1),
+                    NotifyTime = DateTime.Now.AddSeconds(5)
 
                 }
             };
@@ -530,7 +531,7 @@ namespace MauiApp3.Database
                 Description = paName + " is expected to end on " + end,
                 Schedule = new NotificationRequestSchedule
                 {
-                    NotifyTime = DateTime.Parse(end).AddDays(-1),
+                    NotifyTime = DateTime.Now.AddSeconds(5)
 
                 }
             };
@@ -550,7 +551,7 @@ namespace MauiApp3.Database
                 Description = paName + " is due on " + due,
                 Schedule = new NotificationRequestSchedule
                 {
-                    NotifyTime = DateTime.Parse(due).AddDays(-1),
+                    NotifyTime = DateTime.Now.AddSeconds(5)
 
                 }
             };
@@ -594,7 +595,7 @@ namespace MauiApp3.Database
                 Description = oaName + " is expected to start on " + start,
                 Schedule = new NotificationRequestSchedule
                 {
-                    NotifyTime = DateTime.Parse(start).AddDays(-1),
+                    NotifyTime = DateTime.Now.AddSeconds(5)
 
                 }
             };
@@ -613,7 +614,7 @@ namespace MauiApp3.Database
                 Description = oaName + " is expected to end on " + end,
                 Schedule = new NotificationRequestSchedule
                 {
-                    NotifyTime = DateTime.Parse(end).AddDays(-1),
+                    NotifyTime = DateTime.Now.AddSeconds(5)
 
                 }
             };
@@ -633,7 +634,7 @@ namespace MauiApp3.Database
                 Description = oaName + " is due on " + due,
                 Schedule = new NotificationRequestSchedule
                 {
-                    NotifyTime = DateTime.Parse(due).AddDays(-1),
+                    NotifyTime = DateTime.Now.AddSeconds(5)
 
                 }
             };

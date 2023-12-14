@@ -3,6 +3,9 @@ using MauiApp3.Database;
 
 namespace MauiApp3;
 
+
+
+//make sure to only allow 1 assessment per type
 public partial class Assessment : ContentPage
 {
 
