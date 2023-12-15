@@ -1,4 +1,5 @@
 ﻿using Plugin.LocalNotification;
+using System.Xml.Linq;
 
 namespace MauiApp3.Database
 {
@@ -293,11 +294,28 @@ namespace MauiApp3.Database
             return paId;
         }
 
+        public static async Task<int> countPA(int courseId)
+        {
+            await Connection.Init();
+
+            var count = await Connection._db.QueryAsync<PAs>("SELECT * FROM PAs WHERE coursesId =" + courseId);
+
+            return count.Count;
+        }
 
         #endregion
 
 
         #region OA Queries
+
+        public static async Task<int> countOA(int courseId)
+        {
+            await Connection.Init();
+
+            var count = await Connection._db.QueryAsync<OAs>("SELECT * FROM OAs WHERE coursesId =" + courseId);
+
+            return count.Count;
+        }
 
         public static async Task<int> AddOa(string OaName, int courseId, string start, string end, string due, bool notify)
         {

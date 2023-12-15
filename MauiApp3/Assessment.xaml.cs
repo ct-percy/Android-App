@@ -78,25 +78,43 @@ public partial class Assessment : ContentPage
             notifyBool = false;
         }
 
+        int paCount = await dbQuery.countPA(selectedCourse.coursesId);
+        int oaCount = await dbQuery.countOA(selectedCourse.coursesId);
 
         //Add new OA
         if (oa == null && pa == null && assessmentType.SelectedIndex == 0)
 
         {
-            oaId = await dbQuery.AddOa(assessmentName.Text, selectedCourse.coursesId, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString(), notifyBool);
-            if (notifyCheck.IsChecked == true)
+            if (oaCount == 1)
             {
-                await dbQuery.AddNotifyOA(oaId, assessmentName.Text, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString());
+                await DisplayAlert("Error", "Only 1 Objective Assesment allowed per course. Delete the other Objective Assessment to add a new one", "Ok");
             }
+            else
+            {
 
+                oaId = await dbQuery.AddOa(assessmentName.Text, selectedCourse.coursesId, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString(), notifyBool);
+               
+                if (notifyCheck.IsChecked == true)
+                {
+                    await dbQuery.AddNotifyOA(oaId, assessmentName.Text, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString());
+                }
+            }
         }
         //Add new PA
         else if (oa == null && pa == null && assessmentType.SelectedIndex == 1)
         {
-            paId = await dbQuery.AddPa(assessmentName.Text, selectedCourse.coursesId, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString(), notifyBool);
-            if (notifyCheck.IsChecked == true)
+
+            if (paCount == 1)
             {
-                await dbQuery.AddNotifyPA(paId, assessmentName.Text, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString());
+                await DisplayAlert("Error", "Only 1 Performance Assesment allowed per course. Delete the other Performance Assessment to add a new one", "Ok");
+            }
+            else
+            {
+                paId = await dbQuery.AddPa(assessmentName.Text, selectedCourse.coursesId, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString(), notifyBool);
+                if (notifyCheck.IsChecked == true)
+                {
+                    await dbQuery.AddNotifyPA(paId, assessmentName.Text, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString());
+                }
             }
         }
 
@@ -135,20 +153,28 @@ public partial class Assessment : ContentPage
         //Change OA to PA
         else if (oa != null && assessmentType.SelectedIndex == 1)
         {
-            await dbQuery.deleteOA(oa.oaId);
 
-            paId = await dbQuery.AddPa(assessmentName.Text, selectedCourse.coursesId, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString(), notifyBool);
-            try
+            if (paCount == 1)
             {
-                 dbQuery.deleteOaNotify(oa.oaId);
+                await DisplayAlert("Error", "Only 1 Performance Assesment allowed per course. Delete the other Performance Assessment to add a new one", "Ok");
             }
-            catch
+            else
             {
+                await dbQuery.deleteOA(oa.oaId);
 
-            }
-            if (notifyCheck.IsChecked == true)
-            {
-                await dbQuery.AddNotifyPA(paId, assessmentName.Text, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString());
+                paId = await dbQuery.AddPa(assessmentName.Text, selectedCourse.coursesId, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString(), notifyBool);
+                try
+                {
+                    dbQuery.deleteOaNotify(oa.oaId);
+                }
+                catch
+                {
+
+                }
+                if (notifyCheck.IsChecked == true)
+                {
+                    await dbQuery.AddNotifyPA(paId, assessmentName.Text, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString());
+                }
             }
         }
         //Edit PA
@@ -186,22 +212,29 @@ public partial class Assessment : ContentPage
         //Change PA to OA
         else if (pa != null && assessmentType.SelectedIndex == 0)
         {
-            await dbQuery.deletePA(pa.paId);
-            oaId = await dbQuery.AddOa(assessmentName.Text, selectedCourse.coursesId, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString(), notifyBool);
 
-            try
+            if (oaCount == 1)
             {
-                 dbQuery.deletePaNotify(pa.paId);
+                await DisplayAlert("Error", "Only 1 Objective Assesment allowed per course. Delete the other Objective Assessment to add a new one", "Ok");
             }
-            catch
+            else
             {
+                await dbQuery.deletePA(pa.paId);
+                oaId = await dbQuery.AddOa(assessmentName.Text, selectedCourse.coursesId, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString(), notifyBool);
 
-            }
-            if (notifyCheck.IsChecked == true)
-            {
-                await dbQuery.AddNotifyOA(oaId, assessmentName.Text, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString());
-            }
+                try
+                {
+                    dbQuery.deletePaNotify(pa.paId);
+                }
+                catch
+                {
 
+                }
+                if (notifyCheck.IsChecked == true)
+                {
+                    await dbQuery.AddNotifyOA(oaId, assessmentName.Text, startDate.Date.ToShortDateString(), endDate.Date.ToShortDateString(), dueDate.Date.ToShortDateString());
+                }
+            }
 
         }
 

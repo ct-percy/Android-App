@@ -1,6 +1,6 @@
 
 using MauiApp3.Database;
-
+using System.Collections;
 
 namespace MauiApp3;
 
@@ -10,7 +10,7 @@ public partial class CourseInfo : ContentPage
     private courses selectedCourse;
     string status;
     bool notifyBool;
-
+  
 
     public async void onStart()
     {
@@ -24,6 +24,7 @@ public partial class CourseInfo : ContentPage
         notesCV.ItemsSource = await dbQuery.GetNotes(selectedCourse.coursesId);
         paCV.ItemsSource = await dbQuery.GetPas(selectedCourse.coursesId);
         oaCV.ItemsSource = await dbQuery.GetOas(selectedCourse.coursesId);
+         
 
         notifyBool = selectedCourse.notify;
 
@@ -54,8 +55,18 @@ public partial class CourseInfo : ContentPage
 
     private async void addAssessment_Clicked(object sender, EventArgs e)
     {
+      int paCount =await dbQuery.countPA(selectedCourse.coursesId);
+        int oaCount = await dbQuery.countOA(selectedCourse.coursesId);
 
-        await Navigation.PushModalAsync(new Assessment(selectedCourse));
+        if ((paCount  == 1) && (oaCount == 1) )
+        {
+            await DisplayAlert("Error", "Only 1 Objective Assessment and 1 Performance Assessment allowed per course. Delete an assessment to add more", "Ok");
+
+        }
+        else
+        {
+            await Navigation.PushModalAsync(new Assessment(selectedCourse));
+        }
 
     }
 
